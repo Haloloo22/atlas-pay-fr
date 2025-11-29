@@ -1,67 +1,78 @@
-import { CreditCard, Bell, Shield, Gauge, Satellite, Activity } from "lucide-react";
+import { CreditCard, Bell, Shield, Satellite, Gauge, Activity } from "lucide-react";
 
 const features = [
   {
     icon: CreditCard,
     title: "Carte carburant intelligente",
-    description: "Limites par conducteur et catégories de dépenses contrôlées (carburant, maintenance, péages)."
+    description: "Limites par conducteur et catégories de dépenses contrôlées. Carburant, maintenance, péages.",
+    gradient: "from-primary/10 via-primary/5 to-transparent"
   },
   {
     icon: Bell,
     title: "Suivi en temps réel",
-    description: "Notifications instantanées. Transactions visibles seconde par seconde sur votre dashboard."
+    description: "Notifications push instantanées. Chaque transaction visible seconde par seconde.",
+    gradient: "from-accent/10 via-accent/5 to-transparent"
   },
   {
     icon: Shield,
-    title: "Anti-fraude et contrôle avancé",
-    description: "Comparaison litres consommés vs kilomètres parcourus. Détection automatique des anomalies."
+    title: "Anti-fraude automatique",
+    description: "IA qui détecte les anomalies. Comparaison litres vs kilomètres en temps réel.",
+    gradient: "from-success/10 via-success/5 to-transparent"
   },
   {
     icon: Satellite,
-    title: "Intégration télématique",
-    description: "Connectez GPS, odomètre et données de consommation. Réconciliation automatique des dépenses."
+    title: "Intégration GPS",
+    description: "Connectez vos boîtiers télématiques. Réconciliation automatique des dépenses.",
+    gradient: "from-warning/10 via-warning/5 to-transparent"
   },
   {
     icon: Gauge,
     title: "Optimisation carburant",
-    description: "Analyse de la consommation par véhicule et conducteur. Recommandations d'optimisation."
+    description: "Analyses avancées par véhicule. Recommandations d'économies personnalisées.",
+    gradient: "from-primary/10 via-accent/5 to-transparent"
   },
   {
     icon: Activity,
-    title: "Rapports détaillés",
-    description: "Tableaux de bord personnalisables, exports Excel, prévisions de dépenses et analyses approfondies."
+    title: "Rapports intelligents",
+    description: "Dashboard personnalisable. Exports comptables en un clic. Prévisions IA.",
+    gradient: "from-accent/10 via-primary/5 to-transparent"
   }
 ];
 
 const Features = () => {
   return (
-    <section id="fonctionnalites" className="py-24 px-6 bg-secondary/30">
+    <section id="fonctionnalites" className="py-32 px-6 bg-gradient-to-b from-secondary/40 to-background">
       <div className="container mx-auto max-w-7xl">
-        <div className="text-center space-y-4 mb-16">
+        <div className="text-center space-y-6 mb-24">
           <div className="inline-block">
-            <span className="text-sm font-semibold px-4 py-2 rounded-full bg-primary/10 text-primary">
-              Caractéristiques principales
+            <span className="text-sm font-bold px-5 py-2.5 rounded-full bg-primary/10 text-primary uppercase tracking-wide">
+              Tout en un
             </span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground">
-            Tout ce dont votre flotte a besoin
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-foreground tracking-tight leading-tight">
+            Votre flotte sous contrôle
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Une solution complète pour contrôler chaque dépense, chaque litre, chaque kilomètre
+          <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            Une plateforme complète qui fait bien plus que gérer vos cartes carburant
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
             <div
               key={index}
-              className="group bg-background p-8 rounded-xl border-2 border-border hover:border-primary/30 hover:shadow-lg transition-all duration-300"
+              className="group relative bg-card rounded-3xl p-10 border-2 border-border hover:border-primary/30 transition-all duration-500 hover:shadow-[0_20px_60px_-20px_rgba(21,94,160,0.2)]"
             >
-              <div className="w-14 h-14 bg-gradient-to-br from-primary/10 to-accent/10 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
-                <feature.icon className="w-7 h-7 text-primary" />
+              <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10`}></div>
+              
+              <div className="w-16 h-16 bg-gradient-to-br from-primary/10 to-accent/10 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
+                <feature.icon className="w-8 h-8 text-primary group-hover:text-accent transition-colors" />
               </div>
-              <h3 className="text-xl font-bold mb-3 text-foreground">{feature.title}</h3>
-              <p className="text-muted-foreground leading-relaxed">
+              
+              <h3 className="text-2xl font-bold mb-4 text-foreground group-hover:text-primary transition-colors">
+                {feature.title}
+              </h3>
+              <p className="text-muted-foreground leading-relaxed text-lg">
                 {feature.description}
               </p>
             </div>
