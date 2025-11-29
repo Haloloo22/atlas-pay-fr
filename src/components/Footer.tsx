@@ -1,67 +1,70 @@
 const Footer = () => {
   return (
-    <footer className="bg-secondary/50 py-16 px-6 border-t border-border">
+    <footer className="bg-gradient-to-b from-secondary/60 to-secondary/80 py-20 px-6 border-t-2 border-border">
       <div className="container mx-auto max-w-7xl">
-        <div className="grid md:grid-cols-4 gap-12 mb-12">
-          <div className="space-y-4">
+        <div className="grid md:grid-cols-4 gap-16 mb-16">
+          <div className="space-y-6">
             <div className="flex items-center space-x-3">
-              <div className="w-9 h-9 bg-primary rounded-lg flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-xl">F</span>
+              <div className="w-11 h-11 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center shadow-lg">
+                <span className="text-primary-foreground font-black text-xl">F</span>
               </div>
-              <span className="text-xl font-bold text-primary">FleetPay</span>
+              <span className="text-2xl font-black bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">FleetPay</span>
             </div>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              Solution SaaS de gestion intelligente des dépenses de flotte et cartes carburant pour les entreprises marocaines.
+            <p className="text-base text-muted-foreground leading-relaxed font-medium">
+              La solution SaaS n°1 pour gérer vos dépenses de flotte au Maroc.
             </p>
+            <div className="flex gap-4">
+              <a href="#" className="w-11 h-11 rounded-xl bg-primary/10 hover:bg-primary hover:text-primary-foreground flex items-center justify-center transition-all font-bold">
+                Li
+              </a>
+              <a href="#" className="w-11 h-11 rounded-xl bg-primary/10 hover:bg-primary hover:text-primary-foreground flex items-center justify-center transition-all font-bold">
+                Tw
+              </a>
+              <a href="#" className="w-11 h-11 rounded-xl bg-primary/10 hover:bg-primary hover:text-primary-foreground flex items-center justify-center transition-all font-bold">
+                Fb
+              </a>
+            </div>
           </div>
 
           <div>
-            <h4 className="font-bold mb-4 text-foreground">Produit</h4>
-            <ul className="space-y-3 text-sm text-muted-foreground">
-              <li><a href="#fonctionnalites" className="hover:text-primary transition-colors font-medium">Fonctionnalités</a></li>
-              <li><a href="#pour-qui" className="hover:text-primary transition-colors font-medium">Pour qui</a></li>
-              <li><a href="#tarifs" className="hover:text-primary transition-colors font-medium">Tarifs</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors font-medium">Intégrations</a></li>
+            <h4 className="font-extrabold mb-6 text-foreground text-lg">Produit</h4>
+            <ul className="space-y-4 text-base">
+              <li><a href="/#fonctionnalites" className="text-muted-foreground hover:text-primary transition-colors font-semibold">Fonctionnalités</a></li>
+              <li><a href="/#pour-qui" className="text-muted-foreground hover:text-primary transition-colors font-semibold">Pour qui</a></li>
+              <li><a href="/pricing" className="text-muted-foreground hover:text-primary transition-colors font-semibold">Tarifs</a></li>
+              <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors font-semibold">Intégrations</a></li>
             </ul>
           </div>
 
           <div>
-            <h4 className="font-bold mb-4 text-foreground">Entreprise</h4>
-            <ul className="space-y-3 text-sm text-muted-foreground">
-              <li><a href="#" className="hover:text-primary transition-colors font-medium">À propos</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors font-medium">Blog</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors font-medium">Carrières</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors font-medium">Contact</a></li>
+            <h4 className="font-extrabold mb-6 text-foreground text-lg">Entreprise</h4>
+            <ul className="space-y-4 text-base">
+              <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors font-semibold">À propos</a></li>
+              <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors font-semibold">Blog</a></li>
+              <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors font-semibold">Carrières</a></li>
+              <li><a href="/contact" className="text-muted-foreground hover:text-primary transition-colors font-semibold">Contact</a></li>
             </ul>
           </div>
 
           <div>
-            <h4 className="font-bold mb-4 text-foreground">Légal</h4>
-            <ul className="space-y-3 text-sm text-muted-foreground">
-              <li><a href="#" className="hover:text-primary transition-colors font-medium">Confidentialité</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors font-medium">Conditions</a></li>
-              <li><a href="#securite" className="hover:text-primary transition-colors font-medium">Sécurité</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors font-medium">Conformité</a></li>
+            <h4 className="font-extrabold mb-6 text-foreground text-lg">Légal</h4>
+            <ul className="space-y-4 text-base">
+              <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors font-semibold">Confidentialité</a></li>
+              <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors font-semibold">CGU/CGV</a></li>
+              <li><a href="/#securite" className="text-muted-foreground hover:text-primary transition-colors font-semibold">Sécurité</a></li>
+              <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors font-semibold">Conformité</a></li>
             </ul>
           </div>
         </div>
 
-        <div className="pt-8 border-t border-border">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-muted-foreground">
+        <div className="pt-10 border-t-2 border-border">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+            <p className="text-base text-muted-foreground font-semibold">
               © 2025 FleetPay. Tous droits réservés.
             </p>
-            <div className="flex items-center gap-6">
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors text-sm font-medium">
-                LinkedIn
-              </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors text-sm font-medium">
-                Twitter
-              </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors text-sm font-medium">
-                Facebook
-              </a>
-            </div>
+            <p className="text-sm text-muted-foreground">
+              Fait avec ❤️ à Casablanca, Maroc
+            </p>
           </div>
         </div>
       </div>
