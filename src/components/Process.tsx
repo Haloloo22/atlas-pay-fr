@@ -1,18 +1,18 @@
 const steps = [
   {
     number: "01",
-    title: "Créez votre compte",
-    description: "Inscription gratuite en moins de 5 minutes. Aucune carte bancaire requise."
+    title: "Inscription et configuration",
+    description: "Créez votre compte en 5 minutes. Définissez votre flotte et vos règles de dépenses."
   },
   {
     number: "02",
-    title: "Intégrez l'API",
-    description: "Utilisez notre API simple ou nos plugins prêts à l'emploi pour votre site."
+    title: "Commandez vos cartes",
+    description: "Recevez vos cartes physiques sous 48h. Activez-les depuis votre dashboard."
   },
   {
     number: "03",
-    title: "Commencez à accepter",
-    description: "Recevez vos premiers paiements et suivez vos transactions en temps réel."
+    title: "Suivez en temps réel",
+    description: "Chaque transaction apparaît instantanément. Optimisez et contrôlez vos dépenses."
   }
 ];
 
