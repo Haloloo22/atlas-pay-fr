@@ -81,16 +81,19 @@ const HeroWithCard = () => {
               </div>
               
               <h1 className="text-[3.5rem] md:text-[4.5rem] lg:text-[5.5rem] leading-[0.95] font-extrabold tracking-tighter">
-                <span className="text-foreground">Contrôlez</span>{" "}
-                <span className="text-foreground">vos dépenses</span>{" "}
+                <span className="bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text text-transparent">
+                  Simplifiez la gestion
+                </span>{" "}
+                <span className="block mt-2 text-foreground">de votre flotte</span>{" "}
+                <span className="block mt-2 text-foreground">et vos paiements</span>{" "}
                 <span className="block mt-3 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
-                  en temps réel
+                  carburant au Maroc
                 </span>
               </h1>
               
               <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed max-w-xl font-medium">
-                Cartes carburant intelligentes pour flottes d'entreprise. 
-                Zéro papier, contrôle total, économies garanties.
+                Nos clients <span className="font-bold text-foreground">économisent du temps et réduisent leurs coûts de flotte</span>. 
+                Cartes Visa Fleet prépayées, contrôle en temps réel, alertes automatiques.
               </p>
             </div>
 

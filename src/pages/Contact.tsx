@@ -26,6 +26,23 @@ const Contact = () => {
             <div className="bg-card rounded-3xl p-10 border-2 border-border shadow-xl">
               <h2 className="text-3xl font-bold mb-8">Envoyez-nous un message</h2>
               <form className="space-y-6">
+                <div className="space-y-3 mb-6">
+                  <label className="text-sm font-bold text-foreground">Type de demande</label>
+                  <div className="grid grid-cols-2 gap-4">
+                    <button 
+                      type="button"
+                      className="px-6 py-4 rounded-xl border-2 border-primary bg-primary/10 text-primary font-bold hover:bg-primary/20 transition-all"
+                    >
+                      💬 Message
+                    </button>
+                    <button 
+                      type="button"
+                      className="px-6 py-4 rounded-xl border-2 border-border hover:border-accent hover:bg-accent/10 font-bold transition-all"
+                    >
+                      📅 Réserver un appel
+                    </button>
+                  </div>
+                </div>
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="text-sm font-bold text-foreground">Prénom</label>
