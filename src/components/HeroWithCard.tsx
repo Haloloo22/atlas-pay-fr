@@ -81,14 +81,10 @@ const HeroWithCard = () => {
               </div>
               
               <h1 className="text-[3.5rem] md:text-[4.5rem] lg:text-[5.5rem] leading-[0.95] font-extrabold tracking-tighter">
-                <span className="bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text text-transparent">
-                  Simplifiez la gestion
+                <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
+                  Chaque dirham compte.
                 </span>{" "}
-                <span className="block mt-2 text-foreground">de votre flotte</span>{" "}
-                <span className="block mt-2 text-foreground">et vos paiements</span>{" "}
-                <span className="block mt-3 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
-                  carburant au Maroc
-                </span>
+                <span className="block mt-3 text-foreground">Chaque dépense sous contrôle.</span>
               </h1>
               
               <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed max-w-xl font-medium">
