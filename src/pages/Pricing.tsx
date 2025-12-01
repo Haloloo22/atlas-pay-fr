@@ -158,24 +158,32 @@ const Pricing = () => {
             <div className="space-y-6">
               {[
                 {
-                  q: "Puis-je changer de plan à tout moment ?",
-                  a: "Oui, vous pouvez upgrader ou downgrader votre plan à tout moment. Les changements sont appliqués immédiatement et la facturation est ajustée au prorata."
+                  q: "🔒 Sécurité / Conformité Bank Al-Maghrib (BAM)",
+                  a: "FleetPay est 100% conforme aux réglementations de Bank Al-Maghrib. Vos transactions sont sécurisées, cryptées et protégées par des standards bancaires internationaux. Audits de sécurité réguliers et certification PCI-DSS."
                 },
                 {
-                  q: "Y a-t-il des frais cachés ?",
-                  a: "Absolument aucun. Le prix que vous voyez est le prix que vous payez. Pas de frais de setup, pas de frais de résiliation."
+                  q: "🚚 Livraison des cartes physiques",
+                  a: "Les cartes physiques FleetPay sont livrées sous 48h partout au Maroc. Livraison sécurisée avec suivi. Les cartes virtuelles sont disponibles instantanément dans votre dashboard dès activation de votre compte."
                 },
                 {
-                  q: "Que se passe-t-il si je dépasse ma limite de cartes ?",
-                  a: "Nous vous contacterons pour upgrader votre plan. Vous ne serez jamais bloqué sans préavis."
+                  q: "⛽ Contrôle des limites carburant par chauffeur",
+                  a: "Définissez des limites journalières, hebdomadaires ou mensuelles pour chaque chauffeur. Contrôlez les catégories de dépenses autorisées : carburant uniquement, maintenance, péages. Alertes automatiques en cas de dépassement."
                 },
                 {
-                  q: "Offrez-vous une période d'essai ?",
-                  a: "Oui, nous offrons 14 jours d'essai gratuit sans engagement et sans carte bancaire requise."
+                  q: "💳 Types de transactions acceptées",
+                  a: "Carburant (diesel, essence, GPL), maintenance véhicule, lavage, péages autoroutiers, parking. Toutes les stations Total, Shell, Afriquia, Winxo et partenaires. Vous pouvez restreindre les catégories par carte."
+                },
+                {
+                  q: "📊 Puis-je changer de plan à tout moment ?",
+                  a: "Oui, vous pouvez upgrader ou downgrader votre plan à tout moment. Les changements sont appliqués immédiatement et la facturation est ajustée au prorata. Aucun frais de changement de plan."
+                },
+                {
+                  q: "🎁 Offrez-vous une période d'essai ?",
+                  a: "Oui, nous offrons 14 jours d'essai gratuit sans engagement et sans carte bancaire requise. Accès complet à toutes les fonctionnalités pour tester FleetPay avec votre flotte."
                 }
               ].map((faq, i) => (
-                <div key={i} className="bg-card rounded-2xl p-8 border-2 border-border hover:border-primary/30 transition-colors">
-                  <h3 className="text-xl font-bold mb-3">{faq.q}</h3>
+                <div key={i} className="bg-card rounded-2xl p-8 border-2 border-border hover:border-primary/30 transition-all duration-300 hover:shadow-lg group">
+                  <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">{faq.q}</h3>
                   <p className="text-muted-foreground leading-relaxed text-lg">{faq.a}</p>
                 </div>
               ))}

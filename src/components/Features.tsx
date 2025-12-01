@@ -1,41 +1,55 @@
-import { CreditCard, Bell, Shield, Satellite, Gauge, Activity } from "lucide-react";
+import { CreditCard, Bell, Shield, Satellite, Gauge, Activity, MapPin, FileText, Users, TrendingDown } from "lucide-react";
+
+const stationLogos = [
+  { name: "Total", color: "from-red-500 to-red-600" },
+  { name: "Shell", color: "from-yellow-400 to-yellow-500" },
+  { name: "Afriquia", color: "from-green-500 to-green-600" },
+  { name: "Winxo", color: "from-blue-500 to-blue-600" }
+];
 
 const features = [
   {
+    icon: Users,
+    title: "Gestion multi-véhicules et multi-chauffeurs",
+    description: "Créez votre flotte, ajoutez vos véhicules et attribuez des cartes physiques ou virtuelles à chaque chauffeur.",
+    gradient: "from-primary/10 via-primary/5 to-transparent",
+    miniDashboard: true
+  },
+  {
     icon: CreditCard,
-    title: "Carte carburant intelligente",
-    description: "Limites par conducteur et catégories de dépenses contrôlées. Carburant, maintenance, péages.",
-    gradient: "from-primary/10 via-primary/5 to-transparent"
+    title: "Cartes Visa Fleet prépayées",
+    description: "Cartes physiques et virtuelles. Limites par conducteur, catégories contrôlées : carburant, maintenance, péages.",
+    gradient: "from-accent/10 via-accent/5 to-transparent",
+    miniDashboard: false
   },
   {
     icon: Bell,
-    title: "Suivi en temps réel",
-    description: "Notifications push instantanées. Chaque transaction visible seconde par seconde.",
-    gradient: "from-accent/10 via-accent/5 to-transparent"
+    title: "Contrôle dépenses en temps réel",
+    description: "Chaque transaction apparaît instantanément. Notifications push pour chaque paiement, dépassement de limite détecté.",
+    gradient: "from-success/10 via-success/5 to-transparent",
+    miniDashboard: false
   },
   {
     icon: Shield,
-    title: "Anti-fraude automatique",
-    description: "IA qui détecte les anomalies. Comparaison litres vs kilomètres en temps réel.",
-    gradient: "from-success/10 via-success/5 to-transparent"
+    title: "Alertes automatiques",
+    description: "IA qui détecte les anomalies : transactions suspectes, limites dépassées, consommation inhabituelle comparée à la moyenne.",
+    gradient: "from-warning/10 via-warning/5 to-transparent",
+    miniDashboard: false
   },
   {
-    icon: Satellite,
-    title: "Intégration GPS",
-    description: "Connectez vos boîtiers télématiques. Réconciliation automatique des dépenses.",
-    gradient: "from-warning/10 via-warning/5 to-transparent"
+    icon: FileText,
+    title: "Rapports & analytics exportables",
+    description: "Dashboard personnalisable. Exports PDF et Excel pour votre comptabilité. Graphiques détaillés par véhicule, chauffeur, station.",
+    gradient: "from-primary/10 via-accent/5 to-transparent",
+    miniDashboard: true
   },
   {
-    icon: Gauge,
-    title: "Optimisation carburant",
-    description: "Analyses avancées par véhicule. Recommandations d'économies personnalisées.",
-    gradient: "from-primary/10 via-accent/5 to-transparent"
-  },
-  {
-    icon: Activity,
-    title: "Rapports intelligents",
-    description: "Dashboard personnalisable. Exports comptables en un clic. Prévisions IA.",
-    gradient: "from-accent/10 via-primary/5 to-transparent"
+    icon: MapPin,
+    title: "Accepté dans toutes les stations",
+    description: "Total, Shell, Afriquia, Winxo et plus. Votre carte FleetPay fonctionne partout au Maroc.",
+    gradient: "from-accent/10 via-primary/5 to-transparent",
+    miniDashboard: false,
+    showStations: true
   }
 ];
 
@@ -61,20 +75,43 @@ const Features = () => {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="group relative bg-card rounded-3xl p-10 border-2 border-border hover:border-primary/30 transition-all duration-500 hover:shadow-[0_20px_60px_-20px_rgba(21,94,160,0.2)]"
+              className="group relative bg-card rounded-3xl p-10 border-2 border-border hover:border-primary/30 transition-all duration-500 hover:shadow-[0_20px_60px_-20px_rgba(21,94,160,0.2)] hover:-translate-y-2"
             >
               <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10`}></div>
               
               <div className="w-16 h-16 bg-gradient-to-br from-primary/10 to-accent/10 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
-                <feature.icon className="w-8 h-8 text-primary group-hover:text-accent transition-colors" />
+                <feature.icon className="w-8 h-8 text-primary group-hover:text-accent transition-colors duration-300" />
               </div>
               
               <h3 className="text-2xl font-bold mb-4 text-foreground group-hover:text-primary transition-colors">
                 {feature.title}
               </h3>
-              <p className="text-muted-foreground leading-relaxed text-lg">
+              <p className="text-muted-foreground leading-relaxed text-lg mb-6">
                 {feature.description}
               </p>
+
+              {/* Mini Dashboard Illustration */}
+              {feature.miniDashboard && (
+                <div className="mt-6 bg-secondary/50 rounded-xl p-4 border border-border">
+                  <div className="flex gap-2 mb-3">
+                    {[40, 65, 50, 75, 60].map((h, i) => (
+                      <div key={i} className="flex-1 bg-primary/20 rounded-t" style={{height: `${h}px`}}></div>
+                    ))}
+                  </div>
+                  <div className="text-xs text-muted-foreground text-center">Analyse en temps réel</div>
+                </div>
+              )}
+
+              {/* Station Logos */}
+              {feature.showStations && (
+                <div className="mt-6 grid grid-cols-4 gap-3">
+                  {stationLogos.map((station, i) => (
+                    <div key={i} className={`h-12 bg-gradient-to-br ${station.color} rounded-lg flex items-center justify-center text-white text-[10px] font-bold shadow-lg transform hover:scale-110 transition-transform`}>
+                      {station.name}
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           ))}
         </div>

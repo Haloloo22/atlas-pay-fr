@@ -23,6 +23,9 @@ const Header = () => {
             <Link to="/pricing" className="text-base font-semibold text-muted-foreground hover:text-primary transition-colors">
               Tarifs
             </Link>
+            <Link to="/dashboard" className="text-base font-semibold text-muted-foreground hover:text-primary transition-colors">
+              Dashboard
+            </Link>
             <Link to="/contact" className="text-base font-semibold text-muted-foreground hover:text-primary transition-colors">
               Contact
             </Link>
