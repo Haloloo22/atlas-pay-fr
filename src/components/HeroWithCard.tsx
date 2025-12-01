@@ -14,7 +14,7 @@ const HeroWithCard = () => {
           <div className="space-y-8 animate-in fade-in slide-in-from-bottom-6 duration-1000">
             <div className="space-y-5">
               <h1 className="text-4xl md:text-5xl lg:text-6xl leading-tight font-extrabold tracking-tight">
-                <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
+                <span className="text-primary">
                   Chaque dirham compte.
                 </span>{" "}
                 <span className="block mt-2 text-foreground">Chaque dépense sous contrôle.</span>
@@ -135,27 +135,36 @@ const HeroWithCard = () => {
           </div>
         </div>
 
-        {/* Trusted by section */}
+        {/* Key Metrics Section */}
+        <div className="mt-24 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+          <div className="text-center space-y-2 animate-fade-in">
+            <div className="text-5xl md:text-6xl font-extrabold text-primary">500+</div>
+            <p className="text-lg font-semibold text-foreground">Flottes actives</p>
+            <p className="text-sm text-muted-foreground">PME et ETI au Maroc</p>
+          </div>
+          <div className="text-center space-y-2 animate-fade-in delay-100">
+            <div className="text-5xl md:text-6xl font-extrabold text-accent">2M+</div>
+            <p className="text-lg font-semibold text-foreground">MAD économisés</p>
+            <p className="text-sm text-muted-foreground">Par nos clients en 2024</p>
+          </div>
+          <div className="text-center space-y-2 animate-fade-in delay-200">
+            <div className="text-5xl md:text-6xl font-extrabold text-success">98%</div>
+            <p className="text-lg font-semibold text-foreground">Satisfaction</p>
+            <p className="text-sm text-muted-foreground">Taux de satisfaction client</p>
+          </div>
+        </div>
+
+        {/* Trusted by section - Simplified */}
         <div className="mt-20 text-center space-y-6">
           <p className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
             Ils nous font confiance
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-8 lg:gap-12">
-            <div className="h-12 px-8 flex items-center justify-center bg-muted/30 rounded-lg border border-border/50">
-              <span className="text-lg font-bold text-muted-foreground">Jumia</span>
-            </div>
-            <div className="h-12 px-8 flex items-center justify-center bg-muted/30 rounded-lg border border-border/50">
-              <span className="text-lg font-bold text-muted-foreground">Glovo</span>
-            </div>
-            <div className="h-12 px-8 flex items-center justify-center bg-muted/30 rounded-lg border border-border/50">
-              <span className="text-lg font-bold text-muted-foreground">Carrefour</span>
-            </div>
-            <div className="h-12 px-8 flex items-center justify-center bg-muted/30 rounded-lg border border-border/50">
-              <span className="text-lg font-bold text-muted-foreground">Marjane</span>
-            </div>
-            <div className="h-12 px-8 flex items-center justify-center bg-muted/30 rounded-lg border border-border/50">
-              <span className="text-lg font-bold text-muted-foreground">ONCF</span>
-            </div>
+          <div className="flex flex-wrap items-center justify-center gap-8 lg:gap-12 opacity-60">
+            <span className="text-xl font-bold text-muted-foreground">Jumia</span>
+            <span className="text-xl font-bold text-muted-foreground">Glovo</span>
+            <span className="text-xl font-bold text-muted-foreground">Carrefour</span>
+            <span className="text-xl font-bold text-muted-foreground">Marjane</span>
+            <span className="text-xl font-bold text-muted-foreground">ONCF</span>
           </div>
         </div>
       </div>
