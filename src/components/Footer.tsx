@@ -8,7 +8,7 @@ const Footer = () => {
               <div className="w-11 h-11 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center shadow-lg">
                 <span className="text-primary-foreground font-black text-xl">F</span>
               </div>
-              <span className="text-2xl font-black bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">FleetPay</span>
+              <span className="text-2xl font-black text-primary">FleetPay</span>
             </div>
             <p className="text-base text-muted-foreground leading-relaxed font-medium">
               La solution SaaS n°1 pour gérer vos dépenses de flotte au Maroc.

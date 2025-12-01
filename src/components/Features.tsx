@@ -63,7 +63,7 @@ const Features = () => {
               Tout en un
             </span>
           </div>
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-foreground tracking-tight leading-tight">
+          <h2 className="text-4xl md:text-5xl font-extrabold text-foreground tracking-tight leading-tight">
             Votre flotte sous contrôle
           </h2>
           <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
@@ -92,13 +92,35 @@ const Features = () => {
 
               {/* Mini Dashboard Illustration */}
               {feature.miniDashboard && (
-                <div className="mt-6 bg-secondary/50 rounded-xl p-4 border border-border">
-                  <div className="flex gap-2 mb-3">
-                    {[40, 65, 50, 75, 60].map((h, i) => (
-                      <div key={i} className="flex-1 bg-primary/20 rounded-t" style={{height: `${h}px`}}></div>
-                    ))}
+                <div className="mt-6 bg-secondary/50 rounded-xl p-4 border border-border overflow-hidden">
+                  <div className="space-y-2 mb-3">
+                    <div className="flex items-center justify-between text-xs">
+                      <span className="text-muted-foreground">Dashboard</span>
+                      <span className="text-primary font-semibold">Live</span>
+                    </div>
+                    <div className="flex items-end gap-1.5 h-16">
+                      {[
+                        { height: 40, color: 'bg-primary/30' },
+                        { height: 65, color: 'bg-primary/50' },
+                        { height: 50, color: 'bg-accent/40' },
+                        { height: 75, color: 'bg-primary/60' },
+                        { height: 55, color: 'bg-accent/50' }
+                      ].map((bar, i) => (
+                        <div 
+                          key={i} 
+                          className={`flex-1 ${bar.color} rounded-t transition-all hover:opacity-80`} 
+                          style={{height: `${bar.height}px`}}
+                        ></div>
+                      ))}
+                    </div>
                   </div>
-                  <div className="text-xs text-muted-foreground text-center">Analyse en temps réel</div>
+                  <div className="flex items-center justify-between text-[10px] text-muted-foreground">
+                    <span>Jan</span>
+                    <span>Fév</span>
+                    <span>Mar</span>
+                    <span>Avr</span>
+                    <span>Mai</span>
+                  </div>
                 </div>
               )}
 

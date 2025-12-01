@@ -36,11 +36,11 @@ const Process = () => {
     <section id="processus" className="py-20 px-6">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center space-y-4 mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground">
             Comment ça marche
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Démarrez en trois étapes simples
+            Démarrez en quatre étapes simples
           </p>
         </div>
 
@@ -64,11 +64,17 @@ const Process = () => {
 
                 {/* Mini Screenshot Illustration */}
                 {step.screenshot && (
-                  <div className="bg-secondary/50 rounded-lg p-3 border border-border">
-                    <div className="bg-background rounded-md p-2 space-y-1.5">
-                      <div className="h-1.5 bg-primary/30 rounded w-3/4"></div>
-                      <div className="h-1.5 bg-accent/30 rounded w-1/2"></div>
-                      <div className="h-1.5 bg-muted rounded w-2/3"></div>
+                  <div className="bg-secondary/50 rounded-lg p-3 border border-border overflow-hidden">
+                    <div className="bg-background rounded-md p-3 space-y-2">
+                      <div className="flex items-center gap-1 mb-2">
+                        <div className="w-1.5 h-1.5 rounded-full bg-destructive/60"></div>
+                        <div className="w-1.5 h-1.5 rounded-full bg-warning/60"></div>
+                        <div className="w-1.5 h-1.5 rounded-full bg-success/60"></div>
+                      </div>
+                      <div className="h-2 bg-primary/20 rounded w-3/4"></div>
+                      <div className="h-2 bg-accent/20 rounded w-1/2"></div>
+                      <div className="h-1.5 bg-muted/50 rounded w-full"></div>
+                      <div className="h-1.5 bg-muted/50 rounded w-5/6"></div>
                     </div>
                   </div>
                 )}
