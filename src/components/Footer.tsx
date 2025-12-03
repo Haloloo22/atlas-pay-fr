@@ -1,15 +1,17 @@
+import { Link } from "react-router-dom";
+
 const Footer = () => {
   return (
     <footer className="bg-gradient-to-b from-secondary/60 to-secondary/80 py-20 px-6 border-t-2 border-border">
       <div className="container mx-auto max-w-7xl">
         <div className="grid md:grid-cols-4 gap-16 mb-16">
           <div className="space-y-6">
-            <div className="flex items-center space-x-3">
+            <Link to="/" className="flex items-center space-x-3">
               <div className="w-11 h-11 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center shadow-lg">
                 <span className="text-primary-foreground font-black text-xl">F</span>
               </div>
               <span className="text-2xl font-black text-primary">FleetPay</span>
-            </div>
+            </Link>
             <p className="text-base text-muted-foreground leading-relaxed font-medium">
               La solution SaaS n°1 pour gérer vos dépenses de flotte au Maroc.
             </p>
@@ -31,28 +33,28 @@ const Footer = () => {
             <ul className="space-y-4 text-base">
               <li><a href="/#fonctionnalites" className="text-muted-foreground hover:text-primary transition-colors font-semibold">Fonctionnalités</a></li>
               <li><a href="/#pour-qui" className="text-muted-foreground hover:text-primary transition-colors font-semibold">Pour qui</a></li>
-              <li><a href="/pricing" className="text-muted-foreground hover:text-primary transition-colors font-semibold">Tarifs</a></li>
-              <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors font-semibold">Intégrations</a></li>
+              <li><Link to="/pricing" className="text-muted-foreground hover:text-primary transition-colors font-semibold">Tarifs</Link></li>
+              <li><Link to="/dashboard" className="text-muted-foreground hover:text-primary transition-colors font-semibold">Dashboard démo</Link></li>
             </ul>
           </div>
 
           <div>
             <h4 className="font-extrabold mb-6 text-foreground text-lg">Entreprise</h4>
             <ul className="space-y-4 text-base">
-              <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors font-semibold">À propos</a></li>
-              <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors font-semibold">Blog</a></li>
-              <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors font-semibold">Carrières</a></li>
-              <li><a href="/contact" className="text-muted-foreground hover:text-primary transition-colors font-semibold">Contact</a></li>
+              <li><Link to="/about" className="text-muted-foreground hover:text-primary transition-colors font-semibold">À propos</Link></li>
+              <li><Link to="/contact" className="text-muted-foreground hover:text-primary transition-colors font-semibold">Contact</Link></li>
+              <li><Link to="/contact?type=demo" className="text-muted-foreground hover:text-primary transition-colors font-semibold">Demander une démo</Link></li>
+              <li><Link to="/login" className="text-muted-foreground hover:text-primary transition-colors font-semibold">Espace client</Link></li>
             </ul>
           </div>
 
           <div>
             <h4 className="font-extrabold mb-6 text-foreground text-lg">Légal</h4>
             <ul className="space-y-4 text-base">
-              <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors font-semibold">Confidentialité</a></li>
-              <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors font-semibold">CGU/CGV</a></li>
+              <li><Link to="/privacy" className="text-muted-foreground hover:text-primary transition-colors font-semibold">Confidentialité</Link></li>
+              <li><Link to="/terms" className="text-muted-foreground hover:text-primary transition-colors font-semibold">CGU/CGV</Link></li>
+              <li><Link to="/legal" className="text-muted-foreground hover:text-primary transition-colors font-semibold">Mentions légales</Link></li>
               <li><a href="/#securite" className="text-muted-foreground hover:text-primary transition-colors font-semibold">Sécurité</a></li>
-              <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors font-semibold">Conformité</a></li>
             </ul>
           </div>
         </div>
