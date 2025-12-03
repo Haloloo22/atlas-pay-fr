@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Play, Lock, Zap, Shield } from "lucide-react";
+import { Link } from "react-router-dom";
 import fleetDriverImage from "@/assets/fleet-driver.jpg";
 
 const HeroWithCard = () => {
@@ -27,17 +28,20 @@ const HeroWithCard = () => {
             </div>
 
             <div className="flex flex-col sm:flex-row items-start gap-4">
-              <Button 
-                size="lg" 
-                className="bg-primary hover:bg-primary/90 text-primary-foreground text-base px-8 py-6 font-semibold rounded-lg shadow-[0_4px_20px_rgba(21,94,160,0.25)] hover:shadow-[0_6px_30px_rgba(21,94,160,0.35)] transition-all"
-              >
-                Demander une démo
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
+              <Link to="/contact?type=demo">
+                <Button 
+                  size="lg" 
+                  className="bg-primary hover:bg-primary/90 text-primary-foreground text-base px-8 py-6 font-semibold rounded-lg shadow-[0_4px_20px_rgba(21,94,160,0.25)] hover:shadow-[0_6px_30px_rgba(21,94,160,0.35)] transition-all"
+                >
+                  Demander une démo
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
               <Button 
                 size="lg" 
                 variant="outline" 
                 className="text-base px-8 py-6 font-medium rounded-lg border-2 hover:bg-secondary/80"
+                onClick={() => window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', '_blank')}
               >
                 <Play className="mr-2 h-5 w-5" />
                 Voir la vidéo
