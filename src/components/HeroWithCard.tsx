@@ -19,7 +19,7 @@ const HeroWithCard = () => {
               </h1>
               
               <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-xl">
-                Nos clients <span className="font-semibold text-foreground">économisent du temps et réduisent leurs coûts de flotte</span>. 
+                <span className="font-semibold text-foreground">Économisez du temps et réduisez vos coûts de flotte</span>. 
                 Cartes Visa Fleet prépayées, contrôle en temps réel, alertes automatiques.
               </p>
             </div>
@@ -136,36 +136,35 @@ const HeroWithCard = () => {
           </div>
         </div>
 
-        {/* Key Metrics Section */}
+        {/* Value Propositions */}
         <div className="mt-24 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
           <div className="text-center space-y-2 animate-fade-in">
-            <div className="text-5xl md:text-6xl font-extrabold text-primary">500+</div>
-            <p className="text-lg font-semibold text-foreground">Flottes actives</p>
-            <p className="text-sm text-muted-foreground">PME et ETI au Maroc</p>
+            <div className="text-5xl md:text-6xl font-extrabold text-primary">-15%</div>
+            <p className="text-lg font-semibold text-foreground">Sur vos coûts carburant</p>
+            <p className="text-sm text-muted-foreground">Économies potentielles</p>
           </div>
           <div className="text-center space-y-2 animate-fade-in delay-100">
-            <div className="text-5xl md:text-6xl font-extrabold text-accent">2M+</div>
-            <p className="text-lg font-semibold text-foreground">MAD économisés</p>
-            <p className="text-sm text-muted-foreground">Par nos clients en 2024</p>
+            <div className="text-5xl md:text-6xl font-extrabold text-accent">48h</div>
+            <p className="text-lg font-semibold text-foreground">Déploiement express</p>
+            <p className="text-sm text-muted-foreground">Mise en service rapide</p>
           </div>
           <div className="text-center space-y-2 animate-fade-in delay-200">
-            <div className="text-5xl md:text-6xl font-extrabold text-success">98%</div>
-            <p className="text-lg font-semibold text-foreground">Satisfaction</p>
-            <p className="text-sm text-muted-foreground">Taux de satisfaction client</p>
+            <div className="text-5xl md:text-6xl font-extrabold text-success">100%</div>
+            <p className="text-lg font-semibold text-foreground">Traçabilité garantie</p>
+            <p className="text-sm text-muted-foreground">Chaque transaction suivie</p>
           </div>
         </div>
 
-        {/* Trusted by section - Simplified */}
+        {/* Accepted stations */}
         <div className="mt-20 text-center space-y-6">
           <p className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
-            Ils nous font confiance
+            Acceptée partout au Maroc
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-8 lg:gap-12 opacity-60">
-            <span className="text-xl font-bold text-muted-foreground">Jumia</span>
-            <span className="text-xl font-bold text-muted-foreground">Glovo</span>
-            <span className="text-xl font-bold text-muted-foreground">Carrefour</span>
-            <span className="text-xl font-bold text-muted-foreground">Marjane</span>
-            <span className="text-xl font-bold text-muted-foreground">ONCF</span>
+          <div className="flex flex-wrap items-center justify-center gap-8 lg:gap-12 opacity-70">
+            <span className="text-xl font-bold text-muted-foreground">Total</span>
+            <span className="text-xl font-bold text-muted-foreground">Shell</span>
+            <span className="text-xl font-bold text-muted-foreground">Afriquia</span>
+            <span className="text-xl font-bold text-muted-foreground">Winxo</span>
           </div>
         </div>
       </div>
