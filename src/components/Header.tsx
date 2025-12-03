@@ -55,7 +55,7 @@ const Header = () => {
 
           {/* Desktop CTA Buttons */}
           <div className="hidden lg:flex items-center space-x-4">
-            <Link to="/login">
+            <Link to="/auth">
               <Button variant="ghost" className="text-base font-bold hover:text-primary">
                 Connexion
               </Button>
@@ -105,7 +105,7 @@ const Header = () => {
 
                   {/* Mobile CTA Buttons */}
                   <div className="flex flex-col gap-3 pt-4 border-t border-border">
-                    <Link to="/login" onClick={() => setIsOpen(false)}>
+                    <Link to="/auth" onClick={() => setIsOpen(false)}>
                       <Button variant="outline" className="w-full text-base font-bold py-6">
                         Connexion
                       </Button>
