@@ -23,8 +23,8 @@ const Header = () => {
             <Link to="/pricing" className="text-base font-semibold text-muted-foreground hover:text-primary transition-colors">
               Tarifs
             </Link>
-            <Link to="/dashboard" className="text-base font-semibold text-muted-foreground hover:text-primary transition-colors">
-              Dashboard
+            <Link to="/about" className="text-base font-semibold text-muted-foreground hover:text-primary transition-colors">
+              À propos
             </Link>
             <Link to="/contact" className="text-base font-semibold text-muted-foreground hover:text-primary transition-colors">
               Contact
@@ -32,12 +32,16 @@ const Header = () => {
           </div>
 
           <div className="flex items-center space-x-4">
-            <Button variant="ghost" className="text-base font-bold hover:text-primary">
-              Connexion
-            </Button>
-            <Button className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold text-base px-6 py-6 rounded-xl shadow-lg hover:shadow-xl transition-all">
-              Demander une démo
-            </Button>
+            <Link to="/login">
+              <Button variant="ghost" className="text-base font-bold hover:text-primary">
+                Connexion
+              </Button>
+            </Link>
+            <Link to="/contact?type=demo">
+              <Button className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold text-base px-6 py-6 rounded-xl shadow-lg hover:shadow-xl transition-all">
+                Demander une démo
+              </Button>
+            </Link>
           </div>
         </div>
       </nav>

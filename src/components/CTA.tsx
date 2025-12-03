@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Phone } from "lucide-react";
 
@@ -18,14 +19,18 @@ const CTA = () => {
               Rejoignez les entreprises marocaines qui réduisent leurs coûts et gagnent en visibilité avec FleetPay.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button size="lg" className="bg-background text-primary hover:bg-background/90 text-base px-8 font-semibold shadow-xl">
-                Réserver une démo
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-              <Button size="lg" variant="outline" className="text-base px-8 font-medium border-2 border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10">
-                <Phone className="mr-2 h-5 w-5" />
-                Nous appeler
-              </Button>
+              <Link to="/contact?type=demo">
+                <Button size="lg" className="bg-background text-primary hover:bg-background/90 text-base px-8 font-semibold shadow-xl">
+                  Réserver une démo
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
+              <Link to="/contact">
+                <Button size="lg" variant="outline" className="text-base px-8 font-medium border-2 border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10">
+                  <Phone className="mr-2 h-5 w-5" />
+                  Nous contacter
+                </Button>
+              </Link>
             </div>
             <p className="text-sm text-primary-foreground/70 mt-6">
               Déploiement en 48h • Sans engagement • Support inclus
