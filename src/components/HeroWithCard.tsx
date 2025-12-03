@@ -5,7 +5,7 @@ import fleetDriverImage from "@/assets/fleet-driver.jpg";
 
 const HeroWithCard = () => {
   return (
-    <section className="relative pt-20 pb-24 px-6 overflow-hidden">
+    <section className="relative pt-32 md:pt-40 pb-24 px-6 overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-accent/5 to-background -z-10"></div>
       
@@ -14,11 +14,8 @@ const HeroWithCard = () => {
           {/* Left: Hero text */}
           <div className="space-y-8 animate-in fade-in slide-in-from-bottom-6 duration-1000">
             <div className="space-y-5">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl leading-tight font-extrabold tracking-tight">
-                <span className="text-primary">
-                  Chaque dirham compte.
-                </span>{" "}
-                <span className="block mt-2 text-foreground">Chaque dépense sous contrôle.</span>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl leading-tight font-extrabold tracking-tight text-foreground">
+                Chaque dépense sous contrôle.
               </h1>
               
               <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-xl">
