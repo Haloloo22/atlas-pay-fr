@@ -6,7 +6,6 @@ import ForWho from "@/components/ForWho";
 import Benefits from "@/components/Benefits";
 import Process from "@/components/Process";
 import Security from "@/components/Security";
-import Testimonials from "@/components/Testimonials";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 
@@ -22,7 +21,6 @@ const Index = () => {
         <Benefits />
         <Process />
         <Security />
-        <Testimonials />
         <CTA />
       </main>
       <Footer />
