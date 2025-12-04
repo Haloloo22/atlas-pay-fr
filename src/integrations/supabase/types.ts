@@ -433,6 +433,18 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      create_company_with_owner: {
+        Args: {
+          _address?: string
+          _city?: string
+          _email?: string
+          _name: string
+          _phone?: string
+          _postal_code?: string
+          _siret?: string
+        }
+        Returns: string
+      }
       get_user_company_ids: { Args: { _user_id: string }; Returns: string[] }
       has_role: {
         Args: {
