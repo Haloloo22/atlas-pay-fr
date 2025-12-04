@@ -14,6 +14,230 @@ export type Database = {
   }
   public: {
     Tables: {
+      alerts: {
+        Row: {
+          alert_type: string
+          card_id: string | null
+          company_id: string
+          created_at: string
+          id: string
+          is_read: boolean | null
+          message: string
+        }
+        Insert: {
+          alert_type: string
+          card_id?: string | null
+          company_id: string
+          created_at?: string
+          id?: string
+          is_read?: boolean | null
+          message: string
+        }
+        Update: {
+          alert_type?: string
+          card_id?: string | null
+          company_id?: string
+          created_at?: string
+          id?: string
+          is_read?: boolean | null
+          message?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "alerts_card_id_fkey"
+            columns: ["card_id"]
+            isOneToOne: false
+            referencedRelation: "cards"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "alerts_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      cards: {
+        Row: {
+          card_number: string
+          company_id: string
+          created_at: string
+          daily_limit: number | null
+          driver_id: string | null
+          id: string
+          is_active: boolean | null
+          monthly_limit: number | null
+          updated_at: string
+          vehicle_id: string | null
+        }
+        Insert: {
+          card_number: string
+          company_id: string
+          created_at?: string
+          daily_limit?: number | null
+          driver_id?: string | null
+          id?: string
+          is_active?: boolean | null
+          monthly_limit?: number | null
+          updated_at?: string
+          vehicle_id?: string | null
+        }
+        Update: {
+          card_number?: string
+          company_id?: string
+          created_at?: string
+          daily_limit?: number | null
+          driver_id?: string | null
+          id?: string
+          is_active?: boolean | null
+          monthly_limit?: number | null
+          updated_at?: string
+          vehicle_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "cards_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "cards_driver_id_fkey"
+            columns: ["driver_id"]
+            isOneToOne: false
+            referencedRelation: "drivers"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "cards_vehicle_id_fkey"
+            columns: ["vehicle_id"]
+            isOneToOne: false
+            referencedRelation: "vehicles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      companies: {
+        Row: {
+          address: string | null
+          city: string | null
+          created_at: string
+          email: string | null
+          id: string
+          name: string
+          phone: string | null
+          postal_code: string | null
+          siret: string | null
+          updated_at: string
+        }
+        Insert: {
+          address?: string | null
+          city?: string | null
+          created_at?: string
+          email?: string | null
+          id?: string
+          name: string
+          phone?: string | null
+          postal_code?: string | null
+          siret?: string | null
+          updated_at?: string
+        }
+        Update: {
+          address?: string | null
+          city?: string | null
+          created_at?: string
+          email?: string | null
+          id?: string
+          name?: string
+          phone?: string | null
+          postal_code?: string | null
+          siret?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      company_members: {
+        Row: {
+          company_id: string
+          created_at: string
+          id: string
+          role: string | null
+          user_id: string
+        }
+        Insert: {
+          company_id: string
+          created_at?: string
+          id?: string
+          role?: string | null
+          user_id: string
+        }
+        Update: {
+          company_id?: string
+          created_at?: string
+          id?: string
+          role?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "company_members_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      drivers: {
+        Row: {
+          company_id: string
+          created_at: string
+          email: string | null
+          first_name: string
+          id: string
+          is_active: boolean | null
+          last_name: string
+          license_number: string | null
+          phone: string | null
+          updated_at: string
+        }
+        Insert: {
+          company_id: string
+          created_at?: string
+          email?: string | null
+          first_name: string
+          id?: string
+          is_active?: boolean | null
+          last_name: string
+          license_number?: string | null
+          phone?: string | null
+          updated_at?: string
+        }
+        Update: {
+          company_id?: string
+          created_at?: string
+          email?: string | null
+          first_name?: string
+          id?: string
+          is_active?: boolean | null
+          last_name?: string
+          license_number?: string | null
+          phone?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "drivers_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       leads: {
         Row: {
           company: string | null
@@ -86,6 +310,56 @@ export type Database = {
         }
         Relationships: []
       }
+      transactions: {
+        Row: {
+          amount: number
+          card_id: string
+          created_at: string
+          fuel_type: string | null
+          id: string
+          liters: number | null
+          location: string | null
+          odometer: number | null
+          station_brand: string | null
+          station_name: string | null
+          transaction_date: string
+        }
+        Insert: {
+          amount: number
+          card_id: string
+          created_at?: string
+          fuel_type?: string | null
+          id?: string
+          liters?: number | null
+          location?: string | null
+          odometer?: number | null
+          station_brand?: string | null
+          station_name?: string | null
+          transaction_date?: string
+        }
+        Update: {
+          amount?: number
+          card_id?: string
+          created_at?: string
+          fuel_type?: string | null
+          id?: string
+          liters?: number | null
+          location?: string | null
+          odometer?: number | null
+          station_brand?: string | null
+          station_name?: string | null
+          transaction_date?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "transactions_card_id_fkey"
+            columns: ["card_id"]
+            isOneToOne: false
+            referencedRelation: "cards"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       user_roles: {
         Row: {
           created_at: string
@@ -107,11 +381,59 @@ export type Database = {
         }
         Relationships: []
       }
+      vehicles: {
+        Row: {
+          brand: string | null
+          company_id: string
+          created_at: string
+          fuel_type: string | null
+          id: string
+          is_active: boolean | null
+          model: string | null
+          plate_number: string
+          updated_at: string
+          vehicle_type: Database["public"]["Enums"]["vehicle_type"] | null
+        }
+        Insert: {
+          brand?: string | null
+          company_id: string
+          created_at?: string
+          fuel_type?: string | null
+          id?: string
+          is_active?: boolean | null
+          model?: string | null
+          plate_number: string
+          updated_at?: string
+          vehicle_type?: Database["public"]["Enums"]["vehicle_type"] | null
+        }
+        Update: {
+          brand?: string | null
+          company_id?: string
+          created_at?: string
+          fuel_type?: string | null
+          id?: string
+          is_active?: boolean | null
+          model?: string | null
+          plate_number?: string
+          updated_at?: string
+          vehicle_type?: Database["public"]["Enums"]["vehicle_type"] | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "vehicles_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
+      get_user_company_ids: { Args: { _user_id: string }; Returns: string[] }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
@@ -122,6 +444,7 @@ export type Database = {
     }
     Enums: {
       app_role: "admin" | "fleet_manager" | "accountant" | "viewer"
+      vehicle_type: "car" | "van" | "truck" | "motorcycle"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -250,6 +573,7 @@ export const Constants = {
   public: {
     Enums: {
       app_role: ["admin", "fleet_manager", "accountant", "viewer"],
+      vehicle_type: ["car", "van", "truck", "motorcycle"],
     },
   },
 } as const
