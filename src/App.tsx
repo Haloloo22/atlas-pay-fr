@@ -19,7 +19,11 @@ import Privacy from "./pages/Privacy";
 import NotFound from "./pages/NotFound";
 
 // Protected app pages
+import { AppLayout } from "./components/app/AppLayout";
 import AppDashboard from "./pages/app/AppDashboard";
+import VehiclesPage from "./pages/app/VehiclesPage";
+import DriversPage from "./pages/app/DriversPage";
+import CardsPage from "./pages/app/CardsPage";
 
 const queryClient = new QueryClient();
 
@@ -43,16 +47,21 @@ const App = () => (
             <Route path="/terms" element={<Terms />} />
             <Route path="/privacy" element={<Privacy />} />
 
-            {/* Protected app routes */}
-            <Route path="/app" element={<Navigate to="/app/dashboard" replace />} />
+            {/* Protected app routes with layout */}
             <Route
-              path="/app/dashboard"
+              path="/app"
               element={
                 <ProtectedRoute>
-                  <AppDashboard />
+                  <AppLayout />
                 </ProtectedRoute>
               }
-            />
+            >
+              <Route index element={<Navigate to="/app/dashboard" replace />} />
+              <Route path="dashboard" element={<AppDashboard />} />
+              <Route path="vehicles" element={<VehiclesPage />} />
+              <Route path="drivers" element={<DriversPage />} />
+              <Route path="cards" element={<CardsPage />} />
+            </Route>
 
             {/* Catch-all */}
             <Route path="*" element={<NotFound />} />
