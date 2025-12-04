@@ -41,27 +41,21 @@ export const useCompany = () => {
     mutationFn: async (companyData: { name: string; siret?: string; address?: string; city?: string; postal_code?: string; phone?: string; email?: string }) => {
       if (!user) throw new Error("Non authentifié");
 
-      // Create the company
-      const { data: newCompany, error: companyError } = await supabase
-        .from("companies")
-        .insert(companyData)
-        .select()
-        .single();
-
-      if (companyError) throw companyError;
-
-      // Add user as owner/admin of the company
-      const { error: memberError } = await supabase
-        .from("company_members")
-        .insert({
-          user_id: user.id,
-          company_id: newCompany.id,
-          role: "owner",
+      // Use the atomic function to create company and add user as owner
+      const { data: companyId, error } = await supabase
+        .rpc("create_company_with_owner", {
+          _name: companyData.name,
+          _siret: companyData.siret || null,
+          _address: companyData.address || null,
+          _city: companyData.city || null,
+          _postal_code: companyData.postal_code || null,
+          _phone: companyData.phone || null,
+          _email: companyData.email || null,
         });
 
-      if (memberError) throw memberError;
+      if (error) throw error;
 
-      return newCompany;
+      return { id: companyId, ...companyData };
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["company"] });
