@@ -11,6 +11,8 @@ import { CardLimitsTab } from "@/components/cards/CardLimitsTab";
 import { CardRestrictionsTab } from "@/components/cards/CardRestrictionsTab";
 import { CardScheduleTab } from "@/components/cards/CardScheduleTab";
 import { CardGeofencingTab } from "@/components/cards/CardGeofencingTab";
+import { CardVehicleRulesTab } from "@/components/cards/CardVehicleRulesTab";
+import { CardAlertsTab } from "@/components/cards/CardAlertsTab";
 import { toast } from "sonner";
 
 export default function CardDetailPage() {
@@ -110,12 +112,14 @@ export default function CardDetailPage() {
 
       {/* Tabs */}
       <Tabs defaultValue="general" className="space-y-6">
-        <TabsList className="grid w-full grid-cols-5 lg:w-auto lg:inline-grid">
+        <TabsList className="grid w-full grid-cols-4 lg:grid-cols-7 lg:w-auto lg:inline-grid">
           <TabsTrigger value="general">Général</TabsTrigger>
           <TabsTrigger value="limits">Limites</TabsTrigger>
           <TabsTrigger value="restrictions">Restrictions</TabsTrigger>
+          <TabsTrigger value="vehicle">Véhicule</TabsTrigger>
           <TabsTrigger value="schedule">Horaires</TabsTrigger>
           <TabsTrigger value="geofencing">Géofencing</TabsTrigger>
+          <TabsTrigger value="alerts">Alertes</TabsTrigger>
         </TabsList>
 
         <TabsContent value="general">
@@ -139,9 +143,11 @@ export default function CardDetailPage() {
           <CardLimitsTab
             card={{
               per_transaction_limit: Number(card.per_transaction_limit) || 200,
+              per_transaction_min: Number((card as any).per_transaction_min) || 0,
               daily_limit: Number(card.daily_limit) || 500,
               weekly_limit: Number(card.weekly_limit) || 2000,
               monthly_limit: Number(card.monthly_limit) || 5000,
+              limit_type: (card as any).limit_type || "hard",
             }}
             onSave={(limits) => updateCard.mutate(limits)}
             isPending={updateCard.isPending}
@@ -152,10 +158,26 @@ export default function CardDetailPage() {
           <CardRestrictionsTab
             card={{
               allowed_fuel_types: card.allowed_fuel_types || ["diesel", "essence", "gasoil"],
+              allow_shop_purchases: (card as any).allow_shop_purchases ?? false,
+              shop_max_amount: (card as any).shop_max_amount || 50,
+              block_non_fuel_mcc: (card as any).block_non_fuel_mcc ?? true,
             }}
             onSaveFuelTypes={(fuelTypes) =>
               updateCard.mutate({ allowed_fuel_types: fuelTypes })
             }
+            onSaveShopRules={(rules) => updateCard.mutate(rules)}
+            isPending={updateCard.isPending}
+          />
+        </TabsContent>
+
+        <TabsContent value="vehicle">
+          <CardVehicleRulesTab
+            card={{
+              max_fills_per_day: (card as any).max_fills_per_day || 2,
+              max_tank_capacity_mad: (card as any).max_tank_capacity_mad || 800,
+              enforce_vehicle_fuel_type: (card as any).enforce_vehicle_fuel_type ?? true,
+            }}
+            onSave={(rules) => updateCard.mutate(rules)}
             isPending={updateCard.isPending}
           />
         </TabsContent>
@@ -181,6 +203,10 @@ export default function CardDetailPage() {
             onSave={(geofencing) => updateCard.mutate(geofencing)}
             isPending={updateCard.isPending}
           />
+        </TabsContent>
+
+        <TabsContent value="alerts">
+          <CardAlertsTab cardId={card.id} />
         </TabsContent>
       </Tabs>
     </div>

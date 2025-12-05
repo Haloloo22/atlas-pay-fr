@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
-import { Fuel, Store, Check } from "lucide-react";
+import { Fuel, Store, Check, ShoppingBag, Ban } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
+import { Switch } from "@/components/ui/switch";
+import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { FUEL_TYPES } from "@/types/card-control";
@@ -11,25 +13,45 @@ import { useAllowedMerchants, MOROCCAN_STATIONS } from "@/hooks/useAllowedMercha
 interface CardRestrictionsTabProps {
   card: {
     allowed_fuel_types: string[];
+    allow_shop_purchases: boolean;
+    shop_max_amount: number;
+    block_non_fuel_mcc: boolean;
   };
   onSaveFuelTypes: (fuelTypes: string[]) => void;
+  onSaveShopRules: (rules: {
+    allow_shop_purchases: boolean;
+    shop_max_amount: number;
+    block_non_fuel_mcc: boolean;
+  }) => void;
   isPending?: boolean;
 }
 
 export function CardRestrictionsTab({
   card,
   onSaveFuelTypes,
+  onSaveShopRules,
   isPending,
 }: CardRestrictionsTabProps) {
   const [selectedFuelTypes, setSelectedFuelTypes] = useState<string[]>(
     card.allowed_fuel_types || ["diesel", "essence", "gasoil"]
   );
+  const [shopRules, setShopRules] = useState({
+    allow_shop_purchases: card.allow_shop_purchases ?? false,
+    shop_max_amount: card.shop_max_amount || 50,
+    block_non_fuel_mcc: card.block_non_fuel_mcc ?? true,
+  });
+  
   const { merchants, isLoading, toggleMerchant, initializeDefaultMerchants } =
     useAllowedMerchants();
 
   useEffect(() => {
     setSelectedFuelTypes(card.allowed_fuel_types || ["diesel", "essence", "gasoil"]);
-  }, [card.allowed_fuel_types]);
+    setShopRules({
+      allow_shop_purchases: card.allow_shop_purchases ?? false,
+      shop_max_amount: card.shop_max_amount || 50,
+      block_non_fuel_mcc: card.block_non_fuel_mcc ?? true,
+    });
+  }, [card.allowed_fuel_types, card.allow_shop_purchases, card.shop_max_amount, card.block_non_fuel_mcc]);
 
   const handleFuelTypeToggle = (fuelType: string) => {
     setSelectedFuelTypes((prev) =>
@@ -43,9 +65,18 @@ export function CardRestrictionsTab({
     onSaveFuelTypes(selectedFuelTypes);
   };
 
-  const hasChanges =
+  const handleSaveShopRules = () => {
+    onSaveShopRules(shopRules);
+  };
+
+  const hasFuelChanges =
     JSON.stringify(selectedFuelTypes.sort()) !==
     JSON.stringify((card.allowed_fuel_types || []).sort());
+
+  const hasShopChanges =
+    shopRules.allow_shop_purchases !== (card.allow_shop_purchases ?? false) ||
+    shopRules.shop_max_amount !== (card.shop_max_amount || 50) ||
+    shopRules.block_non_fuel_mcc !== (card.block_non_fuel_mcc ?? true);
 
   return (
     <div className="space-y-6">
@@ -80,7 +111,86 @@ export function CardRestrictionsTab({
             ))}
           </div>
           <div className="flex justify-end pt-2">
-            <Button onClick={handleSaveFuelTypes} disabled={!hasChanges || isPending}>
+            <Button onClick={handleSaveFuelTypes} disabled={!hasFuelChanges || isPending}>
+              {isPending ? "Enregistrement..." : "Enregistrer"}
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Contrôle boutique/MCC */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <ShoppingBag className="h-5 w-5" />
+            Restrictions boutique & MCC
+          </CardTitle>
+          <CardDescription>
+            Contrôlez les achats non-carburant (snacks, café, services...)
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          {/* Block non-fuel MCC */}
+          <div className="flex items-center justify-between rounded-lg border p-4">
+            <div className="flex items-center gap-3">
+              <Ban className="h-5 w-5 text-destructive" />
+              <div className="space-y-0.5">
+                <Label className="text-base font-medium">Bloquer les MCC non-carburant</Label>
+                <p className="text-sm text-muted-foreground">
+                  Refuse toutes les transactions hors stations-service (MCC 5541/5542)
+                </p>
+              </div>
+            </div>
+            <Switch
+              checked={shopRules.block_non_fuel_mcc}
+              onCheckedChange={(checked) =>
+                setShopRules((r) => ({ ...r, block_non_fuel_mcc: checked }))
+              }
+            />
+          </div>
+
+          {/* Allow shop purchases */}
+          <div className="flex items-center justify-between rounded-lg border p-4">
+            <div className="flex items-center gap-3">
+              <ShoppingBag className="h-5 w-5 text-muted-foreground" />
+              <div className="space-y-0.5">
+                <Label className="text-base font-medium">Autoriser les achats boutique</Label>
+                <p className="text-sm text-muted-foreground">
+                  Permet les achats en boutique (snacks, eau, café) dans les stations
+                </p>
+              </div>
+            </div>
+            <Switch
+              checked={shopRules.allow_shop_purchases}
+              onCheckedChange={(checked) =>
+                setShopRules((r) => ({ ...r, allow_shop_purchases: checked }))
+              }
+            />
+          </div>
+
+          {/* Max shop amount */}
+          {shopRules.allow_shop_purchases && (
+            <div className="rounded-lg border p-4 space-y-3">
+              <Label className="text-base font-medium">Montant maximum boutique</Label>
+              <div className="flex items-center gap-4">
+                <Input
+                  type="number"
+                  value={shopRules.shop_max_amount}
+                  onChange={(e) =>
+                    setShopRules((r) => ({ ...r, shop_max_amount: Number(e.target.value) }))
+                  }
+                  className="w-32 text-right"
+                />
+                <span className="text-muted-foreground">MAD</span>
+              </div>
+              <p className="text-sm text-muted-foreground">
+                Limite maximale pour les achats boutique par transaction
+              </p>
+            </div>
+          )}
+
+          <div className="flex justify-end pt-2">
+            <Button onClick={handleSaveShopRules} disabled={!hasShopChanges || isPending}>
               {isPending ? "Enregistrement..." : "Enregistrer"}
             </Button>
           </div>
