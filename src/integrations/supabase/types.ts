@@ -23,6 +23,11 @@ export type Database = {
           id: string
           is_read: boolean | null
           message: string
+          notification_channels: string[] | null
+          resolution_comment: string | null
+          resolved_at: string | null
+          resolved_by: string | null
+          status: string | null
         }
         Insert: {
           alert_type: string
@@ -32,6 +37,11 @@ export type Database = {
           id?: string
           is_read?: boolean | null
           message: string
+          notification_channels?: string[] | null
+          resolution_comment?: string | null
+          resolved_at?: string | null
+          resolved_by?: string | null
+          status?: string | null
         }
         Update: {
           alert_type?: string
@@ -41,6 +51,11 @@ export type Database = {
           id?: string
           is_read?: boolean | null
           message?: string
+          notification_channels?: string[] | null
+          resolution_comment?: string | null
+          resolved_at?: string | null
+          resolved_by?: string | null
+          status?: string | null
         }
         Relationships: [
           {
@@ -66,6 +81,7 @@ export type Database = {
           created_at: string | null
           id: string
           is_whitelisted: boolean | null
+          list_type: string | null
           mcc_code: string | null
           merchant_name: string
         }
@@ -75,6 +91,7 @@ export type Database = {
           created_at?: string | null
           id?: string
           is_whitelisted?: boolean | null
+          list_type?: string | null
           mcc_code?: string | null
           merchant_name: string
         }
@@ -84,6 +101,7 @@ export type Database = {
           created_at?: string | null
           id?: string
           is_whitelisted?: boolean | null
+          list_type?: string | null
           mcc_code?: string | null
           merchant_name?: string
         }
@@ -93,6 +111,59 @@ export type Database = {
             columns: ["company_id"]
             isOneToOne: false
             referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      card_alert_settings: {
+        Row: {
+          alert_on_declined: boolean | null
+          alert_on_limit_exceeded: boolean | null
+          alert_on_out_of_hours: boolean | null
+          alert_on_out_of_zone: boolean | null
+          alert_on_suspicious: boolean | null
+          card_id: string
+          created_at: string | null
+          id: string
+          notify_app: boolean | null
+          notify_email: boolean | null
+          notify_sms: boolean | null
+          updated_at: string | null
+        }
+        Insert: {
+          alert_on_declined?: boolean | null
+          alert_on_limit_exceeded?: boolean | null
+          alert_on_out_of_hours?: boolean | null
+          alert_on_out_of_zone?: boolean | null
+          alert_on_suspicious?: boolean | null
+          card_id: string
+          created_at?: string | null
+          id?: string
+          notify_app?: boolean | null
+          notify_email?: boolean | null
+          notify_sms?: boolean | null
+          updated_at?: string | null
+        }
+        Update: {
+          alert_on_declined?: boolean | null
+          alert_on_limit_exceeded?: boolean | null
+          alert_on_out_of_hours?: boolean | null
+          alert_on_out_of_zone?: boolean | null
+          alert_on_suspicious?: boolean | null
+          card_id?: string
+          created_at?: string | null
+          id?: string
+          notify_app?: boolean | null
+          notify_email?: boolean | null
+          notify_sms?: boolean | null
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "card_alert_settings_card_id_fkey"
+            columns: ["card_id"]
+            isOneToOne: true
+            referencedRelation: "cards"
             referencedColumns: ["id"]
           },
         ]
@@ -140,61 +211,85 @@ export type Database = {
       }
       cards: {
         Row: {
+          allow_shop_purchases: boolean | null
           allowed_days: number[] | null
           allowed_fuel_types: string[] | null
           allowed_hours_end: string | null
           allowed_hours_start: string | null
+          block_non_fuel_mcc: boolean | null
           card_number: string
           company_id: string
           created_at: string
           daily_limit: number | null
           driver_id: string | null
+          enforce_vehicle_fuel_type: boolean | null
           geofencing_enabled: boolean | null
           geofencing_regions: string[] | null
           id: string
           is_active: boolean | null
+          limit_type: string | null
+          max_fills_per_day: number | null
+          max_tank_capacity_mad: number | null
           monthly_limit: number | null
           per_transaction_limit: number | null
+          per_transaction_min: number | null
+          shop_max_amount: number | null
           updated_at: string
           vehicle_id: string | null
           weekly_limit: number | null
         }
         Insert: {
+          allow_shop_purchases?: boolean | null
           allowed_days?: number[] | null
           allowed_fuel_types?: string[] | null
           allowed_hours_end?: string | null
           allowed_hours_start?: string | null
+          block_non_fuel_mcc?: boolean | null
           card_number: string
           company_id: string
           created_at?: string
           daily_limit?: number | null
           driver_id?: string | null
+          enforce_vehicle_fuel_type?: boolean | null
           geofencing_enabled?: boolean | null
           geofencing_regions?: string[] | null
           id?: string
           is_active?: boolean | null
+          limit_type?: string | null
+          max_fills_per_day?: number | null
+          max_tank_capacity_mad?: number | null
           monthly_limit?: number | null
           per_transaction_limit?: number | null
+          per_transaction_min?: number | null
+          shop_max_amount?: number | null
           updated_at?: string
           vehicle_id?: string | null
           weekly_limit?: number | null
         }
         Update: {
+          allow_shop_purchases?: boolean | null
           allowed_days?: number[] | null
           allowed_fuel_types?: string[] | null
           allowed_hours_end?: string | null
           allowed_hours_start?: string | null
+          block_non_fuel_mcc?: boolean | null
           card_number?: string
           company_id?: string
           created_at?: string
           daily_limit?: number | null
           driver_id?: string | null
+          enforce_vehicle_fuel_type?: boolean | null
           geofencing_enabled?: boolean | null
           geofencing_regions?: string[] | null
           id?: string
           is_active?: boolean | null
+          limit_type?: string | null
+          max_fills_per_day?: number | null
+          max_tank_capacity_mad?: number | null
           monthly_limit?: number | null
           per_transaction_limit?: number | null
+          per_transaction_min?: number | null
+          shop_max_amount?: number | null
           updated_at?: string
           vehicle_id?: string | null
           weekly_limit?: number | null
