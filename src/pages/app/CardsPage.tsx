@@ -1,8 +1,9 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Plus, Pencil, Trash2, CreditCard } from "lucide-react";
+import { Plus, Pencil, Trash2, CreditCard, Settings } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -55,6 +56,7 @@ const cardSchema = z.object({
 type CardFormData = z.infer<typeof cardSchema>;
 
 export default function CardsPage() {
+  const navigate = useNavigate();
   const { cards, isLoading, createCard, updateCard, deleteCard } = useCards();
   const { drivers } = useDrivers();
   const { vehicles } = useVehicles();
@@ -315,7 +317,16 @@ export default function CardsPage() {
                     <Button
                       variant="ghost"
                       size="icon"
+                      onClick={() => navigate(`/app/cards/${card.id}`)}
+                      title="Configurer"
+                    >
+                      <Settings className="w-4 h-4" />
+                    </Button>
+                    <Button
+                      variant="ghost"
+                      size="icon"
                       onClick={() => openEditDialog(card)}
+                      title="Modifier"
                     >
                       <Pencil className="w-4 h-4" />
                     </Button>
@@ -323,6 +334,7 @@ export default function CardsPage() {
                       variant="ghost"
                       size="icon"
                       onClick={() => handleDelete(card.id)}
+                      title="Supprimer"
                     >
                       <Trash2 className="w-4 h-4" />
                     </Button>

@@ -59,42 +59,145 @@ export type Database = {
           },
         ]
       }
+      allowed_merchants: {
+        Row: {
+          brand: string | null
+          company_id: string
+          created_at: string | null
+          id: string
+          is_whitelisted: boolean | null
+          mcc_code: string | null
+          merchant_name: string
+        }
+        Insert: {
+          brand?: string | null
+          company_id: string
+          created_at?: string | null
+          id?: string
+          is_whitelisted?: boolean | null
+          mcc_code?: string | null
+          merchant_name: string
+        }
+        Update: {
+          brand?: string | null
+          company_id?: string
+          created_at?: string | null
+          id?: string
+          is_whitelisted?: boolean | null
+          mcc_code?: string | null
+          merchant_name?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "allowed_merchants_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      card_rules: {
+        Row: {
+          card_id: string
+          created_at: string | null
+          id: string
+          is_enabled: boolean | null
+          priority: number | null
+          rule_config: Json
+          rule_type: string
+          updated_at: string | null
+        }
+        Insert: {
+          card_id: string
+          created_at?: string | null
+          id?: string
+          is_enabled?: boolean | null
+          priority?: number | null
+          rule_config?: Json
+          rule_type: string
+          updated_at?: string | null
+        }
+        Update: {
+          card_id?: string
+          created_at?: string | null
+          id?: string
+          is_enabled?: boolean | null
+          priority?: number | null
+          rule_config?: Json
+          rule_type?: string
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "card_rules_card_id_fkey"
+            columns: ["card_id"]
+            isOneToOne: false
+            referencedRelation: "cards"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       cards: {
         Row: {
+          allowed_days: number[] | null
+          allowed_fuel_types: string[] | null
+          allowed_hours_end: string | null
+          allowed_hours_start: string | null
           card_number: string
           company_id: string
           created_at: string
           daily_limit: number | null
           driver_id: string | null
+          geofencing_enabled: boolean | null
+          geofencing_regions: string[] | null
           id: string
           is_active: boolean | null
           monthly_limit: number | null
+          per_transaction_limit: number | null
           updated_at: string
           vehicle_id: string | null
+          weekly_limit: number | null
         }
         Insert: {
+          allowed_days?: number[] | null
+          allowed_fuel_types?: string[] | null
+          allowed_hours_end?: string | null
+          allowed_hours_start?: string | null
           card_number: string
           company_id: string
           created_at?: string
           daily_limit?: number | null
           driver_id?: string | null
+          geofencing_enabled?: boolean | null
+          geofencing_regions?: string[] | null
           id?: string
           is_active?: boolean | null
           monthly_limit?: number | null
+          per_transaction_limit?: number | null
           updated_at?: string
           vehicle_id?: string | null
+          weekly_limit?: number | null
         }
         Update: {
+          allowed_days?: number[] | null
+          allowed_fuel_types?: string[] | null
+          allowed_hours_end?: string | null
+          allowed_hours_start?: string | null
           card_number?: string
           company_id?: string
           created_at?: string
           daily_limit?: number | null
           driver_id?: string | null
+          geofencing_enabled?: boolean | null
+          geofencing_regions?: string[] | null
           id?: string
           is_active?: boolean | null
           monthly_limit?: number | null
+          per_transaction_limit?: number | null
           updated_at?: string
           vehicle_id?: string | null
+          weekly_limit?: number | null
         }
         Relationships: [
           {
