@@ -104,8 +104,8 @@ export default function CardsPage() {
   const onSubmit = async (data: CardFormData) => {
     const cardData = {
       card_number: data.card_number,
-      driver_id: data.driver_id || null,
-      vehicle_id: data.vehicle_id || null,
+      driver_id: data.driver_id === "none" ? null : data.driver_id || null,
+      vehicle_id: data.vehicle_id === "none" ? null : data.vehicle_id || null,
       daily_limit: data.daily_limit,
       monthly_limit: data.monthly_limit,
       is_active: data.is_active,
@@ -180,14 +180,14 @@ export default function CardsPage() {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Chauffeur assigné</FormLabel>
-                      <Select onValueChange={field.onChange} defaultValue={field.value}>
+                      <Select onValueChange={field.onChange} value={field.value || "none"}>
                         <FormControl>
                           <SelectTrigger>
                             <SelectValue placeholder="Sélectionner un chauffeur" />
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                          <SelectItem value="">Aucun</SelectItem>
+                          <SelectItem value="none">Aucun</SelectItem>
                           {drivers.map((driver) => (
                             <SelectItem key={driver.id} value={driver.id}>
                               {driver.first_name} {driver.last_name}
@@ -206,14 +206,14 @@ export default function CardsPage() {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Véhicule assigné</FormLabel>
-                      <Select onValueChange={field.onChange} defaultValue={field.value}>
+                      <Select onValueChange={field.onChange} value={field.value || "none"}>
                         <FormControl>
                           <SelectTrigger>
                             <SelectValue placeholder="Sélectionner un véhicule" />
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                          <SelectItem value="">Aucun</SelectItem>
+                          <SelectItem value="none">Aucun</SelectItem>
                           {vehicles.map((vehicle) => (
                             <SelectItem key={vehicle.id} value={vehicle.id}>
                               {vehicle.plate_number} - {vehicle.brand} {vehicle.model}
