@@ -25,6 +25,7 @@ import VehiclesPage from "./pages/app/VehiclesPage";
 import DriversPage from "./pages/app/DriversPage";
 import CardsPage from "./pages/app/CardsPage";
 import TransactionsPage from "./pages/app/TransactionsPage";
+import AlertsPage from "./pages/app/AlertsPage";
 
 const queryClient = new QueryClient();
 
@@ -63,6 +64,7 @@ const App = () => (
               <Route path="drivers" element={<DriversPage />} />
               <Route path="cards" element={<CardsPage />} />
               <Route path="transactions" element={<TransactionsPage />} />
+              <Route path="alerts" element={<AlertsPage />} />
             </Route>
 
             {/* Catch-all */}

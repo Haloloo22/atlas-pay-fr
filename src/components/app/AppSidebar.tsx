@@ -1,6 +1,8 @@
-import { LayoutDashboard, Car, Users, CreditCard, Receipt, LogOut } from "lucide-react";
+import { LayoutDashboard, Car, Users, CreditCard, Receipt, Bell, LogOut } from "lucide-react";
 import { NavLink } from "@/components/NavLink";
 import { useAuth } from "@/contexts/AuthContext";
+import { useAlerts } from "@/hooks/useAlerts";
+import { Badge } from "@/components/ui/badge";
 import {
   Sidebar,
   SidebarContent,
@@ -20,10 +22,12 @@ const menuItems = [
   { title: "Chauffeurs", url: "/app/drivers", icon: Users },
   { title: "Cartes", url: "/app/cards", icon: CreditCard },
   { title: "Transactions", url: "/app/transactions", icon: Receipt },
+  { title: "Alertes", url: "/app/alerts", icon: Bell },
 ];
 
 export function AppSidebar() {
   const { user, signOut } = useAuth();
+  const { unreadCount } = useAlerts();
 
   return (
     <Sidebar>
@@ -50,7 +54,12 @@ export function AppSidebar() {
                       activeClassName="bg-primary/10 text-primary font-medium"
                     >
                       <item.icon className="w-5 h-5" />
-                      <span>{item.title}</span>
+                      <span className="flex-1">{item.title}</span>
+                      {item.title === "Alertes" && unreadCount > 0 && (
+                        <Badge variant="destructive" className="ml-auto h-5 min-w-5 flex items-center justify-center text-xs">
+                          {unreadCount > 99 ? "99+" : unreadCount}
+                        </Badge>
+                      )}
                     </NavLink>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
