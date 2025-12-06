@@ -33,32 +33,32 @@ const steps = [
 
 const Process = () => {
   return (
-    <section id="processus" className="py-20 px-6">
+    <section id="processus" className="py-14 px-6">
       <div className="container mx-auto max-w-6xl">
-        <div className="text-center space-y-4 mb-16">
+        <div className="text-center space-y-3 mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground">
             Comment ça marche
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Démarrez en quatre étapes simples
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5 relative">
           {steps.map((step, index) => (
             <div key={index} className="relative group">
-              <div className="bg-card border-2 border-border rounded-2xl p-8 space-y-6 hover:border-primary/50 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+              <div className="bg-card border border-border rounded-xl p-5 space-y-4 hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
                 <div className="flex items-center justify-between">
-                  <div className="text-5xl font-extrabold text-primary/20">
+                  <div className="text-3xl font-extrabold text-primary/20">
                     {step.number}
                   </div>
-                  <div className="w-14 h-14 bg-gradient-to-br from-primary/10 to-accent/10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <step.icon className="w-7 h-7 text-primary" />
+                  <div className="w-10 h-10 bg-gradient-to-br from-primary/10 to-accent/10 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <step.icon className="w-5 h-5 text-primary" />
                   </div>
                 </div>
                 
-                <h3 className="text-xl font-bold leading-tight">{step.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">
+                <h3 className="text-base font-bold leading-tight">{step.title}</h3>
+                <p className="text-muted-foreground leading-relaxed text-sm">
                   {step.description}
                 </p>
 

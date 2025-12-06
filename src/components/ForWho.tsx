@@ -40,45 +40,45 @@ const segments = [
 
 const ForWho = () => {
   return (
-    <section id="pour-qui" className="py-32 px-6 bg-gradient-to-b from-background to-secondary/40">
+    <section id="pour-qui" className="py-20 px-6 bg-gradient-to-b from-background to-secondary/40">
       <div className="container mx-auto max-w-7xl">
-        <div className="text-center space-y-6 mb-24">
+        <div className="text-center space-y-4 mb-14">
           <div className="inline-block">
-            <span className="text-sm font-bold px-5 py-2.5 rounded-full bg-accent/10 text-accent uppercase tracking-wide">
+            <span className="text-sm font-bold px-4 py-2 rounded-full bg-accent/10 text-accent uppercase tracking-wide">
               Pour tous les secteurs
             </span>
           </div>
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-foreground tracking-tight">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground">
             Qui utilise FleetPay ?
           </h2>
-          <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             De la PME à la grande entreprise, FleetPay s'adapte à votre secteur
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
           {segments.map((segment, index) => (
             <div
               key={index}
-              className={`group relative bg-card rounded-3xl p-10 border-2 border-border hover:border-primary/40 transition-all duration-500 hover:shadow-[0_30px_70px_-20px_rgba(21,94,160,0.25)]`}
+              className="group relative bg-card rounded-2xl p-6 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-xl"
             >
-              <div className={`absolute inset-0 bg-gradient-to-br ${segment.color} rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
+              <div className={`absolute inset-0 bg-gradient-to-br ${segment.color} rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
               
               <div className="relative">
-                <div className="w-20 h-20 bg-gradient-to-br from-primary to-accent rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-xl">
-                  <segment.icon className="w-10 h-10 text-primary-foreground" />
+                <div className="w-14 h-14 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                  <segment.icon className="w-7 h-7 text-primary-foreground" />
                 </div>
                 
-                <div className="space-y-4">
+                <div className="space-y-2">
                   <div>
-                    <h3 className="text-2xl font-extrabold mb-2 text-foreground group-hover:text-primary transition-colors">
+                    <h3 className="text-lg font-bold mb-1 text-foreground group-hover:text-primary transition-colors">
                       {segment.title}
                     </h3>
-                    <p className="text-sm font-bold text-accent uppercase tracking-wider">
+                    <p className="text-xs font-bold text-accent uppercase tracking-wider">
                       {segment.vehicles}
                     </p>
                   </div>
-                  <p className="text-muted-foreground leading-relaxed text-lg">
+                  <p className="text-muted-foreground leading-relaxed text-sm">
                     {segment.description}
                   </p>
                 </div>
@@ -86,15 +86,15 @@ const ForWho = () => {
             </div>
           ))}
           
-          <div className="group relative bg-gradient-to-br from-primary/10 via-accent/10 to-primary/5 rounded-3xl p-10 border-2 border-dashed border-primary/40 hover:border-primary transition-all duration-500 flex flex-col items-center justify-center text-center hover:shadow-[0_30px_70px_-20px_rgba(21,94,160,0.25)]">
-            <div className="w-20 h-20 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-              <span className="text-5xl font-black text-primary">+</span>
+          <div className="group relative bg-gradient-to-br from-primary/10 via-accent/10 to-primary/5 rounded-2xl p-6 border border-dashed border-primary/40 hover:border-primary transition-all duration-300 flex flex-col items-center justify-center text-center hover:shadow-xl">
+            <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+              <span className="text-3xl font-black text-primary">+</span>
             </div>
-            <h3 className="text-2xl font-extrabold mb-3 text-foreground">Votre secteur ?</h3>
-            <p className="text-muted-foreground mb-6 text-lg leading-relaxed">
+            <h3 className="text-lg font-bold mb-2 text-foreground">Votre secteur ?</h3>
+            <p className="text-muted-foreground mb-4 text-sm">
               Chaque flotte est unique. Parlons de vos besoins.
             </p>
-            <button className="text-base font-bold text-primary hover:text-accent transition-colors">
+            <button className="text-sm font-bold text-primary hover:text-accent transition-colors">
               Contactez-nous →
             </button>
           </div>
