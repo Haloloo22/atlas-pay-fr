@@ -1,4 +1,4 @@
-import { LayoutDashboard, Car, Users, CreditCard, Receipt, Bell, LogOut } from "lucide-react";
+import { LayoutDashboard, Car, Users, CreditCard, Receipt, Bell, LogOut, Shield } from "lucide-react";
 import { NavLink } from "@/components/NavLink";
 import { useAuth } from "@/contexts/AuthContext";
 import { useAlerts } from "@/hooks/useAlerts";
@@ -21,6 +21,7 @@ const menuItems = [
   { title: "Véhicules", url: "/app/vehicles", icon: Car },
   { title: "Chauffeurs", url: "/app/drivers", icon: Users },
   { title: "Cartes", url: "/app/cards", icon: CreditCard },
+  { title: "Politiques", url: "/app/policies", icon: Shield },
   { title: "Transactions", url: "/app/transactions", icon: Receipt },
   { title: "Alertes", url: "/app/alerts", icon: Bell },
 ];
