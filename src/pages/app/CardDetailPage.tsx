@@ -1,17 +1,21 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { ArrowLeft, CreditCard } from "lucide-react";
+import { ArrowLeft, CreditCard, Shield, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Badge } from "@/components/ui/badge";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { supabase } from "@/integrations/supabase/client";
 import { useDrivers } from "@/hooks/useDrivers";
 import { useVehicles } from "@/hooks/useVehicles";
+import { usePolicies } from "@/hooks/usePolicies";
 import { CardGeneralTab } from "@/components/cards/CardGeneralTab";
-import { CardLimitsTab } from "@/components/cards/CardLimitsTab";
-import { CardRestrictionsTab } from "@/components/cards/CardRestrictionsTab";
-import { CardScheduleTab } from "@/components/cards/CardScheduleTab";
-import { CardGeofencingTab } from "@/components/cards/CardGeofencingTab";
-import { CardVehicleRulesTab } from "@/components/cards/CardVehicleRulesTab";
 import { CardAlertsTab } from "@/components/cards/CardAlertsTab";
 import { toast } from "sonner";
 
@@ -21,6 +25,7 @@ export default function CardDetailPage() {
   const queryClient = useQueryClient();
   const { drivers } = useDrivers();
   const { vehicles } = useVehicles();
+  const { policies } = usePolicies();
 
   const { data: card, isLoading } = useQuery({
     queryKey: ["card", cardId],
@@ -76,6 +81,12 @@ export default function CardDetailPage() {
     return vehicle?.plate_number || "";
   };
 
+  const getCurrentPolicy = () => {
+    const policyId = (card as any)?.policy_id;
+    if (!policyId) return null;
+    return policies.find((p) => p.id === policyId);
+  };
+
   if (isLoading) {
     return (
       <div className="flex items-center justify-center py-24">
@@ -94,6 +105,8 @@ export default function CardDetailPage() {
     );
   }
 
+  const currentPolicy = getCurrentPolicy();
+
   return (
     <div className="space-y-6">
       {/* Header */}
@@ -101,24 +114,108 @@ export default function CardDetailPage() {
         <Button variant="ghost" size="icon" onClick={() => navigate("/app/cards")}>
           <ArrowLeft className="h-5 w-5" />
         </Button>
-        <div>
+        <div className="flex-1">
           <h1 className="text-2xl font-bold flex items-center gap-2">
             <CreditCard className="h-6 w-6" />
-            Configuration de la carte
+            Détails de la carte
           </h1>
           <p className="text-muted-foreground font-mono">{card.card_number}</p>
         </div>
       </div>
 
+      {/* Policy Selection Card */}
+      <div className="bg-card border border-border rounded-2xl p-6">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <Shield className="h-5 w-5 text-primary" />
+            <div>
+              <h3 className="font-semibold">Politique appliquée</h3>
+              <p className="text-sm text-muted-foreground">
+                Les règles de cette politique s'appliquent à cette carte
+              </p>
+            </div>
+          </div>
+          <div className="flex items-center gap-3">
+            <Select
+              value={(card as any).policy_id || "none"}
+              onValueChange={(value) => {
+                updateCard.mutate({ policy_id: value === "none" ? null : value });
+              }}
+            >
+              <SelectTrigger className="w-[250px]">
+                <SelectValue placeholder="Sélectionner une politique" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="none">Aucune politique</SelectItem>
+                {policies.map((policy) => (
+                  <SelectItem key={policy.id} value={policy.id}>
+                    <div className="flex items-center gap-2">
+                      <Shield className="w-4 h-4" />
+                      {policy.name}
+                    </div>
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+            {currentPolicy && (
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => navigate(`/app/policies/${currentPolicy.id}`)}
+              >
+                <ExternalLink className="w-4 h-4 mr-2" />
+                Modifier la politique
+              </Button>
+            )}
+          </div>
+        </div>
+
+        {currentPolicy && (
+          <div className="mt-4 p-4 bg-muted/50 rounded-lg">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+              <div>
+                <span className="text-muted-foreground">Limite journalière</span>
+                <p className="font-semibold">{Number(currentPolicy.daily_limit).toLocaleString()} MAD</p>
+              </div>
+              <div>
+                <span className="text-muted-foreground">Limite mensuelle</span>
+                <p className="font-semibold">{Number(currentPolicy.monthly_limit).toLocaleString()} MAD</p>
+              </div>
+              <div>
+                <span className="text-muted-foreground">Horaires</span>
+                <p className="font-semibold">{currentPolicy.allowed_hours_start} - {currentPolicy.allowed_hours_end}</p>
+              </div>
+              <div>
+                <span className="text-muted-foreground">Géofencing</span>
+                <Badge variant={currentPolicy.geofencing_enabled ? "default" : "secondary"}>
+                  {currentPolicy.geofencing_enabled ? "Activé" : "Désactivé"}
+                </Badge>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {!currentPolicy && (
+          <div className="mt-4 p-4 bg-muted/30 rounded-lg border border-dashed border-border">
+            <p className="text-sm text-muted-foreground text-center">
+              Aucune politique appliquée. Sélectionnez une politique ou{" "}
+              <Button
+                variant="link"
+                className="p-0 h-auto"
+                onClick={() => navigate("/app/policies")}
+              >
+                créez-en une nouvelle
+              </Button>
+              .
+            </p>
+          </div>
+        )}
+      </div>
+
       {/* Tabs */}
       <Tabs defaultValue="general" className="space-y-6">
-        <TabsList className="grid w-full grid-cols-4 lg:grid-cols-7 lg:w-auto lg:inline-grid">
+        <TabsList className="grid w-full grid-cols-2 lg:w-auto lg:inline-grid">
           <TabsTrigger value="general">Général</TabsTrigger>
-          <TabsTrigger value="limits">Limites</TabsTrigger>
-          <TabsTrigger value="restrictions">Restrictions</TabsTrigger>
-          <TabsTrigger value="vehicle">Véhicule</TabsTrigger>
-          <TabsTrigger value="schedule">Horaires</TabsTrigger>
-          <TabsTrigger value="geofencing">Géofencing</TabsTrigger>
           <TabsTrigger value="alerts">Alertes</TabsTrigger>
         </TabsList>
 
@@ -135,72 +232,6 @@ export default function CardDetailPage() {
             driverName={getDriverName(card.driver_id)}
             vehiclePlate={getVehiclePlate(card.vehicle_id)}
             onToggleActive={(isActive) => updateCard.mutate({ is_active: isActive })}
-            isPending={updateCard.isPending}
-          />
-        </TabsContent>
-
-        <TabsContent value="limits">
-          <CardLimitsTab
-            card={{
-              per_transaction_limit: Number(card.per_transaction_limit) || 200,
-              per_transaction_min: Number((card as any).per_transaction_min) || 0,
-              daily_limit: Number(card.daily_limit) || 500,
-              weekly_limit: Number(card.weekly_limit) || 2000,
-              monthly_limit: Number(card.monthly_limit) || 5000,
-              limit_type: (card as any).limit_type || "hard",
-            }}
-            onSave={(limits) => updateCard.mutate(limits)}
-            isPending={updateCard.isPending}
-          />
-        </TabsContent>
-
-        <TabsContent value="restrictions">
-          <CardRestrictionsTab
-            card={{
-              allowed_fuel_types: card.allowed_fuel_types || ["diesel", "essence", "gasoil"],
-              allow_shop_purchases: (card as any).allow_shop_purchases ?? false,
-              shop_max_amount: (card as any).shop_max_amount || 50,
-              block_non_fuel_mcc: (card as any).block_non_fuel_mcc ?? true,
-            }}
-            onSaveFuelTypes={(fuelTypes) =>
-              updateCard.mutate({ allowed_fuel_types: fuelTypes })
-            }
-            onSaveShopRules={(rules) => updateCard.mutate(rules)}
-            isPending={updateCard.isPending}
-          />
-        </TabsContent>
-
-        <TabsContent value="vehicle">
-          <CardVehicleRulesTab
-            card={{
-              max_fills_per_day: (card as any).max_fills_per_day || 2,
-              max_tank_capacity_mad: (card as any).max_tank_capacity_mad || 800,
-              enforce_vehicle_fuel_type: (card as any).enforce_vehicle_fuel_type ?? true,
-            }}
-            onSave={(rules) => updateCard.mutate(rules)}
-            isPending={updateCard.isPending}
-          />
-        </TabsContent>
-
-        <TabsContent value="schedule">
-          <CardScheduleTab
-            card={{
-              allowed_hours_start: card.allowed_hours_start || "06:00",
-              allowed_hours_end: card.allowed_hours_end || "22:00",
-              allowed_days: card.allowed_days || [1, 2, 3, 4, 5, 6, 7],
-            }}
-            onSave={(schedule) => updateCard.mutate(schedule)}
-            isPending={updateCard.isPending}
-          />
-        </TabsContent>
-
-        <TabsContent value="geofencing">
-          <CardGeofencingTab
-            card={{
-              geofencing_enabled: card.geofencing_enabled ?? false,
-              geofencing_regions: card.geofencing_regions || [],
-            }}
-            onSave={(geofencing) => updateCard.mutate(geofencing)}
             isPending={updateCard.isPending}
           />
         </TabsContent>

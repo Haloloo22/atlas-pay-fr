@@ -25,6 +25,8 @@ import VehiclesPage from "./pages/app/VehiclesPage";
 import DriversPage from "./pages/app/DriversPage";
 import CardsPage from "./pages/app/CardsPage";
 import CardDetailPage from "./pages/app/CardDetailPage";
+import PoliciesPage from "./pages/app/PoliciesPage";
+import PolicyDetailPage from "./pages/app/PolicyDetailPage";
 import TransactionsPage from "./pages/app/TransactionsPage";
 import AlertsPage from "./pages/app/AlertsPage";
 
@@ -65,6 +67,8 @@ const App = () => (
               <Route path="drivers" element={<DriversPage />} />
               <Route path="cards" element={<CardsPage />} />
               <Route path="cards/:cardId" element={<CardDetailPage />} />
+              <Route path="policies" element={<PoliciesPage />} />
+              <Route path="policies/:policyId" element={<PolicyDetailPage />} />
               <Route path="transactions" element={<TransactionsPage />} />
               <Route path="alerts" element={<AlertsPage />} />
             </Route>

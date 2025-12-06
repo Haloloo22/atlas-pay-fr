@@ -233,6 +233,7 @@ export type Database = {
           monthly_limit: number | null
           per_transaction_limit: number | null
           per_transaction_min: number | null
+          policy_id: string | null
           shop_max_amount: number | null
           updated_at: string
           vehicle_id: string | null
@@ -261,6 +262,7 @@ export type Database = {
           monthly_limit?: number | null
           per_transaction_limit?: number | null
           per_transaction_min?: number | null
+          policy_id?: string | null
           shop_max_amount?: number | null
           updated_at?: string
           vehicle_id?: string | null
@@ -289,6 +291,7 @@ export type Database = {
           monthly_limit?: number | null
           per_transaction_limit?: number | null
           per_transaction_min?: number | null
+          policy_id?: string | null
           shop_max_amount?: number | null
           updated_at?: string
           vehicle_id?: string | null
@@ -307,6 +310,13 @@ export type Database = {
             columns: ["driver_id"]
             isOneToOne: false
             referencedRelation: "drivers"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "cards_policy_id_fkey"
+            columns: ["policy_id"]
+            isOneToOne: false
+            referencedRelation: "policies"
             referencedColumns: ["id"]
           },
           {
@@ -477,6 +487,98 @@ export type Database = {
           status?: string
         }
         Relationships: []
+      }
+      policies: {
+        Row: {
+          allow_shop_purchases: boolean | null
+          allowed_days: number[] | null
+          allowed_fuel_types: string[] | null
+          allowed_hours_end: string | null
+          allowed_hours_start: string | null
+          block_non_fuel_mcc: boolean | null
+          company_id: string
+          created_at: string
+          daily_limit: number | null
+          description: string | null
+          enforce_vehicle_fuel_type: boolean | null
+          geofencing_enabled: boolean | null
+          geofencing_regions: string[] | null
+          id: string
+          is_default: boolean | null
+          limit_type: string | null
+          max_fills_per_day: number | null
+          max_tank_capacity_mad: number | null
+          monthly_limit: number | null
+          name: string
+          per_transaction_limit: number | null
+          per_transaction_min: number | null
+          shop_max_amount: number | null
+          updated_at: string
+          weekly_limit: number | null
+        }
+        Insert: {
+          allow_shop_purchases?: boolean | null
+          allowed_days?: number[] | null
+          allowed_fuel_types?: string[] | null
+          allowed_hours_end?: string | null
+          allowed_hours_start?: string | null
+          block_non_fuel_mcc?: boolean | null
+          company_id: string
+          created_at?: string
+          daily_limit?: number | null
+          description?: string | null
+          enforce_vehicle_fuel_type?: boolean | null
+          geofencing_enabled?: boolean | null
+          geofencing_regions?: string[] | null
+          id?: string
+          is_default?: boolean | null
+          limit_type?: string | null
+          max_fills_per_day?: number | null
+          max_tank_capacity_mad?: number | null
+          monthly_limit?: number | null
+          name: string
+          per_transaction_limit?: number | null
+          per_transaction_min?: number | null
+          shop_max_amount?: number | null
+          updated_at?: string
+          weekly_limit?: number | null
+        }
+        Update: {
+          allow_shop_purchases?: boolean | null
+          allowed_days?: number[] | null
+          allowed_fuel_types?: string[] | null
+          allowed_hours_end?: string | null
+          allowed_hours_start?: string | null
+          block_non_fuel_mcc?: boolean | null
+          company_id?: string
+          created_at?: string
+          daily_limit?: number | null
+          description?: string | null
+          enforce_vehicle_fuel_type?: boolean | null
+          geofencing_enabled?: boolean | null
+          geofencing_regions?: string[] | null
+          id?: string
+          is_default?: boolean | null
+          limit_type?: string | null
+          max_fills_per_day?: number | null
+          max_tank_capacity_mad?: number | null
+          monthly_limit?: number | null
+          name?: string
+          per_transaction_limit?: number | null
+          per_transaction_min?: number | null
+          shop_max_amount?: number | null
+          updated_at?: string
+          weekly_limit?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "policies_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       profiles: {
         Row: {
