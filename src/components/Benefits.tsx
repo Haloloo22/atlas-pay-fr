@@ -29,43 +29,43 @@ const benefits = [
 
 const Benefits = () => {
   return (
-    <section className="py-32 px-6 bg-background">
+    <section className="py-16 px-6 bg-background">
       <div className="container mx-auto max-w-7xl">
-        <div className="text-center space-y-6 mb-24">
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-foreground tracking-tight">
+        <div className="text-center space-y-3 mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground">
             Des résultats concrets
           </h2>
-          <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Nos clients constatent l'impact dès les premières semaines
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-6">
           {benefits.map((benefit, index) => (
             <div
               key={index}
-              className="group relative overflow-hidden rounded-[2rem] transition-all duration-500 hover:scale-105"
+              className="group relative overflow-hidden rounded-2xl transition-all duration-300 hover:scale-[1.02]"
             >
               <div className={`absolute inset-0 bg-gradient-to-br ${benefit.color} opacity-10 group-hover:opacity-15 transition-opacity`}></div>
               
-              <div className="relative bg-card/50 backdrop-blur-sm rounded-[2rem] p-10 border-2 border-border hover:border-primary/30 transition-all">
-                <div className="flex items-start justify-between mb-8">
-                  <div className={`w-20 h-20 bg-gradient-to-br ${benefit.color} rounded-2xl flex items-center justify-center shadow-xl group-hover:scale-110 group-hover:rotate-3 transition-all duration-500`}>
-                    <benefit.icon className="w-10 h-10 text-white" />
+              <div className="relative bg-card/50 backdrop-blur-sm rounded-2xl p-6 border border-border hover:border-primary/30 transition-all">
+                <div className="flex items-start justify-between mb-5">
+                  <div className={`w-14 h-14 bg-gradient-to-br ${benefit.color} rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                    <benefit.icon className="w-7 h-7 text-white" />
                   </div>
                   <div className="text-right">
-                    <div className={`text-5xl font-black bg-gradient-to-br ${benefit.color} bg-clip-text text-transparent`}>
+                    <div className={`text-4xl font-black bg-gradient-to-br ${benefit.color} bg-clip-text text-transparent`}>
                       {benefit.stat}
                     </div>
                   </div>
                 </div>
 
-                <div className="space-y-4">
+                <div className="space-y-2">
                   <div>
-                    <h3 className="text-3xl font-extrabold mb-2 text-foreground">{benefit.title}</h3>
-                    <p className="text-sm font-bold text-primary uppercase tracking-wider">{benefit.subtitle}</p>
+                    <h3 className="text-xl font-bold mb-1 text-foreground">{benefit.title}</h3>
+                    <p className="text-xs font-bold text-primary uppercase tracking-wider">{benefit.subtitle}</p>
                   </div>
-                  <p className="text-muted-foreground leading-relaxed text-lg">
+                  <p className="text-muted-foreground leading-relaxed text-sm">
                     {benefit.description}
                   </p>
                 </div>
