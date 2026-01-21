@@ -29,6 +29,7 @@ import PoliciesPage from "./pages/app/PoliciesPage";
 import PolicyDetailPage from "./pages/app/PolicyDetailPage";
 import TransactionsPage from "./pages/app/TransactionsPage";
 import AlertsPage from "./pages/app/AlertsPage";
+import SettingsPage from "./pages/app/SettingsPage";
 
 const queryClient = new QueryClient();
 
@@ -71,6 +72,7 @@ const App = () => (
               <Route path="policies/:policyId" element={<PolicyDetailPage />} />
               <Route path="transactions" element={<TransactionsPage />} />
               <Route path="alerts" element={<AlertsPage />} />
+              <Route path="settings" element={<SettingsPage />} />
             </Route>
 
             {/* Catch-all */}

@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Plus, Pencil, Trash2, CreditCard, Settings, Shield } from "lucide-react";
+import { Plus, Pencil, Trash2, CreditCard, Settings, Shield, Search, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -41,6 +41,11 @@ import { useCards } from "@/hooks/useCards";
 import { useDrivers } from "@/hooks/useDrivers";
 import { useVehicles } from "@/hooks/useVehicles";
 import { usePolicies } from "@/hooks/usePolicies";
+import { usePagination } from "@/hooks/usePagination";
+import { DataTablePagination } from "@/components/DataTablePagination";
+import { TableSkeleton } from "@/components/TableSkeleton";
+import { ConfirmDialog } from "@/components/ConfirmDialog";
+import { exportToCsv, cardColumns } from "@/utils/exportCsv";
 import type { Database } from "@/integrations/supabase/types";
 
 type Card = Database["public"]["Tables"]["cards"]["Row"];
@@ -63,6 +68,8 @@ export default function CardsPage() {
   const { policies } = usePolicies();
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [editingCard, setEditingCard] = useState<Card | null>(null);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [deleteTarget, setDeleteTarget] = useState<string | null>(null);
 
   const form = useForm<CardFormData>({
     resolver: zodResolver(cardSchema),
@@ -74,6 +81,25 @@ export default function CardsPage() {
       is_active: true,
     },
   });
+
+  // Filter cards
+  const filteredCards = useMemo(() => {
+    if (!searchTerm) return cards;
+    const term = searchTerm.toLowerCase();
+    return cards.filter((c) => {
+      const driver = drivers.find((d) => d.id === c.driver_id);
+      const vehicle = vehicles.find((v) => v.id === c.vehicle_id);
+      return (
+        c.card_number.toLowerCase().includes(term) ||
+        driver?.first_name?.toLowerCase().includes(term) ||
+        driver?.last_name?.toLowerCase().includes(term) ||
+        vehicle?.plate_number?.toLowerCase().includes(term)
+      );
+    });
+  }, [cards, drivers, vehicles, searchTerm]);
+
+  // Pagination
+  const pagination = usePagination(filteredCards, { pageSize: 10 });
 
   const openCreateDialog = () => {
     setEditingCard(null);
@@ -93,7 +119,7 @@ export default function CardsPage() {
       card_number: card.card_number,
       driver_id: card.driver_id || "",
       vehicle_id: card.vehicle_id || "",
-      policy_id: (card as any).policy_id || "",
+      policy_id: card.policy_id || "",
       is_active: card.is_active ?? true,
     });
     setIsDialogOpen(true);
@@ -117,9 +143,10 @@ export default function CardsPage() {
     form.reset();
   };
 
-  const handleDelete = async (id: string) => {
-    if (confirm("Êtes-vous sûr de vouloir supprimer cette carte ?")) {
-      await deleteCard.mutateAsync(id);
+  const handleDelete = async () => {
+    if (deleteTarget) {
+      await deleteCard.mutateAsync(deleteTarget);
+      setDeleteTarget(null);
     }
   };
 
@@ -141,6 +168,10 @@ export default function CardsPage() {
     return policy?.name || null;
   };
 
+  const handleExport = () => {
+    exportToCsv(filteredCards, cardColumns, "cartes");
+  };
+
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
@@ -149,6 +180,10 @@ export default function CardsPage() {
           <p className="text-muted-foreground">Gérez les cartes de votre flotte</p>
         </div>
         <div className="flex gap-2">
+          <Button variant="outline" onClick={handleExport} disabled={cards.length === 0}>
+            <Download className="w-4 h-4 mr-2" />
+            Exporter
+          </Button>
           <Button variant="outline" onClick={() => navigate("/app/policies")}>
             <Shield className="w-4 h-4 mr-2" />
             Gérer les politiques
@@ -278,10 +313,19 @@ export default function CardsPage() {
         </div>
       </div>
 
+      {/* Search */}
+      <div className="relative max-w-md">
+        <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+        <Input
+          placeholder="Rechercher par numéro, chauffeur, véhicule..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="pl-10"
+        />
+      </div>
+
       {isLoading ? (
-        <div className="flex items-center justify-center py-12">
-          <div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin" />
-        </div>
+        <TableSkeleton columns={6} rows={5} />
       ) : cards.length === 0 ? (
         <div className="bg-card border border-border rounded-2xl p-12 text-center">
           <CreditCard className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
@@ -293,6 +337,14 @@ export default function CardsPage() {
             <Plus className="w-4 h-4 mr-2" />
             Ajouter une carte
           </Button>
+        </div>
+      ) : filteredCards.length === 0 ? (
+        <div className="bg-card border border-border rounded-2xl p-12 text-center">
+          <Search className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
+          <h3 className="text-lg font-semibold mb-2">Aucun résultat</h3>
+          <p className="text-muted-foreground">
+            Aucune carte ne correspond à votre recherche.
+          </p>
         </div>
       ) : (
         <div className="bg-card border border-border rounded-2xl overflow-hidden">
@@ -308,8 +360,8 @@ export default function CardsPage() {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {cards.map((card) => {
-                const policyName = getPolicyName((card as any).policy_id);
+              {pagination.paginatedData.map((card) => {
+                const policyName = getPolicyName(card.policy_id);
                 return (
                   <TableRow key={card.id}>
                     <TableCell className="font-medium font-mono">{card.card_number}</TableCell>
@@ -318,7 +370,7 @@ export default function CardsPage() {
                         <Badge 
                           variant="outline" 
                           className="cursor-pointer hover:bg-primary/10"
-                          onClick={() => navigate(`/app/policies/${(card as any).policy_id}`)}
+                          onClick={() => navigate(`/app/policies/${card.policy_id}`)}
                         >
                           <Shield className="w-3 h-3 mr-1" />
                           {policyName}
@@ -354,7 +406,7 @@ export default function CardsPage() {
                       <Button
                         variant="ghost"
                         size="icon"
-                        onClick={() => handleDelete(card.id)}
+                        onClick={() => setDeleteTarget(card.id)}
                         title="Supprimer"
                       >
                         <Trash2 className="w-4 h-4" />
@@ -365,8 +417,30 @@ export default function CardsPage() {
               })}
             </TableBody>
           </Table>
+          <DataTablePagination
+            currentPage={pagination.currentPage}
+            totalPages={pagination.totalPages}
+            startIndex={pagination.startIndex}
+            endIndex={pagination.endIndex}
+            totalItems={filteredCards.length}
+            onPageChange={pagination.setCurrentPage}
+            onFirstPage={pagination.goToFirstPage}
+            onLastPage={pagination.goToLastPage}
+            onNextPage={pagination.goToNextPage}
+            onPreviousPage={pagination.goToPreviousPage}
+          />
         </div>
       )}
+
+      <ConfirmDialog
+        open={!!deleteTarget}
+        onOpenChange={(open) => !open && setDeleteTarget(null)}
+        title="Supprimer la carte"
+        description="Êtes-vous sûr de vouloir supprimer cette carte ? Cette action est irréversible."
+        confirmLabel="Supprimer"
+        onConfirm={handleDelete}
+        variant="destructive"
+      />
     </div>
   );
 }

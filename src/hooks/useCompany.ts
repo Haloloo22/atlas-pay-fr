@@ -67,9 +67,41 @@ export const useCompany = () => {
     },
   });
 
+  const updateCompany = useMutation({
+    mutationFn: async (companyData: { 
+      id: string; 
+      name: string; 
+      siret?: string | null; 
+      address?: string | null; 
+      city?: string | null; 
+      postal_code?: string | null; 
+      phone?: string | null; 
+      email?: string | null;
+    }) => {
+      const { id, ...data } = companyData;
+      const { data: updated, error } = await supabase
+        .from("companies")
+        .update(data)
+        .eq("id", id)
+        .select()
+        .single();
+
+      if (error) throw error;
+      return updated;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["company"] });
+    },
+    onError: (error) => {
+      toast.error("Erreur lors de la mise à jour");
+      console.error(error);
+    },
+  });
+
   return {
     company,
     isLoading,
     createCompany,
+    updateCompany,
   };
 };

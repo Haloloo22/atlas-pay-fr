@@ -1,4 +1,4 @@
-import { LayoutDashboard, Car, Users, CreditCard, Receipt, Bell, LogOut, Shield } from "lucide-react";
+import { LayoutDashboard, Car, Users, CreditCard, Receipt, Bell, LogOut, Shield, Settings } from "lucide-react";
 import { NavLink } from "@/components/NavLink";
 import { useAuth } from "@/contexts/AuthContext";
 import { useAlerts } from "@/hooks/useAlerts";
@@ -24,6 +24,7 @@ const menuItems = [
   { title: "Politiques", url: "/app/policies", icon: Shield },
   { title: "Transactions", url: "/app/transactions", icon: Receipt },
   { title: "Alertes", url: "/app/alerts", icon: Bell },
+  { title: "Paramètres", url: "/app/settings", icon: Settings },
 ];
 
 export function AppSidebar() {
