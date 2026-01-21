@@ -1,10 +1,11 @@
 import { useState, useMemo } from "react";
-import { Receipt, Search, Filter, Fuel, MapPin, Calendar } from "lucide-react";
+import { Receipt, Search, Fuel, MapPin, Calendar, Download } from "lucide-react";
 import { useTransactions } from "@/hooks/useTransactions";
 import { useCards } from "@/hooks/useCards";
 import { useVehicles } from "@/hooks/useVehicles";
 import { useDrivers } from "@/hooks/useDrivers";
 import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 import {
   Select,
   SelectContent,
@@ -22,9 +23,13 @@ import {
 } from "@/components/ui/table";
 import { format } from "date-fns";
 import { fr } from "date-fns/locale";
+import { usePagination } from "@/hooks/usePagination";
+import { DataTablePagination } from "@/components/DataTablePagination";
+import { TableSkeleton } from "@/components/TableSkeleton";
+import { exportToCsv, transactionColumns } from "@/utils/exportCsv";
 
 const TransactionsPage = () => {
-  const { transactions, isLoading, totalAmount, totalLiters } = useTransactions();
+  const { transactions, isLoading } = useTransactions();
   const { cards } = useCards();
   const { vehicles } = useVehicles();
   const { drivers } = useDrivers();
@@ -55,6 +60,9 @@ const TransactionsPage = () => {
     });
   }, [transactions, searchTerm, filterCard, filterFuelType]);
 
+  // Pagination
+  const pagination = usePagination(filteredTransactions, { pageSize: 25 });
+
   // Calculate filtered totals
   const filteredTotalAmount = filteredTransactions.reduce(
     (sum, tx) => sum + Number(tx.amount || 0),
@@ -79,13 +87,9 @@ const TransactionsPage = () => {
     return driver ? `${driver.first_name} ${driver.last_name}` : "-";
   };
 
-  if (isLoading) {
-    return (
-      <div className="flex items-center justify-center min-h-[60vh]">
-        <div className="w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin" />
-      </div>
-    );
-  }
+  const handleExport = () => {
+    exportToCsv(filteredTransactions, transactionColumns, "transactions");
+  };
 
   return (
     <div className="space-y-6">
@@ -97,6 +101,10 @@ const TransactionsPage = () => {
             Historique des transactions carburant
           </p>
         </div>
+        <Button variant="outline" onClick={handleExport} disabled={filteredTransactions.length === 0}>
+          <Download className="w-4 h-4 mr-2" />
+          Exporter CSV
+        </Button>
       </div>
 
       {/* Stats cards */}
@@ -164,7 +172,9 @@ const TransactionsPage = () => {
       </div>
 
       {/* Transactions table */}
-      {filteredTransactions.length === 0 ? (
+      {isLoading ? (
+        <TableSkeleton columns={8} rows={10} />
+      ) : filteredTransactions.length === 0 ? (
         <div className="bg-card border border-border rounded-2xl p-12 text-center">
           <Receipt className="w-12 h-12 mx-auto mb-4 text-muted-foreground opacity-50" />
           <h3 className="text-lg font-medium mb-2">Aucune transaction</h3>
@@ -188,7 +198,7 @@ const TransactionsPage = () => {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {filteredTransactions.map((tx) => (
+              {pagination.paginatedData.map((tx) => (
                 <TableRow key={tx.id}>
                   <TableCell>
                     <div className="flex items-center gap-2">
@@ -234,6 +244,18 @@ const TransactionsPage = () => {
               ))}
             </TableBody>
           </Table>
+          <DataTablePagination
+            currentPage={pagination.currentPage}
+            totalPages={pagination.totalPages}
+            startIndex={pagination.startIndex}
+            endIndex={pagination.endIndex}
+            totalItems={filteredTransactions.length}
+            onPageChange={pagination.setCurrentPage}
+            onFirstPage={pagination.goToFirstPage}
+            onLastPage={pagination.goToLastPage}
+            onNextPage={pagination.goToNextPage}
+            onPreviousPage={pagination.goToPreviousPage}
+          />
         </div>
       )}
     </div>

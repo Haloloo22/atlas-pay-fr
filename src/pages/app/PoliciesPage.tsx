@@ -33,6 +33,8 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { usePolicies, Policy } from "@/hooks/usePolicies";
 import { useCards } from "@/hooks/useCards";
+import { TableSkeleton } from "@/components/TableSkeleton";
+import { ConfirmDialog } from "@/components/ConfirmDialog";
 
 const policySchema = z.object({
   name: z.string().min(1, "Le nom est requis"),
@@ -46,6 +48,7 @@ export default function PoliciesPage() {
   const { policies, isLoading, createPolicy, deletePolicy } = usePolicies();
   const { cards } = useCards();
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [deleteTarget, setDeleteTarget] = useState<{ id: string; linkedCards: number } | null>(null);
 
   const form = useForm<PolicyFormData>({
     resolver: zodResolver(policySchema),
@@ -88,20 +91,20 @@ export default function PoliciesPage() {
     form.reset();
   };
 
-  const handleDelete = async (id: string) => {
-    const linkedCards = cards.filter((c) => (c as any).policy_id === id);
-    if (linkedCards.length > 0) {
-      if (!confirm(`Cette politique est liée à ${linkedCards.length} carte(s). Êtes-vous sûr de vouloir la supprimer ?`)) {
-        return;
-      }
-    } else if (!confirm("Êtes-vous sûr de vouloir supprimer cette politique ?")) {
-      return;
+  const handleDeleteClick = (id: string) => {
+    const linkedCards = cards.filter((c) => c.policy_id === id).length;
+    setDeleteTarget({ id, linkedCards });
+  };
+
+  const handleDelete = async () => {
+    if (deleteTarget) {
+      await deletePolicy.mutateAsync(deleteTarget.id);
+      setDeleteTarget(null);
     }
-    await deletePolicy.mutateAsync(id);
   };
 
   const getCardCount = (policyId: string) => {
-    return cards.filter((c) => (c as any).policy_id === policyId).length;
+    return cards.filter((c) => c.policy_id === policyId).length;
   };
 
   const getActiveRulesCount = (policy: Policy) => {
@@ -185,9 +188,7 @@ export default function PoliciesPage() {
       </div>
 
       {isLoading ? (
-        <div className="flex items-center justify-center py-12">
-          <div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin" />
-        </div>
+        <TableSkeleton columns={5} rows={3} />
       ) : policies.length === 0 ? (
         <div className="bg-card border border-border rounded-2xl p-12 text-center">
           <Shield className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
@@ -248,7 +249,7 @@ export default function PoliciesPage() {
                     <Button
                       variant="ghost"
                       size="icon"
-                      onClick={() => handleDelete(policy.id)}
+                      onClick={() => handleDeleteClick(policy.id)}
                       title="Supprimer"
                     >
                       <Trash2 className="w-4 h-4" />
@@ -260,6 +261,20 @@ export default function PoliciesPage() {
           </Table>
         </div>
       )}
+
+      <ConfirmDialog
+        open={!!deleteTarget}
+        onOpenChange={(open) => !open && setDeleteTarget(null)}
+        title="Supprimer la politique"
+        description={
+          deleteTarget?.linkedCards && deleteTarget.linkedCards > 0
+            ? `Cette politique est liée à ${deleteTarget.linkedCards} carte(s). Êtes-vous sûr de vouloir la supprimer ?`
+            : "Êtes-vous sûr de vouloir supprimer cette politique ? Cette action est irréversible."
+        }
+        confirmLabel="Supprimer"
+        onConfirm={handleDelete}
+        variant="destructive"
+      />
     </div>
   );
 }
