@@ -3,8 +3,26 @@ import { Badge } from "@/components/ui/badge";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { format } from "date-fns";
 import { fr } from "date-fns/locale";
+
+interface Driver {
+  id: string;
+  first_name: string;
+  last_name: string;
+}
+
+interface Vehicle {
+  id: string;
+  plate_number: string;
+}
 
 interface CardGeneralTabProps {
   card: {
@@ -17,7 +35,10 @@ interface CardGeneralTabProps {
   };
   driverName: string;
   vehiclePlate: string;
+  drivers?: Driver[];
+  vehicles?: Vehicle[];
   onToggleActive: (isActive: boolean) => void;
+  onUpdateAssignment?: (field: "driver_id" | "vehicle_id", value: string | null) => void;
   isPending?: boolean;
 }
 
@@ -25,9 +46,14 @@ export function CardGeneralTab({
   card,
   driverName,
   vehiclePlate,
+  drivers = [],
+  vehicles = [],
   onToggleActive,
+  onUpdateAssignment,
   isPending,
 }: CardGeneralTabProps) {
+  const canEdit = !!onUpdateAssignment;
+
   return (
     <div className="grid gap-6 md:grid-cols-2">
       <Card>
@@ -80,14 +106,58 @@ export function CardGeneralTab({
               <User className="h-4 w-4" />
               Chauffeur
             </div>
-            <span className="font-medium">{driverName || "Non assigné"}</span>
+            {canEdit ? (
+              <Select
+                value={card.driver_id || "none"}
+                onValueChange={(value) => 
+                  onUpdateAssignment("driver_id", value === "none" ? null : value)
+                }
+                disabled={isPending}
+              >
+                <SelectTrigger className="w-[180px]">
+                  <SelectValue placeholder="Sélectionner" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="none">Non assigné</SelectItem>
+                  {drivers.map((driver) => (
+                    <SelectItem key={driver.id} value={driver.id}>
+                      {driver.first_name} {driver.last_name}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            ) : (
+              <span className="font-medium">{driverName || "Non assigné"}</span>
+            )}
           </div>
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2 text-muted-foreground">
               <Car className="h-4 w-4" />
               Véhicule
             </div>
-            <span className="font-medium">{vehiclePlate || "Non assigné"}</span>
+            {canEdit ? (
+              <Select
+                value={card.vehicle_id || "none"}
+                onValueChange={(value) => 
+                  onUpdateAssignment("vehicle_id", value === "none" ? null : value)
+                }
+                disabled={isPending}
+              >
+                <SelectTrigger className="w-[180px]">
+                  <SelectValue placeholder="Sélectionner" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="none">Non assigné</SelectItem>
+                  {vehicles.map((vehicle) => (
+                    <SelectItem key={vehicle.id} value={vehicle.id}>
+                      {vehicle.plate_number}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            ) : (
+              <span className="font-medium">{vehiclePlate || "Non assigné"}</span>
+            )}
           </div>
         </CardContent>
       </Card>

@@ -1,5 +1,6 @@
 import { useState, useMemo } from "react";
-import { Receipt, Search, Fuel, MapPin, Calendar, Download } from "lucide-react";
+import { Receipt, Search, Fuel, MapPin, Calendar, Download, CreditCard, Plus } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import { useTransactions } from "@/hooks/useTransactions";
 import { useCards } from "@/hooks/useCards";
 import { useVehicles } from "@/hooks/useVehicles";
@@ -29,6 +30,7 @@ import { TableSkeleton } from "@/components/TableSkeleton";
 import { exportToCsv, transactionColumns } from "@/utils/exportCsv";
 
 const TransactionsPage = () => {
+  const navigate = useNavigate();
   const { transactions, isLoading } = useTransactions();
   const { cards } = useCards();
   const { vehicles } = useVehicles();
@@ -90,6 +92,9 @@ const TransactionsPage = () => {
   const handleExport = () => {
     exportToCsv(filteredTransactions, transactionColumns, "transactions");
   };
+
+  // Check if there are no cards
+  const hasNoCards = cards.length === 0;
 
   return (
     <div className="space-y-6">
@@ -178,9 +183,17 @@ const TransactionsPage = () => {
         <div className="bg-card border border-border rounded-2xl p-12 text-center">
           <Receipt className="w-12 h-12 mx-auto mb-4 text-muted-foreground opacity-50" />
           <h3 className="text-lg font-medium mb-2">Aucune transaction</h3>
-          <p className="text-muted-foreground">
-            Les transactions apparaîtront ici une fois effectuées.
+          <p className="text-muted-foreground mb-6">
+            {hasNoCards
+              ? "Vous devez d'abord créer des cartes pour enregistrer des transactions."
+              : "Les transactions apparaîtront ici une fois effectuées."}
           </p>
+          {hasNoCards && (
+            <Button onClick={() => navigate("/app/cards")}>
+              <CreditCard className="w-4 h-4 mr-2" />
+              Gérer les cartes
+            </Button>
+          )}
         </div>
       ) : (
         <div className="bg-card border border-border rounded-2xl overflow-hidden">

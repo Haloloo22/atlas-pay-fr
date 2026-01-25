@@ -21,7 +21,7 @@ export default function PolicyDetailPage() {
   const { data: policy, isLoading } = usePolicy(policyId);
   const { cards } = useCards();
 
-  const linkedCards = cards.filter((c) => (c as any).policy_id === policyId);
+  const linkedCards = cards.filter((c) => c.policy_id === policyId);
 
   const updatePolicy = useMutation({
     mutationFn: async (updates: Record<string, unknown>) => {

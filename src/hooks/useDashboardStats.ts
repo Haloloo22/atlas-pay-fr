@@ -84,9 +84,9 @@ export function useDashboardStats(dateRange: DateRangeOption = "6m") {
     const filteredTotal = filteredTransactions.reduce((sum, tx) => sum + Number(tx.amount || 0), 0);
     const filteredLiters = filteredTransactions.reduce((sum, tx) => sum + Number(tx.liters || 0), 0);
 
-    // Spending by station
+    // Spending by station (use filtered transactions)
     const stationMap = new Map<string, number>();
-    transactions.forEach((tx) => {
+    filteredTransactions.forEach((tx) => {
       const stationName = tx.station_brand || tx.station_name || "Autre";
       stationMap.set(stationName, (stationMap.get(stationName) || 0) + Number(tx.amount || 0));
     });
@@ -95,9 +95,9 @@ export function useDashboardStats(dateRange: DateRangeOption = "6m") {
       .sort((a, b) => b.amount - a.amount)
       .slice(0, 5);
 
-    // Spending by vehicle
+    // Spending by vehicle (use filtered transactions)
     const vehicleMap = new Map<string, number>();
-    transactions.forEach((tx) => {
+    filteredTransactions.forEach((tx) => {
       if (tx.card?.vehicle_id) {
         vehicleMap.set(tx.card.vehicle_id, (vehicleMap.get(tx.card.vehicle_id) || 0) + Number(tx.amount || 0));
       }
@@ -110,9 +110,9 @@ export function useDashboardStats(dateRange: DateRangeOption = "6m") {
       .sort((a, b) => b.amount - a.amount)
       .slice(0, 5);
 
-    // Spending by driver
+    // Spending by driver (use filtered transactions)
     const driverMap = new Map<string, number>();
-    transactions.forEach((tx) => {
+    filteredTransactions.forEach((tx) => {
       if (tx.card?.driver_id) {
         driverMap.set(tx.card.driver_id, (driverMap.get(tx.card.driver_id) || 0) + Number(tx.amount || 0));
       }
@@ -125,9 +125,9 @@ export function useDashboardStats(dateRange: DateRangeOption = "6m") {
       .sort((a, b) => b.amount - a.amount)
       .slice(0, 5);
 
-    // Spending by fuel type
+    // Spending by fuel type (use filtered transactions)
     const fuelMap = new Map<string, number>();
-    transactions.forEach((tx) => {
+    filteredTransactions.forEach((tx) => {
       const fuelType = tx.fuel_type || "Autre";
       fuelMap.set(fuelType, (fuelMap.get(fuelType) || 0) + Number(tx.amount || 0));
     });
@@ -135,20 +135,23 @@ export function useDashboardStats(dateRange: DateRangeOption = "6m") {
       .map(([type, amount]) => ({ type, amount }))
       .sort((a, b) => b.amount - a.amount);
 
-    // Monthly spending (last 6 months)
+    // Monthly spending (based on date range)
     const monthlySpending: { month: string; amount: number }[] = [];
     for (let i = 5; i >= 0; i--) {
       const monthStart = startOfMonth(subMonths(now, i));
       const monthEnd = i === 0 ? now : startOfMonth(subMonths(now, i - 1));
-      const monthTxs = transactions.filter((tx) => {
-        const txDate = new Date(tx.transaction_date);
-        return isWithinInterval(txDate, { start: monthStart, end: monthEnd });
-      });
-      const monthTotal = monthTxs.reduce((sum, tx) => sum + Number(tx.amount || 0), 0);
-      monthlySpending.push({
-        month: format(monthStart, "MMM"),
-        amount: monthTotal,
-      });
+      // Only include months within the date range
+      if (monthStart >= rangeStart) {
+        const monthTxs = transactions.filter((tx) => {
+          const txDate = new Date(tx.transaction_date);
+          return isWithinInterval(txDate, { start: monthStart, end: monthEnd });
+        });
+        const monthTotal = monthTxs.reduce((sum, tx) => sum + Number(tx.amount || 0), 0);
+        monthlySpending.push({
+          month: format(monthStart, "MMM"),
+          amount: monthTotal,
+        });
+      }
     }
 
     // Daily spending (last 7 days)
@@ -167,9 +170,9 @@ export function useDashboardStats(dateRange: DateRangeOption = "6m") {
       });
     }
 
-    // Averages
-    const averagePerTransaction = transactions.length > 0 ? totalAmount / transactions.length : 0;
-    const averagePricePerLiter = totalLiters > 0 ? totalAmount / totalLiters : 0;
+    // Averages (use filtered transactions)
+    const averagePerTransaction = filteredTransactions.length > 0 ? filteredTotal / filteredTransactions.length : 0;
+    const averagePricePerLiter = filteredLiters > 0 ? filteredTotal / filteredLiters : 0;
 
     return {
       thisMonthTotal,
@@ -185,7 +188,7 @@ export function useDashboardStats(dateRange: DateRangeOption = "6m") {
       monthlySpending,
       dailySpending,
       averagePerTransaction,
-      totalLiters,
+      totalLiters: filteredLiters,
       averagePricePerLiter,
       recentTransactions: transactions.slice(0, 5),
       filteredTotal,
