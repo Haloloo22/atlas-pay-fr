@@ -4,7 +4,8 @@ import { useVehicles } from "./useVehicles";
 import { useDrivers } from "./useDrivers";
 import { useCards } from "./useCards";
 import { useAlerts } from "./useAlerts";
-import { startOfMonth, subMonths, isWithinInterval, format, subDays, startOfDay } from "date-fns";
+import { startOfMonth, subMonths, isWithinInterval, format, subDays, startOfDay, isAfter } from "date-fns";
+import { DateRangeOption, getDateRangeFromOption } from "@/components/dashboard/DateRangeFilter";
 
 export interface DashboardStats {
   // Monthly comparison
@@ -36,9 +37,14 @@ export interface DashboardStats {
   
   // Recent
   recentTransactions: TransactionWithDetails[];
+  
+  // Filtered totals
+  filteredTotal: number;
+  filteredLiters: number;
+  filteredTransactionCount: number;
 }
 
-export function useDashboardStats() {
+export function useDashboardStats(dateRange: DateRangeOption = "6m") {
   const { transactions, isLoading: transactionsLoading, totalAmount, totalLiters } = useTransactions();
   const { vehicles, isLoading: vehiclesLoading } = useVehicles();
   const { drivers, isLoading: driversLoading } = useDrivers();
@@ -50,8 +56,17 @@ export function useDashboardStats() {
     const thisMonthStart = startOfMonth(now);
     const lastMonthStart = startOfMonth(subMonths(now, 1));
     const lastMonthEnd = startOfMonth(now);
+    
+    // Get date range for filtering
+    const { start: rangeStart } = getDateRangeFromOption(dateRange);
+    
+    // Filter transactions by date range
+    const filteredTransactions = transactions.filter((tx) => {
+      const txDate = new Date(tx.transaction_date);
+      return isAfter(txDate, rangeStart);
+    });
 
-    // This month vs last month
+    // This month vs last month (always calculated from all transactions)
     const thisMonthTxs = transactions.filter((tx) => {
       const txDate = new Date(tx.transaction_date);
       return txDate >= thisMonthStart;
@@ -64,6 +79,10 @@ export function useDashboardStats() {
     const thisMonthTotal = thisMonthTxs.reduce((sum, tx) => sum + Number(tx.amount || 0), 0);
     const lastMonthTotal = lastMonthTxs.reduce((sum, tx) => sum + Number(tx.amount || 0), 0);
     const monthlyChange = lastMonthTotal > 0 ? ((thisMonthTotal - lastMonthTotal) / lastMonthTotal) * 100 : 0;
+    
+    // Filtered totals
+    const filteredTotal = filteredTransactions.reduce((sum, tx) => sum + Number(tx.amount || 0), 0);
+    const filteredLiters = filteredTransactions.reduce((sum, tx) => sum + Number(tx.liters || 0), 0);
 
     // Spending by station
     const stationMap = new Map<string, number>();
@@ -169,8 +188,11 @@ export function useDashboardStats() {
       totalLiters,
       averagePricePerLiter,
       recentTransactions: transactions.slice(0, 5),
+      filteredTotal,
+      filteredLiters,
+      filteredTransactionCount: filteredTransactions.length,
     };
-  }, [transactions, vehicles, drivers, cards, unreadCount, totalAmount, totalLiters]);
+  }, [transactions, vehicles, drivers, cards, unreadCount, totalAmount, totalLiters, dateRange]);
 
   return {
     stats,

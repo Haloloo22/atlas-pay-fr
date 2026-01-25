@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider } from "@/contexts/AuthContext";
 import ProtectedRoute from "@/components/ProtectedRoute";
+import { ErrorBoundary } from "@/components/ErrorBoundary";
 
 // Public pages
 import Index from "./pages/Index";
@@ -34,54 +35,56 @@ import SettingsPage from "./pages/app/SettingsPage";
 const queryClient = new QueryClient();
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <AuthProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Routes>
-            {/* Public routes */}
-            <Route path="/" element={<Index />} />
-            <Route path="/pricing" element={<Pricing />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/auth" element={<Auth />} />
-            <Route path="/login" element={<Navigate to="/auth" replace />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/legal" element={<Legal />} />
-            <Route path="/terms" element={<Terms />} />
-            <Route path="/privacy" element={<Privacy />} />
+  <ErrorBoundary>
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <AuthProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <Routes>
+              {/* Public routes */}
+              <Route path="/" element={<Index />} />
+              <Route path="/pricing" element={<Pricing />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/auth" element={<Auth />} />
+              <Route path="/login" element={<Navigate to="/auth" replace />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/legal" element={<Legal />} />
+              <Route path="/terms" element={<Terms />} />
+              <Route path="/privacy" element={<Privacy />} />
 
-            {/* Protected app routes with layout */}
-            <Route
-              path="/app"
-              element={
-                <ProtectedRoute>
-                  <AppLayout />
-                </ProtectedRoute>
-              }
-            >
-              <Route index element={<Navigate to="/app/dashboard" replace />} />
-              <Route path="dashboard" element={<AppDashboard />} />
-              <Route path="vehicles" element={<VehiclesPage />} />
-              <Route path="drivers" element={<DriversPage />} />
-              <Route path="cards" element={<CardsPage />} />
-              <Route path="cards/:cardId" element={<CardDetailPage />} />
-              <Route path="policies" element={<PoliciesPage />} />
-              <Route path="policies/:policyId" element={<PolicyDetailPage />} />
-              <Route path="transactions" element={<TransactionsPage />} />
-              <Route path="alerts" element={<AlertsPage />} />
-              <Route path="settings" element={<SettingsPage />} />
-            </Route>
+              {/* Protected app routes with layout */}
+              <Route
+                path="/app"
+                element={
+                  <ProtectedRoute>
+                    <AppLayout />
+                  </ProtectedRoute>
+                }
+              >
+                <Route index element={<Navigate to="/app/dashboard" replace />} />
+                <Route path="dashboard" element={<AppDashboard />} />
+                <Route path="vehicles" element={<VehiclesPage />} />
+                <Route path="drivers" element={<DriversPage />} />
+                <Route path="cards" element={<CardsPage />} />
+                <Route path="cards/:cardId" element={<CardDetailPage />} />
+                <Route path="policies" element={<PoliciesPage />} />
+                <Route path="policies/:policyId" element={<PolicyDetailPage />} />
+                <Route path="transactions" element={<TransactionsPage />} />
+                <Route path="alerts" element={<AlertsPage />} />
+                <Route path="settings" element={<SettingsPage />} />
+              </Route>
 
-            {/* Catch-all */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </AuthProvider>
-    </TooltipProvider>
-  </QueryClientProvider>
+              {/* Catch-all */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </BrowserRouter>
+        </AuthProvider>
+      </TooltipProvider>
+    </QueryClientProvider>
+  </ErrorBoundary>
 );
 
 export default App;
