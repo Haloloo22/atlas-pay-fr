@@ -8,10 +8,13 @@ import Process from "@/components/Process";
 import Security from "@/components/Security";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
+import ScrollProgress from "@/components/ui/ScrollProgress";
+import BackToTop from "@/components/ui/BackToTop";
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen scroll-smooth">
+      <ScrollProgress />
       <Header />
       <main>
         <HeroWithCard />
@@ -24,6 +27,7 @@ const Index = () => {
         <CTA />
       </main>
       <Footer />
+      <BackToTop />
     </div>
   );
 };

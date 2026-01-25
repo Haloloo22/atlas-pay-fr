@@ -119,6 +119,34 @@ export default {
             transform: "translateY(0)",
           },
         },
+        "marquee": {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-33.333%)" },
+        },
+        "shimmer": {
+          "0%": { backgroundPosition: "200% 0" },
+          "100%": { backgroundPosition: "-200% 0" },
+        },
+        "scroll-reveal": {
+          "0%": {
+            opacity: "0",
+            transform: "translateY(40px)",
+          },
+          "100%": {
+            opacity: "1",
+            transform: "translateY(0)",
+          },
+        },
+        "tilt-in": {
+          "0%": {
+            opacity: "0",
+            transform: "perspective(1000px) rotateX(10deg) translateY(20px)",
+          },
+          "100%": {
+            opacity: "1",
+            transform: "perspective(1000px) rotateX(0deg) translateY(0)",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -127,6 +155,10 @@ export default {
         "scale-fade-in": "scale-fade-in 0.8s ease-out forwards",
         "card-entrance": "card-entrance 1s cubic-bezier(0.34,1.56,0.64,1) forwards",
         "float-up": "float-up 0.8s ease-out forwards",
+        "marquee": "marquee 20s linear infinite",
+        "shimmer": "shimmer 2s linear infinite",
+        "scroll-reveal": "scroll-reveal 0.6s ease-out forwards",
+        "tilt-in": "tilt-in 0.8s ease-out forwards",
       },
     },
   },

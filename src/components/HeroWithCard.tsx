@@ -1,11 +1,12 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Play, Lock, Zap, Shield } from "lucide-react";
+import { ArrowRight, Play, Lock, Zap, Shield, CheckCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 import fleetDriverImage from "@/assets/fleet-driver.jpg";
+import StationLogos from "@/components/StationLogos";
 
 const HeroWithCard = () => {
   return (
-    <section className="relative pt-32 md:pt-40 pb-24 px-6 overflow-hidden">
+    <section className="relative pt-28 md:pt-36 pb-20 px-6 overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-accent/5 to-background -z-10"></div>
       
@@ -49,31 +50,36 @@ const HeroWithCard = () => {
               </Button>
             </div>
 
+            {/* Trust Badges - Enhanced */}
             <div 
-              className="grid grid-cols-3 gap-4 pt-6 opacity-0 animate-[fade-in_0.8s_ease-out_0.5s_forwards]"
+              className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6 opacity-0 animate-[fade-in_0.8s_ease-out_0.5s_forwards]"
             >
-              <div className="space-y-1.5">
-                <div className="flex items-center gap-1.5">
-                  <Shield className="w-4 h-4 text-success" />
-                  <span className="text-sm font-semibold text-foreground">100% Sécurisé</span>
+              <div className="flex items-center gap-3 p-3 rounded-xl bg-success/5 border border-success/20 hover:border-success/40 transition-colors">
+                <div className="w-10 h-10 rounded-lg bg-success/10 flex items-center justify-center shrink-0">
+                  <Shield className="w-5 h-5 text-success" />
                 </div>
-                <p className="text-xs text-muted-foreground">Conforme Bank Al-Maghrib</p>
+                <div>
+                  <span className="text-sm font-bold text-foreground block">100% Sécurisé</span>
+                  <p className="text-xs text-muted-foreground">Conforme Bank Al-Maghrib</p>
+                </div>
               </div>
-              <div className="space-y-1.5">
-                <div className="flex items-center gap-1.5">
-                  <Zap className="w-4 h-4 text-warning" />
-                  <span className="text-sm font-semibold text-foreground">Déploiement 48h</span>
+              <div className="flex items-center gap-3 p-3 rounded-xl bg-warning/5 border border-warning/20 hover:border-warning/40 transition-colors">
+                <div className="w-10 h-10 rounded-lg bg-warning/10 flex items-center justify-center shrink-0">
+                  <Zap className="w-5 h-5 text-warning" />
                 </div>
-                <p className="text-xs text-muted-foreground">Mise en place express</p>
+                <div>
+                  <span className="text-sm font-bold text-foreground block">Déploiement 48h</span>
+                  <p className="text-xs text-muted-foreground">Mise en place express</p>
+                </div>
               </div>
-              <div className="space-y-1.5">
-                <div className="flex items-center gap-1.5">
-                  <div className="w-4 h-4 rounded-full bg-accent/20 flex items-center justify-center">
-                    <span className="text-accent text-xs font-bold">✓</span>
-                  </div>
-                  <span className="text-sm font-semibold text-foreground">Sans engagement</span>
+              <div className="flex items-center gap-3 p-3 rounded-xl bg-accent/5 border border-accent/20 hover:border-accent/40 transition-colors">
+                <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center shrink-0">
+                  <CheckCircle className="w-5 h-5 text-accent" />
                 </div>
-                <p className="text-xs text-muted-foreground">Résiliable à tout moment</p>
+                <div>
+                  <span className="text-sm font-bold text-foreground block">Sans engagement</span>
+                  <p className="text-xs text-muted-foreground">Résiliable à tout moment</p>
+                </div>
               </div>
             </div>
           </div>
@@ -151,8 +157,8 @@ const HeroWithCard = () => {
           </div>
         </div>
 
-        {/* Value Propositions */}
-        <div className="mt-24 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+        {/* Value Propositions - Reduced spacing */}
+        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
           <div className="text-center space-y-2 opacity-0 animate-[float-up_0.8s_ease-out_0.6s_forwards]">
             <div className="text-5xl md:text-6xl font-extrabold text-primary">-15%</div>
             <p className="text-lg font-semibold text-foreground">Sur vos coûts carburant</p>
@@ -170,17 +176,12 @@ const HeroWithCard = () => {
           </div>
         </div>
 
-        {/* Accepted stations */}
-        <div className="mt-20 text-center space-y-6 opacity-0 animate-[fade-in_0.8s_ease-out_1.2s_forwards]">
+        {/* Accepted stations with real logos */}
+        <div className="mt-16 text-center space-y-6 opacity-0 animate-[fade-in_0.8s_ease-out_1.2s_forwards]">
           <p className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
             Acceptée partout au Maroc
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-8 lg:gap-12 opacity-70">
-            <span className="text-xl font-bold text-muted-foreground hover:text-primary transition-colors">Total</span>
-            <span className="text-xl font-bold text-muted-foreground hover:text-primary transition-colors">Shell</span>
-            <span className="text-xl font-bold text-muted-foreground hover:text-primary transition-colors">Afriquia</span>
-            <span className="text-xl font-bold text-muted-foreground hover:text-primary transition-colors">Winxo</span>
-          </div>
+          <StationLogos variant="marquee" className="max-w-2xl mx-auto" />
         </div>
       </div>
     </section>
