@@ -82,9 +82,8 @@ export default function CardDetailPage() {
   };
 
   const getCurrentPolicy = () => {
-    const policyId = (card as any)?.policy_id;
-    if (!policyId) return null;
-    return policies.find((p) => p.id === policyId);
+    if (!card?.policy_id) return null;
+    return policies.find((p) => p.id === card.policy_id);
   };
 
   if (isLoading) {
@@ -137,7 +136,7 @@ export default function CardDetailPage() {
           </div>
           <div className="flex items-center gap-3">
             <Select
-              value={(card as any).policy_id || "none"}
+              value={card.policy_id || "none"}
               onValueChange={(value) => {
                 updateCard.mutate({ policy_id: value === "none" ? null : value });
               }}
@@ -231,7 +230,10 @@ export default function CardDetailPage() {
             }}
             driverName={getDriverName(card.driver_id)}
             vehiclePlate={getVehiclePlate(card.vehicle_id)}
+            drivers={drivers}
+            vehicles={vehicles}
             onToggleActive={(isActive) => updateCard.mutate({ is_active: isActive })}
+            onUpdateAssignment={(field, value) => updateCard.mutate({ [field]: value })}
             isPending={updateCard.isPending}
           />
         </TabsContent>

@@ -39,11 +39,19 @@ import type { Database } from "@/integrations/supabase/types";
 
 type Driver = Database["public"]["Tables"]["drivers"]["Row"];
 
+// Moroccan phone number format: +212 or 0 followed by 6/7/5 and 8 digits
+const phoneRegex = /^(\+212|0)(5|6|7)[0-9]{8}$/;
+
 const driverSchema = z.object({
-  first_name: z.string().min(1, "Le prénom est requis"),
-  last_name: z.string().min(1, "Le nom est requis"),
+  first_name: z.string().min(1, "Le prénom est requis").max(50, "Maximum 50 caractères"),
+  last_name: z.string().min(1, "Le nom est requis").max(50, "Maximum 50 caractères"),
   email: z.string().email("Email invalide").optional().or(z.literal("")),
-  phone: z.string().optional(),
+  phone: z
+    .string()
+    .optional()
+    .refine((val) => !val || phoneRegex.test(val.replace(/\s/g, "")), {
+      message: "Format invalide (ex: +212612345678)",
+    }),
   license_number: z.string().optional(),
   is_active: z.boolean().default(true),
 });

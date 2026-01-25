@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -67,6 +67,29 @@ export default function SettingsPage() {
     },
   });
 
+  // Load profile data from profiles table
+  useEffect(() => {
+    const loadProfile = async () => {
+      if (!user?.id) return;
+      
+      const { data: profile } = await supabase
+        .from("profiles")
+        .select("first_name, last_name, phone")
+        .eq("user_id", user.id)
+        .maybeSingle();
+      
+      if (profile) {
+        profileForm.reset({
+          first_name: profile.first_name || user?.user_metadata?.first_name || "",
+          last_name: profile.last_name || user?.user_metadata?.last_name || "",
+          phone: profile.phone || "",
+        });
+      }
+    };
+    
+    loadProfile();
+  }, [user?.id]);
+
   // Password form
   const passwordForm = useForm<PasswordFormData>({
     resolver: zodResolver(passwordSchema),
@@ -92,16 +115,31 @@ export default function SettingsPage() {
   });
 
   const onProfileSubmit = async (data: ProfileFormData) => {
+    if (!user?.id) return;
     setIsProfileLoading(true);
     try {
-      const { error } = await supabase.auth.updateUser({
+      // Update user metadata
+      const { error: authError } = await supabase.auth.updateUser({
         data: {
           first_name: data.first_name,
           last_name: data.last_name,
         },
       });
 
-      if (error) throw error;
+      if (authError) throw authError;
+
+      // Also update profiles table for phone number persistence
+      const { error: profileError } = await supabase
+        .from("profiles")
+        .update({
+          first_name: data.first_name,
+          last_name: data.last_name,
+          phone: data.phone || null,
+        })
+        .eq("user_id", user.id);
+
+      if (profileError) throw profileError;
+
       toast.success("Profil mis à jour");
     } catch (error: any) {
       toast.error(error.message || "Erreur lors de la mise à jour");
@@ -111,8 +149,22 @@ export default function SettingsPage() {
   };
 
   const onPasswordSubmit = async (data: PasswordFormData) => {
+    if (!user?.email) return;
     setIsPasswordLoading(true);
     try {
+      // First verify current password by attempting to sign in
+      const { error: signInError } = await supabase.auth.signInWithPassword({
+        email: user.email,
+        password: data.current_password,
+      });
+
+      if (signInError) {
+        toast.error("Le mot de passe actuel est incorrect");
+        setIsPasswordLoading(false);
+        return;
+      }
+
+      // If current password is valid, proceed with update
       const { error } = await supabase.auth.updateUser({
         password: data.new_password,
       });

@@ -141,9 +141,9 @@ export default function AlertsPage() {
           <CardContent className="flex flex-col items-center justify-center py-12">
             <Bell className="w-12 h-12 text-muted-foreground mb-4" />
             <h3 className="text-lg font-medium mb-1">Aucune alerte</h3>
-            <p className="text-muted-foreground text-center">
+            <p className="text-muted-foreground text-center max-w-md">
               {alerts.length === 0
-                ? "Vous n'avez pas encore d'alertes"
+                ? "Les alertes sont générées automatiquement lorsqu'une transaction dépasse les limites, est effectuée hors zone ou en dehors des horaires autorisés."
                 : "Aucune alerte ne correspond aux filtres sélectionnés"}
             </p>
           </CardContent>

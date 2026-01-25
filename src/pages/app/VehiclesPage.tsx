@@ -46,8 +46,16 @@ import type { Database } from "@/integrations/supabase/types";
 
 type Vehicle = Database["public"]["Tables"]["vehicles"]["Row"];
 
+// Moroccan plate number format: 12345-A-67 or similar patterns
+const plateNumberRegex = /^[0-9]{1,5}-[A-Z]{1,3}-[0-9]{1,3}$|^[0-9]{1,6}[A-Z]{1,3}[0-9]{1,2}$/i;
+
 const vehicleSchema = z.object({
-  plate_number: z.string().min(1, "L'immatriculation est requise"),
+  plate_number: z
+    .string()
+    .min(1, "L'immatriculation est requise")
+    .refine((val) => plateNumberRegex.test(val.replace(/\s/g, "")), {
+      message: "Format invalide (ex: 12345-A-67)",
+    }),
   brand: z.string().optional(),
   model: z.string().optional(),
   vehicle_type: z.enum(["car", "truck", "van", "motorcycle"]).default("car"),
