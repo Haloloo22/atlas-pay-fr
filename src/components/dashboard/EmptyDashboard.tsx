@@ -73,15 +73,28 @@ export function EmptyDashboard() {
         </div>
       </div>
 
-      <Button 
-        size="lg" 
-        onClick={handleSeedDemoData} 
-        disabled={isSeeding}
-        className="gap-2"
-      >
-        <Sparkles className="w-4 h-4" />
-        {isSeeding ? "Génération en cours..." : "Générer des données de démo"}
-      </Button>
+      <div className="flex flex-col sm:flex-row gap-3">
+        <Button 
+          size="lg" 
+          onClick={handleSeedDemoData} 
+          disabled={isSeeding || isSeedingAlami}
+          className="gap-2"
+        >
+          <Sparkles className="w-4 h-4" />
+          {isSeeding ? "Génération en cours..." : "Générer des données de démo"}
+        </Button>
+
+        <Button 
+          size="lg" 
+          variant="outline"
+          onClick={handleSeedAlami} 
+          disabled={isSeeding || isSeedingAlami}
+          className="gap-2"
+        >
+          <Building2 className="w-4 h-4" />
+          {isSeedingAlami ? "Création en cours..." : "Démo : Bâtiment Alami & Fils"}
+        </Button>
+      </div>
       
       <p className="text-xs text-muted-foreground mt-4">
         Cela créera des véhicules, chauffeurs, cartes et transactions fictifs pour explorer la plateforme.
