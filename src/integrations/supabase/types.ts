@@ -753,6 +753,10 @@ export type Database = {
         }
         Returns: boolean
       }
+      seed_company_alerts: {
+        Args: { _alerts: Json; _company_id: string }
+        Returns: undefined
+      }
     }
     Enums: {
       app_role: "admin" | "fleet_manager" | "accountant" | "viewer"
