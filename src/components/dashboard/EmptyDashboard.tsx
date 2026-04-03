@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { Sparkles, Car, Users, CreditCard, TrendingUp } from "lucide-react";
+import { Sparkles, Car, Users, CreditCard, TrendingUp, Building2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { seedDemoData } from "@/utils/seedDemoData";
+import { seedAlamiData } from "@/utils/seedAlamiData";
 import { useCompany } from "@/hooks/useCompany";
 import { useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";

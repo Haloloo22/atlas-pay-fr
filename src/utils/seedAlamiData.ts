@@ -227,12 +227,13 @@ export async function seedAlamiData() {
     },
   ];
 
-  // Alerts INSERT policy blocks client inserts (WITH CHECK false).
-  // Use service role or handle gracefully.
-  try {
-    await supabase.from("alerts").insert(alertsToCreate);
-  } catch {
-    console.warn("Alerts could not be inserted (RLS restriction). Creating via workaround...");
+  // Use the seed_company_alerts RPC to bypass the restrictive INSERT policy
+  const { error: alertErr } = await supabase.rpc("seed_company_alerts", {
+    _company_id: cid,
+    _alerts: JSON.stringify(alertsToCreate),
+  } as any);
+  if (alertErr) {
+    console.warn("Alerts insertion failed:", alertErr.message);
   }
 
   return {
