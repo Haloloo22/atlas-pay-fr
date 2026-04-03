@@ -11,6 +11,7 @@ export function EmptyDashboard() {
   const { company } = useCompany();
   const queryClient = useQueryClient();
   const [isSeeding, setIsSeeding] = useState(false);
+  const [isSeedingAlami, setIsSeedingAlami] = useState(false);
 
   const handleSeedDemoData = async () => {
     if (!company) return;
@@ -19,14 +20,26 @@ export function EmptyDashboard() {
     try {
       await seedDemoData(company.id);
       toast.success("Données de démonstration générées avec succès !");
-      
-      // Invalidate all queries to refresh data
       await queryClient.invalidateQueries();
     } catch (error) {
       console.error("Error seeding demo data:", error);
       toast.error("Erreur lors de la génération des données");
     } finally {
       setIsSeeding(false);
+    }
+  };
+
+  const handleSeedAlami = async () => {
+    setIsSeedingAlami(true);
+    try {
+      await seedAlamiData();
+      toast.success("Société 'Bâtiment Alami & Fils' créée avec succès ! Rafraîchissez la page pour y accéder.");
+      await queryClient.invalidateQueries();
+    } catch (error) {
+      console.error("Error seeding Alami data:", error);
+      toast.error("Erreur lors de la création de la société Alami");
+    } finally {
+      setIsSeedingAlami(false);
     }
   };
 
