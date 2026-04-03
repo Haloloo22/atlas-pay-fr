@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { Sparkles, Car, Users, CreditCard, TrendingUp } from "lucide-react";
+import { Sparkles, Car, Users, CreditCard, TrendingUp, Building2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { seedDemoData } from "@/utils/seedDemoData";
+import { seedAlamiData } from "@/utils/seedAlamiData";
 import { useCompany } from "@/hooks/useCompany";
 import { useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
@@ -10,6 +11,7 @@ export function EmptyDashboard() {
   const { company } = useCompany();
   const queryClient = useQueryClient();
   const [isSeeding, setIsSeeding] = useState(false);
+  const [isSeedingAlami, setIsSeedingAlami] = useState(false);
 
   const handleSeedDemoData = async () => {
     if (!company) return;
@@ -18,14 +20,26 @@ export function EmptyDashboard() {
     try {
       await seedDemoData(company.id);
       toast.success("Données de démonstration générées avec succès !");
-      
-      // Invalidate all queries to refresh data
       await queryClient.invalidateQueries();
     } catch (error) {
       console.error("Error seeding demo data:", error);
       toast.error("Erreur lors de la génération des données");
     } finally {
       setIsSeeding(false);
+    }
+  };
+
+  const handleSeedAlami = async () => {
+    setIsSeedingAlami(true);
+    try {
+      await seedAlamiData();
+      toast.success("Société 'Bâtiment Alami & Fils' créée avec succès ! Rafraîchissez la page pour y accéder.");
+      await queryClient.invalidateQueries();
+    } catch (error) {
+      console.error("Error seeding Alami data:", error);
+      toast.error("Erreur lors de la création de la société Alami");
+    } finally {
+      setIsSeedingAlami(false);
     }
   };
 
@@ -59,15 +73,28 @@ export function EmptyDashboard() {
         </div>
       </div>
 
-      <Button 
-        size="lg" 
-        onClick={handleSeedDemoData} 
-        disabled={isSeeding}
-        className="gap-2"
-      >
-        <Sparkles className="w-4 h-4" />
-        {isSeeding ? "Génération en cours..." : "Générer des données de démo"}
-      </Button>
+      <div className="flex flex-col sm:flex-row gap-3">
+        <Button 
+          size="lg" 
+          onClick={handleSeedDemoData} 
+          disabled={isSeeding || isSeedingAlami}
+          className="gap-2"
+        >
+          <Sparkles className="w-4 h-4" />
+          {isSeeding ? "Génération en cours..." : "Générer des données de démo"}
+        </Button>
+
+        <Button 
+          size="lg" 
+          variant="outline"
+          onClick={handleSeedAlami} 
+          disabled={isSeeding || isSeedingAlami}
+          className="gap-2"
+        >
+          <Building2 className="w-4 h-4" />
+          {isSeedingAlami ? "Création en cours..." : "Démo : Bâtiment Alami & Fils"}
+        </Button>
+      </div>
       
       <p className="text-xs text-muted-foreground mt-4">
         Cela créera des véhicules, chauffeurs, cartes et transactions fictifs pour explorer la plateforme.
