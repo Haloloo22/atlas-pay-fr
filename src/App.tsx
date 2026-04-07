@@ -17,8 +17,18 @@ import About from "./pages/About";
 import Legal from "./pages/Legal";
 import Terms from "./pages/Terms";
 import Privacy from "./pages/Privacy";
-import Demo from "./pages/Demo";
 import NotFound from "./pages/NotFound";
+
+// Demo pages
+import { DemoLayout } from "./components/demo/DemoLayout";
+import DemoDashboard from "./pages/demo/DemoDashboard";
+import DemoVehiclesPage from "./pages/demo/DemoVehiclesPage";
+import DemoDriversPage from "./pages/demo/DemoDriversPage";
+import DemoCardsPage from "./pages/demo/DemoCardsPage";
+import DemoPoliciesPage from "./pages/demo/DemoPoliciesPage";
+import DemoTransactionsPage from "./pages/demo/DemoTransactionsPage";
+import DemoAlertsPage from "./pages/demo/DemoAlertsPage";
+import DemoSettingsPage from "./pages/demo/DemoSettingsPage";
 
 // Protected app pages
 import { AppLayout } from "./components/app/AppLayout";
@@ -55,7 +65,18 @@ const App = () => (
               <Route path="/legal" element={<Legal />} />
               <Route path="/terms" element={<Terms />} />
               <Route path="/privacy" element={<Privacy />} />
-              <Route path="/demo" element={<Demo />} />
+
+              {/* Demo routes with sidebar layout */}
+              <Route path="/demo" element={<DemoLayout />}>
+                <Route index element={<DemoDashboard />} />
+                <Route path="vehicles" element={<DemoVehiclesPage />} />
+                <Route path="drivers" element={<DemoDriversPage />} />
+                <Route path="cards" element={<DemoCardsPage />} />
+                <Route path="policies" element={<DemoPoliciesPage />} />
+                <Route path="transactions" element={<DemoTransactionsPage />} />
+                <Route path="alerts" element={<DemoAlertsPage />} />
+                <Route path="settings" element={<DemoSettingsPage />} />
+              </Route>
 
               {/* Protected app routes with layout */}
               <Route
