@@ -82,14 +82,14 @@ const Header = () => {
                 Connexion
               </Button>
             </Link>
-            <Link to="/contact?type=demo">
+            <Link to="/demo">
               <Button 
                 className={cn(
                   "bg-primary hover:bg-primary/90 text-primary-foreground font-bold rounded-xl shadow-lg hover:shadow-xl transition-all relative overflow-hidden group",
                   scrolled ? "text-sm px-5 py-5" : "text-base px-6 py-6"
                 )}
               >
-                <span className="relative z-10">Demander une démo</span>
+                <span className="relative z-10">Voir la démo</span>
                 <span className="absolute inset-0 bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_100%] opacity-0 group-hover:opacity-100 group-hover:animate-[shimmer_1.5s_infinite] transition-opacity" />
               </Button>
             </Link>
@@ -148,9 +148,9 @@ const Header = () => {
                           Connexion
                         </Button>
                       </Link>
-                      <Link to="/contact?type=demo" onClick={() => setIsOpen(false)}>
+                      <Link to="/demo" onClick={() => setIsOpen(false)}>
                         <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold text-base py-6 rounded-xl">
-                          Demander une démo
+                          Voir la démo
                         </Button>
                       </Link>
                     </div>
