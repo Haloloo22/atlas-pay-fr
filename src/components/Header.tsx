@@ -77,20 +77,20 @@ const Header = () => {
 
           {/* Desktop CTA Buttons */}
           <div className="hidden lg:flex items-center space-x-4">
-            <Link to="/auth">
-              <Button variant="ghost" className="text-sm font-medium text-muted-foreground hover:text-primary">
-                Connexion
-              </Button>
-            </Link>
             <Link to="/demo">
               <Button 
+                variant="outline"
                 className={cn(
-                  "bg-primary hover:bg-primary/90 text-primary-foreground font-bold rounded-xl shadow-lg hover:shadow-xl transition-all relative overflow-hidden group",
+                  "border-2 border-primary text-primary hover:bg-primary/10 font-bold rounded-xl transition-all",
                   scrolled ? "text-sm px-5 py-5" : "text-base px-6 py-6"
                 )}
               >
-                <span className="relative z-10">Voir la démo</span>
-                <span className="absolute inset-0 bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_100%] opacity-0 group-hover:opacity-100 group-hover:animate-[shimmer_1.5s_infinite] transition-opacity" />
+                Voir la démo
+              </Button>
+            </Link>
+            <Link to="/auth">
+              <Button variant="ghost" className="text-sm font-medium text-muted-foreground hover:text-primary">
+                Connexion
               </Button>
             </Link>
           </div>
@@ -143,14 +143,14 @@ const Header = () => {
 
                     {/* Mobile CTA Buttons */}
                     <div className="flex flex-col gap-3 pt-6 mt-4 border-t border-border">
-                      <Link to="/auth" onClick={() => setIsOpen(false)}>
-                        <Button variant="outline" className="w-full text-base font-bold py-6">
-                          Connexion
+                      <Link to="/demo" onClick={() => setIsOpen(false)}>
+                        <Button variant="outline" className="w-full text-base font-bold py-6 border-2 border-primary text-primary hover:bg-primary/10 rounded-xl">
+                          Voir la démo
                         </Button>
                       </Link>
-                      <Link to="/demo" onClick={() => setIsOpen(false)}>
-                        <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold text-base py-6 rounded-xl">
-                          Voir la démo
+                      <Link to="/auth" onClick={() => setIsOpen(false)}>
+                        <Button variant="ghost" className="w-full text-base font-medium py-6 text-muted-foreground hover:text-primary">
+                          Connexion
                         </Button>
                       </Link>
                     </div>
