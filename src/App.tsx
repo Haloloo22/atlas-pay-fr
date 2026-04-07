@@ -17,6 +17,7 @@ import About from "./pages/About";
 import Legal from "./pages/Legal";
 import Terms from "./pages/Terms";
 import Privacy from "./pages/Privacy";
+import Demo from "./pages/Demo";
 import NotFound from "./pages/NotFound";
 
 // Protected app pages
@@ -54,6 +55,7 @@ const App = () => (
               <Route path="/legal" element={<Legal />} />
               <Route path="/terms" element={<Terms />} />
               <Route path="/privacy" element={<Privacy />} />
+              <Route path="/demo" element={<Demo />} />
 
               {/* Protected app routes with layout */}
               <Route
