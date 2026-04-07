@@ -30,12 +30,12 @@ const CTA = () => {
               Rejoignez les entreprises marocaines qui réduisent leurs coûts et gagnent en visibilité avec FleetPay.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link to="/contact?type=demo">
+              <Link to="/demo">
                 <Button 
                   size="lg" 
                   className="bg-background text-primary hover:bg-background/90 text-base px-8 font-semibold shadow-xl hover:scale-105 transition-transform group"
                 >
-                  Réserver une démo
+                  Voir la démo
                   <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>

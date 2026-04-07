@@ -30,12 +30,12 @@ const HeroWithCard = () => {
             <div 
               className="flex flex-col sm:flex-row items-start gap-4 opacity-0 animate-[fade-in_0.8s_ease-out_0.3s_forwards]"
             >
-              <Link to="/contact?type=demo">
+              <Link to="/demo">
                 <Button 
                   size="lg" 
                   className="bg-primary hover:bg-primary/90 text-primary-foreground text-base px-8 py-6 font-semibold rounded-lg shadow-[0_4px_20px_rgba(21,94,160,0.25)] hover:shadow-[0_6px_30px_rgba(21,94,160,0.35)] transition-all hover:scale-105"
                 >
-                  Demander une démo
+                  Voir la démo
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>

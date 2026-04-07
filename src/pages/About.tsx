@@ -84,9 +84,9 @@ const About = () => {
                 Découvrez comment FleetPay peut transformer la gestion de vos dépenses carburant.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link to="/contact?type=demo">
+                <Link to="/demo">
                   <Button size="lg" variant="secondary" className="text-lg px-8 py-6 font-bold rounded-xl">
-                    Demander une démo
+                    Voir la démo
                   </Button>
                 </Link>
                 <Link to="/contact">
