@@ -1,4 +1,5 @@
-import { useQuery } from "@tanstack/react-query";
+import { useEffect } from "react";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { useCompany } from "./useCompany";
 import type { Database } from "@/integrations/supabase/types";
@@ -15,6 +16,7 @@ export interface TransactionWithDetails extends Transaction {
 
 export const useTransactions = () => {
   const { company } = useCompany();
+  const queryClient = useQueryClient();
 
   const { data: transactions = [], isLoading } = useQuery({
     queryKey: ["transactions", company?.id],
@@ -51,6 +53,30 @@ export const useTransactions = () => {
     },
     enabled: !!company,
   });
+
+  // Realtime subscription
+  useEffect(() => {
+    if (!company?.id) return;
+
+    const channel = supabase
+      .channel('transactions-realtime')
+      .on(
+        'postgres_changes',
+        {
+          event: 'INSERT',
+          schema: 'public',
+          table: 'transactions',
+        },
+        () => {
+          queryClient.invalidateQueries({ queryKey: ["transactions", company.id] });
+        }
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
+  }, [company?.id, queryClient]);
 
   // Calculate totals
   const totalAmount = transactions.reduce((sum, tx) => sum + Number(tx.amount || 0), 0);

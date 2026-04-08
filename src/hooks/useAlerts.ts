@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/contexts/AuthContext";
@@ -32,6 +33,31 @@ export function useAlerts() {
     },
     enabled: !!user && !!company,
   });
+
+  // Realtime subscription
+  useEffect(() => {
+    if (!company?.id) return;
+
+    const channel = supabase
+      .channel('alerts-realtime')
+      .on(
+        'postgres_changes',
+        {
+          event: '*',
+          schema: 'public',
+          table: 'alerts',
+          filter: `company_id=eq.${company.id}`,
+        },
+        () => {
+          queryClient.invalidateQueries({ queryKey: ["alerts", company.id] });
+        }
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
+  }, [company?.id, queryClient]);
 
   const unreadCount = alertsQuery.data?.filter((a) => !a.is_read).length ?? 0;
 
