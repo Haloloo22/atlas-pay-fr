@@ -12,10 +12,7 @@ interface MoroccoMapProps {
 function FitMorocco() {
   const map = useMap();
   useEffect(() => {
-    map.fitBounds([
-      [21.0, -17.5],
-      [36.0, -1.0],
-    ]);
+    map.setView([33.5731, -7.5898], 6);
   }, [map]);
   return null;
 }
