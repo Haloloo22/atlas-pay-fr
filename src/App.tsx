@@ -25,6 +25,7 @@ import DemoDashboard from "./pages/demo/DemoDashboard";
 import DemoVehiclesPage from "./pages/demo/DemoVehiclesPage";
 import DemoDriversPage from "./pages/demo/DemoDriversPage";
 import DemoCardsPage from "./pages/demo/DemoCardsPage";
+import DemoCardDetailPage from "./pages/demo/DemoCardDetailPage";
 import DemoPoliciesPage from "./pages/demo/DemoPoliciesPage";
 import DemoTransactionsPage from "./pages/demo/DemoTransactionsPage";
 import DemoAlertsPage from "./pages/demo/DemoAlertsPage";
@@ -72,6 +73,7 @@ const App = () => (
                 <Route path="vehicles" element={<DemoVehiclesPage />} />
                 <Route path="drivers" element={<DemoDriversPage />} />
                 <Route path="cards" element={<DemoCardsPage />} />
+                <Route path="cards/:cardId" element={<DemoCardDetailPage />} />
                 <Route path="policies" element={<DemoPoliciesPage />} />
                 <Route path="transactions" element={<DemoTransactionsPage />} />
                 <Route path="alerts" element={<DemoAlertsPage />} />
