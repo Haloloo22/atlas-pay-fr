@@ -89,33 +89,16 @@ export function CardGeofencingTab({ card, onSave, isPending }: CardGeofencingTab
           }`}
         >
           <Label className="text-sm font-medium mb-3 block">
-            Régions autorisées
+            Cliquez sur les régions pour les sélectionner / désélectionner
           </Label>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-            {MOROCCAN_REGIONS.map((region) => {
-              const isSelected = geofencing.geofencing_regions.includes(region);
-              return (
-                <div
-                  key={region}
-                  className={`flex items-center justify-between rounded-lg border p-3 cursor-pointer transition-colors ${
-                    isSelected
-                      ? "border-primary bg-primary/5"
-                      : "hover:bg-muted/50"
-                  }`}
-                  onClick={() => handleRegionToggle(region)}
-                >
-                  <span className="font-medium text-sm">{region}</span>
-                  {isSelected && (
-                    <div className="w-5 h-5 rounded-full bg-primary flex items-center justify-center">
-                      <Check className="h-3 w-3 text-primary-foreground" />
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
 
-          <div className="flex gap-2 mt-4">
+          <MoroccoMap
+            selectedRegions={geofencing.geofencing_regions}
+            onToggleRegion={handleRegionToggle}
+            disabled={!geofencing.geofencing_enabled}
+          />
+
+          <div className="flex flex-wrap gap-2 mt-4">
             <Button
               variant="outline"
               size="sm"
