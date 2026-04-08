@@ -17,6 +17,9 @@ import { useVehicles } from "@/hooks/useVehicles";
 import { usePolicies } from "@/hooks/usePolicies";
 import { CardGeneralTab } from "@/components/cards/CardGeneralTab";
 import { CardAlertsTab } from "@/components/cards/CardAlertsTab";
+import { CardGeofencingTab } from "@/components/cards/CardGeofencingTab";
+import { CardGeofencingZonesTab } from "@/components/cards/CardGeofencingZonesTab";
+import type { GeoZone } from "@/components/cards/GeofencingZonesMap";
 import { toast } from "sonner";
 
 export default function CardDetailPage() {
@@ -213,8 +216,10 @@ export default function CardDetailPage() {
 
       {/* Tabs */}
       <Tabs defaultValue="general" className="space-y-6">
-        <TabsList className="grid w-full grid-cols-2 lg:w-auto lg:inline-grid">
+        <TabsList className="grid w-full grid-cols-4 lg:w-auto lg:inline-grid">
           <TabsTrigger value="general">Général</TabsTrigger>
+          <TabsTrigger value="geofencing">Régions</TabsTrigger>
+          <TabsTrigger value="zones">Zones</TabsTrigger>
           <TabsTrigger value="alerts">Alertes</TabsTrigger>
         </TabsList>
 
@@ -234,6 +239,29 @@ export default function CardDetailPage() {
             vehicles={vehicles}
             onToggleActive={(isActive) => updateCard.mutate({ is_active: isActive })}
             onUpdateAssignment={(field, value) => updateCard.mutate({ [field]: value })}
+            isPending={updateCard.isPending}
+          />
+        </TabsContent>
+
+        <TabsContent value="geofencing">
+          <CardGeofencingTab
+            card={{
+              geofencing_enabled: card.geofencing_enabled ?? false,
+              geofencing_regions: card.geofencing_regions ?? [],
+            }}
+            onSave={(data) => updateCard.mutate(data)}
+            isPending={updateCard.isPending}
+          />
+        </TabsContent>
+
+        <TabsContent value="zones">
+          <CardGeofencingZonesTab
+            card={{
+              geofencing_enabled: card.geofencing_enabled ?? false,
+              geofencing_regions: card.geofencing_regions ?? [],
+              geofencing_zones: (card.geofencing_zones as unknown as GeoZone[]) ?? [],
+            }}
+            onSave={(data) => updateCard.mutate(data)}
             isPending={updateCard.isPending}
           />
         </TabsContent>
