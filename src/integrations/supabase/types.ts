@@ -236,6 +236,7 @@ export type Database = {
           per_transaction_min: number | null
           policy_id: string | null
           shop_max_amount: number | null
+          station_ids: string[]
           updated_at: string
           vehicle_id: string | null
           weekly_limit: number | null
@@ -266,6 +267,7 @@ export type Database = {
           per_transaction_min?: number | null
           policy_id?: string | null
           shop_max_amount?: number | null
+          station_ids?: string[]
           updated_at?: string
           vehicle_id?: string | null
           weekly_limit?: number | null
@@ -296,6 +298,7 @@ export type Database = {
           per_transaction_min?: number | null
           policy_id?: string | null
           shop_max_amount?: number | null
+          station_ids?: string[]
           updated_at?: string
           vehicle_id?: string | null
           weekly_limit?: number | null
@@ -517,6 +520,7 @@ export type Database = {
           per_transaction_limit: number | null
           per_transaction_min: number | null
           shop_max_amount: number | null
+          station_ids: string[]
           updated_at: string
           weekly_limit: number | null
         }
@@ -545,6 +549,7 @@ export type Database = {
           per_transaction_limit?: number | null
           per_transaction_min?: number | null
           shop_max_amount?: number | null
+          station_ids?: string[]
           updated_at?: string
           weekly_limit?: number | null
         }
@@ -573,6 +578,7 @@ export type Database = {
           per_transaction_limit?: number | null
           per_transaction_min?: number | null
           shop_max_amount?: number | null
+          station_ids?: string[]
           updated_at?: string
           weekly_limit?: number | null
         }
