@@ -1,4 +1,5 @@
 import { useState, useMemo } from "react";
+import { useNavigate } from "react-router-dom";
 import { Search, Shield } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
@@ -9,6 +10,7 @@ import { demoCards, demoDrivers, demoVehicles, demoPolicies } from "@/data/demoD
 
 export default function DemoCardsPage() {
   const [searchTerm, setSearchTerm] = useState("");
+  const navigate = useNavigate();
 
   const getDriverName = (id: string | null) => {
     if (!id) return "—";
@@ -65,7 +67,7 @@ export default function DemoCardsPage() {
             {filtered.map(c => {
               const policyName = getPolicyName(c.policy_id);
               return (
-                <TableRow key={c.id}>
+                <TableRow key={c.id} className="cursor-pointer hover:bg-muted/50" onClick={() => navigate(`/demo/cards/${c.id}`)}>
                   <TableCell className="font-medium font-mono">{c.card_number}</TableCell>
                   <TableCell>
                     {policyName ? (
