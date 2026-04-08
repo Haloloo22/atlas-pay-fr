@@ -225,6 +225,7 @@ export type Database = {
           enforce_vehicle_fuel_type: boolean | null
           geofencing_enabled: boolean | null
           geofencing_regions: string[] | null
+          geofencing_zones: Json
           id: string
           is_active: boolean | null
           limit_type: string | null
@@ -254,6 +255,7 @@ export type Database = {
           enforce_vehicle_fuel_type?: boolean | null
           geofencing_enabled?: boolean | null
           geofencing_regions?: string[] | null
+          geofencing_zones?: Json
           id?: string
           is_active?: boolean | null
           limit_type?: string | null
@@ -283,6 +285,7 @@ export type Database = {
           enforce_vehicle_fuel_type?: boolean | null
           geofencing_enabled?: boolean | null
           geofencing_regions?: string[] | null
+          geofencing_zones?: Json
           id?: string
           is_active?: boolean | null
           limit_type?: string | null
@@ -503,6 +506,7 @@ export type Database = {
           enforce_vehicle_fuel_type: boolean | null
           geofencing_enabled: boolean | null
           geofencing_regions: string[] | null
+          geofencing_zones: Json
           id: string
           is_default: boolean | null
           limit_type: string | null
@@ -530,6 +534,7 @@ export type Database = {
           enforce_vehicle_fuel_type?: boolean | null
           geofencing_enabled?: boolean | null
           geofencing_regions?: string[] | null
+          geofencing_zones?: Json
           id?: string
           is_default?: boolean | null
           limit_type?: string | null
@@ -557,6 +562,7 @@ export type Database = {
           enforce_vehicle_fuel_type?: boolean | null
           geofencing_enabled?: boolean | null
           geofencing_regions?: string[] | null
+          geofencing_zones?: Json
           id?: string
           is_default?: boolean | null
           limit_type?: string | null
