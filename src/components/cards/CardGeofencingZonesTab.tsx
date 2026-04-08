@@ -105,20 +105,52 @@ export function CardGeofencingZonesTab({
           />
         </div>
 
-        {/* Zone summary */}
+        {/* Zone summary cards */}
         {enabled && zones.length > 0 && (
-          <div className="flex items-center gap-3 pt-2">
-            <span className="text-sm text-muted-foreground">Zones actives :</span>
-            {polygonCount > 0 && (
-              <Badge variant="secondary">
-                {polygonCount} polygone{polygonCount > 1 ? "s" : ""}
-              </Badge>
-            )}
-            {circleCount > 0 && (
-              <Badge variant="secondary">
-                {circleCount} cercle{circleCount > 1 ? "s" : ""}
-              </Badge>
-            )}
+          <div className="space-y-2 pt-2">
+            <span className="text-sm font-medium text-muted-foreground">
+              Zones actives ({zones.length})
+            </span>
+            <div className="grid gap-2">
+              {zones.map((zone, i) => {
+                const isCircle = zone.properties.zoneType === "circle";
+                const circleZone = isCircle ? (zone as import("./GeofencingZonesMap").GeoZoneCircle) : null;
+                return (
+                  <div
+                    key={i}
+                    className="flex items-center justify-between p-3 rounded-lg border bg-muted/20"
+                  >
+                    <div className="flex items-center gap-3">
+                      {isCircle ? (
+                        <CircleIcon className="h-4 w-4 text-purple-500" />
+                      ) : (
+                        <Pentagon className="h-4 w-4 text-blue-500" />
+                      )}
+                      <div>
+                        <p className="text-sm font-medium">
+                          {isCircle ? "Cercle" : "Polygone"} #{i + 1}
+                        </p>
+                        <p className="text-xs text-muted-foreground">
+                          {isCircle && circleZone
+                            ? `Rayon : ${Math.round(circleZone.properties.radius)} m`
+                            : `${(zone as import("./GeofencingZonesMap").GeoZonePolygon).geometry.coordinates[0].length - 1} sommets`}
+                        </p>
+                      </div>
+                    </div>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="h-8 w-8 text-destructive hover:text-destructive hover:bg-destructive/10"
+                      onClick={() => {
+                        setZones((prev) => prev.filter((_, idx) => idx !== i));
+                      }}
+                    >
+                      <Trash2 className="h-4 w-4" />
+                    </Button>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         )}
 
