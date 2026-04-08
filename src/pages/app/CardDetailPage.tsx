@@ -17,6 +17,9 @@ import { useVehicles } from "@/hooks/useVehicles";
 import { usePolicies } from "@/hooks/usePolicies";
 import { CardGeneralTab } from "@/components/cards/CardGeneralTab";
 import { CardAlertsTab } from "@/components/cards/CardAlertsTab";
+import { CardGeofencingTab } from "@/components/cards/CardGeofencingTab";
+import { CardGeofencingZonesTab } from "@/components/cards/CardGeofencingZonesTab";
+import type { GeoZone } from "@/components/cards/GeofencingZonesMap";
 import { toast } from "sonner";
 
 export default function CardDetailPage() {
