@@ -13,8 +13,8 @@ export const S6Reports: React.FC = () => {
   const titleY = interpolate(frame, [8, 30], [40, 0], { extrapolateRight: "clamp" });
 
   // Final CTA slide takes over around frame 95
-  const ctaS = spring({ frame: frame - 90, fps, config: { damping: 18, stiffness: 130 } });
-  const contentOp = interpolate(frame, [85, 100], [1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  const ctaS = spring({ frame: frame - 65, fps, config: { damping: 18, stiffness: 130 } });
+  const contentOp = interpolate(frame, [60, 78], [1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
 
   return (
     <AbsoluteFill>
@@ -86,7 +86,7 @@ export const S6Reports: React.FC = () => {
           alignItems: "center",
           justifyContent: "center",
           flexDirection: "column",
-          opacity: interpolate(frame, [95, 115], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }),
+          opacity: interpolate(frame, [70, 90], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }),
           pointerEvents: "none",
         }}
       >
@@ -102,7 +102,7 @@ export const S6Reports: React.FC = () => {
         </div>
         <div style={{ display: "flex", gap: 4, marginTop: 24 }}>
           {"FleetPay".split("").map((c, i) => {
-            const s = spring({ frame: frame - 100 - i * 3, fps, config: { damping: 14, stiffness: 180 } });
+            const s = spring({ frame: frame - 75 - i * 3, fps, config: { damping: 14, stiffness: 180 } });
             return (
               <span
                 key={i}
@@ -130,7 +130,7 @@ export const S6Reports: React.FC = () => {
             fontSize: 32,
             fontWeight: 700,
             borderRadius: 14,
-            opacity: interpolate(frame, [115, 135], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }),
+            opacity: interpolate(frame, [95, 115], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }),
           }}
         >
           atlas-pay-fr.lovable.app
