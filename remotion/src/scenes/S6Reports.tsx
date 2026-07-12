@@ -32,11 +32,13 @@ export const S6Reports: React.FC = () => {
           </div>
 
           <div style={{ display: "flex", gap: 16, marginTop: 50, opacity: interpolate(frame, [55, 75], [0, 1], { extrapolateRight: "clamp" }) }}>
-            <div style={{ padding: "16px 28px", background: COLORS.card, border: `1px solid ${COLORS.border}`, borderRadius: 12, fontSize: 22, color: COLORS.text, fontWeight: 600 }}>
-              📄 Export PDF
+            <div style={{ padding: "16px 28px", background: COLORS.card, border: `1px solid ${COLORS.accent}80`, borderRadius: 12, fontSize: 22, color: COLORS.text, fontWeight: 600, display: "flex", alignItems: "center", gap: 12 }}>
+              <div style={{ width: 10, height: 10, borderRadius: 2, background: COLORS.accent }} />
+              Export PDF
             </div>
-            <div style={{ padding: "16px 28px", background: COLORS.card, border: `1px solid ${COLORS.border}`, borderRadius: 12, fontSize: 22, color: COLORS.text, fontWeight: 600 }}>
-              📊 Export Excel
+            <div style={{ padding: "16px 28px", background: COLORS.card, border: `1px solid ${COLORS.accent}80`, borderRadius: 12, fontSize: 22, color: COLORS.text, fontWeight: 600, display: "flex", alignItems: "center", gap: 12 }}>
+              <div style={{ width: 10, height: 10, borderRadius: 2, background: COLORS.accent }} />
+              Export Excel
             </div>
           </div>
         </div>
