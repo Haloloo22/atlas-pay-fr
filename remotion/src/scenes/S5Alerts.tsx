@@ -51,8 +51,8 @@ export const S5Alerts: React.FC = () => {
             transform: `translateY(${interpolate(alertS, [0, 1], [20, 0])}px)`,
           }}
         >
-          <div style={{ width: 60, height: 60, borderRadius: 30, background: COLORS.danger, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 32 }}>
-            ⚠
+          <div style={{ width: 60, height: 60, borderRadius: 30, background: COLORS.danger, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 36, fontWeight: 800, color: "#fff" }}>
+            !
           </div>
           <div>
             <div style={{ fontSize: 26, fontWeight: 700, color: COLORS.text }}>Sortie de zone détectée</div>
