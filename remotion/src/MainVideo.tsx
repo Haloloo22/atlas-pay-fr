@@ -1,61 +1,46 @@
 import { AbsoluteFill } from "remotion";
-import {
-  TransitionSeries,
-  springTiming,
-  linearTiming,
-} from "@remotion/transitions";
+import { TransitionSeries, linearTiming } from "@remotion/transitions";
 import { fade } from "@remotion/transitions/fade";
-import { slide } from "@remotion/transitions/slide";
-import { wipe } from "@remotion/transitions/wipe";
-import { COLORS, fontFamily } from "./theme";
+import { COLORS, fontBody } from "./theme";
 import { S1Hook } from "./scenes/S1Hook";
-import { S2Fleet } from "./scenes/S2Fleet";
-import { S3Cards } from "./scenes/S3Cards";
-import { S4Realtime } from "./scenes/S4Realtime";
-import { S5Alerts } from "./scenes/S5Alerts";
-import { S6Reports } from "./scenes/S6Reports";
+import { S2Rules } from "./scenes/S2Rules";
+import { S3Approved } from "./scenes/S3Approved";
+import { S4Declined } from "./scenes/S4Declined";
+import { S5Report } from "./scenes/S5Report";
+import { S6Close } from "./scenes/S6Close";
 
+// 300ms fade between sequences
+const FADE = 9;
+const fadeProps = { presentation: fade(), timing: linearTiming({ durationInFrames: FADE }) };
+
+// Durations include the overlap so the timeline lands on 28s (840f):
+// 4s / 5s / 5s / 6s / 5s / 3s
 export const MainVideo: React.FC = () => {
   return (
-    <AbsoluteFill style={{ backgroundColor: COLORS.bg, fontFamily }}>
+    <AbsoluteFill style={{ backgroundColor: COLORS.ink, fontFamily: fontBody }}>
       <TransitionSeries>
-        <TransitionSeries.Sequence durationInFrames={90}>
+        <TransitionSeries.Sequence durationInFrames={120 + FADE}>
           <S1Hook />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition
-          presentation={fade()}
-          timing={linearTiming({ durationInFrames: 15 })}
-        />
-        <TransitionSeries.Sequence durationInFrames={150}>
-          <S2Fleet />
+        <TransitionSeries.Transition {...fadeProps} />
+        <TransitionSeries.Sequence durationInFrames={150 + FADE}>
+          <S2Rules />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition
-          presentation={slide({ direction: "from-right" })}
-          timing={springTiming({ config: { damping: 200 }, durationInFrames: 20 })}
-        />
-        <TransitionSeries.Sequence durationInFrames={150}>
-          <S3Cards />
+        <TransitionSeries.Transition {...fadeProps} />
+        <TransitionSeries.Sequence durationInFrames={150 + FADE}>
+          <S3Approved />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition
-          presentation={wipe({ direction: "from-left" })}
-          timing={springTiming({ config: { damping: 200 }, durationInFrames: 20 })}
-        />
-        <TransitionSeries.Sequence durationInFrames={150}>
-          <S4Realtime />
+        <TransitionSeries.Transition {...fadeProps} />
+        <TransitionSeries.Sequence durationInFrames={180 + FADE}>
+          <S4Declined />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition
-          presentation={slide({ direction: "from-right" })}
-          timing={springTiming({ config: { damping: 200 }, durationInFrames: 20 })}
-        />
-        <TransitionSeries.Sequence durationInFrames={150}>
-          <S5Alerts />
+        <TransitionSeries.Transition {...fadeProps} />
+        <TransitionSeries.Sequence durationInFrames={150 + FADE}>
+          <S5Report />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition
-          presentation={fade()}
-          timing={linearTiming({ durationInFrames: 15 })}
-        />
-        <TransitionSeries.Sequence durationInFrames={150}>
-          <S6Reports />
+        <TransitionSeries.Transition {...fadeProps} />
+        <TransitionSeries.Sequence durationInFrames={90}>
+          <S6Close />
         </TransitionSeries.Sequence>
       </TransitionSeries>
     </AbsoluteFill>
