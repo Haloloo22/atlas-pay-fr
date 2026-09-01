@@ -17,7 +17,7 @@ export function DemoLayout() {
                 <span className="bg-primary-foreground/20 px-2 py-0.5 rounded text-xs font-bold uppercase tracking-wider">
                   Mode Démo
                 </span>
-                <span className="hidden sm:inline">Bâtiment Alami &amp; Fils — Ceci est un exemple de tableau de bord FleetPay</span>
+                <span className="hidden sm:inline">Bâtiment Alami &amp; Fils — Ceci est un exemple de tableau de bord Flect</span>
               </div>
               <Link to="/auth">
                 <Button size="sm" variant="secondary" className="font-semibold whitespace-nowrap">

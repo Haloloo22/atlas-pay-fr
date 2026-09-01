@@ -10,7 +10,7 @@ const Footer = () => {
               <div className="w-11 h-11 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center shadow-lg">
                 <span className="text-primary-foreground font-black text-xl">F</span>
               </div>
-              <span className="text-2xl font-black text-primary">FleetPay</span>
+              <span className="text-2xl font-black text-primary">Flect</span>
             </Link>
             <p className="text-base text-muted-foreground leading-relaxed font-medium">
               La solution SaaS n°1 pour gérer vos dépenses de flotte au Maroc.
@@ -62,7 +62,7 @@ const Footer = () => {
         <div className="pt-10 border-t-2 border-border">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <p className="text-base text-muted-foreground font-semibold">
-              © 2025 FleetPay. Tous droits réservés.
+              © 2025 Flect. Tous droits réservés.
             </p>
             <p className="text-sm text-muted-foreground">
               Fait avec ❤️ à Casablanca, Maroc

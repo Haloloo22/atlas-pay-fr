@@ -49,7 +49,7 @@ export function EmptyDashboard() {
         <TrendingUp className="w-10 h-10 text-primary" />
       </div>
       
-      <h2 className="text-2xl font-bold mb-2">Bienvenue sur FleetPay !</h2>
+      <h2 className="text-2xl font-bold mb-2">Bienvenue sur Flect !</h2>
       <p className="text-muted-foreground max-w-md mb-8">
         Votre tableau de bord est vide pour le moment. Commencez par ajouter vos véhicules, 
         chauffeurs et cartes, ou générez des données de démonstration pour explorer la plateforme.

@@ -27,7 +27,7 @@ const CTA = () => {
               Prêt à optimiser votre flotte ?
             </h2>
             <p className="text-xl text-primary-foreground/90 mb-10 max-w-2xl mx-auto">
-              Rejoignez les entreprises marocaines qui réduisent leurs coûts et gagnent en visibilité avec FleetPay.
+              Rejoignez les entreprises marocaines qui réduisent leurs coûts et gagnent en visibilité avec Flect.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link to="/demo">

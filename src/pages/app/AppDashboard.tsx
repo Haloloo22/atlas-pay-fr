@@ -44,7 +44,7 @@ const AppDashboard = () => {
         <div>
           <h1 className="text-2xl font-bold mb-1">Tableau de bord</h1>
           <p className="text-muted-foreground">
-            Bienvenue sur FleetPay, {company.name}
+            Bienvenue sur Flect, {company.name}
           </p>
         </div>
         <DateRangeFilter value={dateRange} onChange={setDateRange} />

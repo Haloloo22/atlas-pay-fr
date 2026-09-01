@@ -2,7 +2,7 @@ import { Quote } from "lucide-react";
 
 const testimonials = [
   {
-    quote: "FleetPay nous a permis de réduire nos coûts carburant de 12% en 3 mois. Le ROI a été immédiat.",
+    quote: "Flect nous a permis de réduire nos coûts carburant de 12% en 3 mois. Le ROI a été immédiat.",
     author: "Mohammed Alami",
     role: "Directeur Logistique",
     company: "RapidExpress Maroc",
@@ -38,7 +38,7 @@ const Testimonials = () => {
             Ils nous font confiance
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Des entreprises marocaines qui optimisent leur flotte avec FleetPay
+            Des entreprises marocaines qui optimisent leur flotte avec Flect
           </p>
         </div>
 

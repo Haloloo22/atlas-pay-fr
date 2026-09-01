@@ -14,7 +14,7 @@ const Privacy = () => {
           <div className="prose prose-lg max-w-none space-y-12">
             <section>
               <p className="text-lg text-muted-foreground">
-                Chez FleetPay, nous accordons une importance primordiale à la protection de vos données personnelles. Cette politique de confidentialité explique comment nous collectons, utilisons et protégeons vos informations.
+                Chez Flect, nous accordons une importance primordiale à la protection de vos données personnelles. Cette politique de confidentialité explique comment nous collectons, utilisons et protégeons vos informations.
               </p>
             </section>
 
@@ -25,7 +25,7 @@ const Privacy = () => {
                   Le responsable du traitement des données est :
                 </p>
                 <ul className="space-y-2 text-muted-foreground mt-4">
-                  <li><strong className="text-foreground">FleetPay SARL</strong></li>
+                  <li><strong className="text-foreground">Flect SARL</strong></li>
                   <li>123 Boulevard Hassan II, Casablanca 20250, Maroc</li>
                   <li>Email : privacy@fleetpay.ma</li>
                 </ul>
@@ -178,7 +178,7 @@ const Privacy = () => {
               <div className="bg-card rounded-2xl p-6 border-2 border-border mt-4">
                 <p className="text-muted-foreground">
                   <strong className="text-foreground">Email :</strong> privacy@fleetpay.ma<br />
-                  <strong className="text-foreground">Courrier :</strong> FleetPay SARL - DPO, 123 Boulevard Hassan II, Casablanca 20250, Maroc
+                  <strong className="text-foreground">Courrier :</strong> Flect SARL - DPO, 123 Boulevard Hassan II, Casablanca 20250, Maroc
                 </p>
               </div>
             </section>

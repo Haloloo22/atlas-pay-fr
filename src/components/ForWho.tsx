@@ -97,10 +97,10 @@ const ForWho = () => {
             </span>
           </div>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-            Qui utilise FleetPay ?
+            Qui utilise Flect ?
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            De la PME à la grande entreprise, FleetPay s'adapte à votre secteur
+            De la PME à la grande entreprise, Flect s'adapte à votre secteur
           </p>
         </div>
 

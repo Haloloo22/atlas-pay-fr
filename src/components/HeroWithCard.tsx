@@ -93,13 +93,13 @@ const HeroWithCard = () => {
             >
               <img 
                 src={fleetDriverImage} 
-                alt="Chauffeur professionnel avec véhicule de flotte FleetPay" 
+                alt="Chauffeur professionnel avec véhicule de flotte Flect" 
                 className="w-full h-auto object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/20 via-transparent to-transparent"></div>
             </div>
 
-            {/* FleetPay Card - Below photo */}
+            {/* Flect Card - Below photo */}
             <div 
               className="relative w-[320px] opacity-0 animate-[card-entrance_1s_cubic-bezier(0.34,1.56,0.64,1)_0.4s_forwards]"
             >
@@ -141,7 +141,7 @@ const HeroWithCard = () => {
                     </div>
 
                     <div className="flex items-center justify-between pt-3 border-t border-white/10">
-                      <div className="font-bold text-white text-base tracking-tight">FleetPay</div>
+                      <div className="font-bold text-white text-base tracking-tight">Flect</div>
                       <div className="flex gap-1">
                         <div className="w-6 h-6 rounded-full bg-red-500/80"></div>
                         <div className="w-6 h-6 rounded-full bg-orange-400/80 -ml-2"></div>

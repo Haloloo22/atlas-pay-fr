@@ -344,7 +344,7 @@ const Contact = () => {
               <div className="bg-accent/5 rounded-3xl p-10 border-2 border-accent/10">
                 <h3 className="text-2xl font-bold mb-4">Besoin d'une démo ?</h3>
                 <p className="text-muted-foreground mb-6 leading-relaxed text-lg">
-                  Planifiez un rendez-vous avec notre équipe pour une démonstration personnalisée de FleetPay.
+                  Planifiez un rendez-vous avec notre équipe pour une démonstration personnalisée de Flect.
                 </p>
                 <Button 
                   onClick={() => setRequestType("demo")}
