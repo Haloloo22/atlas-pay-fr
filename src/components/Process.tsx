@@ -46,7 +46,7 @@ const StepCard = ({ step, index, isLast }: { step: typeof steps[0]; index: numbe
           <div className="text-3xl font-extrabold text-primary/20 group-hover:text-primary/40 transition-colors">
             {step.number}
           </div>
-          <div className="w-10 h-10 bg-gradient-to-br from-primary/10 to-accent/10 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
+          <div className="w-10 h-10 bg-accent rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
             <step.icon className="w-5 h-5 text-primary" />
           </div>
         </div>
@@ -74,12 +74,12 @@ const StepCard = ({ step, index, isLast }: { step: typeof steps[0]; index: numbe
       
       {/* Vertical Timeline Line (visible on larger screens) */}
       {!isLast && (
-        <div className="hidden lg:block absolute top-full left-1/2 w-0.5 h-8 bg-gradient-to-b from-primary/30 to-transparent -translate-x-1/2 z-10"></div>
+        <div className="hidden lg:block absolute top-full left-1/2 w-0.5 h-8  -translate-x-1/2 z-10"></div>
       )}
       
       {/* Connection Arrow (horizontal on large screens) */}
       {!isLast && (
-        <div className="hidden lg:block absolute top-1/2 -right-4 w-8 h-0.5 bg-gradient-to-r from-border to-transparent z-10"></div>
+        <div className="hidden lg:block absolute top-1/2 -right-4 w-8 h-0.5 z-10"></div>
       )}
     </div>
   );

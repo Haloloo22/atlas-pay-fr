@@ -46,15 +46,15 @@ const Benefits = () => {
               key={index}
               className="group relative overflow-hidden rounded-2xl transition-all duration-300 hover:scale-[1.02]"
             >
-              <div className={`absolute inset-0 bg-gradient-to-br ${benefit.color} opacity-10 group-hover:opacity-15 transition-opacity`}></div>
+              <div className={`absolute inset-0 bg-secondary ${benefit.color} opacity-10 group-hover:opacity-15 transition-opacity`}></div>
               
               <div className="relative bg-card/50 backdrop-blur-sm rounded-2xl p-6 border border-border hover:border-primary/30 transition-all">
                 <div className="flex items-start justify-between mb-5">
-                  <div className={`w-14 h-14 bg-gradient-to-br ${benefit.color} rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                    <benefit.icon className="w-7 h-7 text-white" />
+                  <div className={`w-14 h-14 bg-secondary ${benefit.color} rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                    <benefit.icon className="w-7 h-7 text-primary-foreground" />
                   </div>
                   <div className="text-right">
-                    <div className={`text-4xl font-black bg-gradient-to-br ${benefit.color} bg-clip-text text-transparent`}>
+                    <div className={`text-4xl font-black bg-secondary ${benefit.color} text-primary`}>
                       {benefit.stat}
                     </div>
                   </div>

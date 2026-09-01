@@ -8,53 +8,61 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
+    /* Flect — Bleu Majorelle, encre, crème */
     --background: 0 0% 100%;
-    --foreground: 215 35% 12%;
+    --foreground: 80 6% 5%;
     --card: 0 0% 100%;
-    --card-foreground: 215 35% 12%;
+    --card-foreground: 80 6% 5%;
     --popover: 0 0% 100%;
-    --popover-foreground: 215 35% 12%;
-    --primary: 215 90% 32%;
+    --popover-foreground: 80 6% 5%;
+    --primary: 241 74% 58%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 215 25% 94%;
-    --secondary-foreground: 215 35% 12%;
-    --muted: 215 20% 92%;
-    --muted-foreground: 215 18% 38%;
-    --accent: 175 75% 42%;
-    --accent-foreground: 0 0% 100%;
-    --success: 145 65% 45%;
-    --warning: 35 90% 55%;
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 215 22% 88%;
-    --input: 215 22% 88%;
-    --ring: 215 90% 32%;
-    --radius: 0.75rem;
+    --primary-dark: 241 58% 45%;
+    --primary-tint: 240 78% 96%;
+    --ink: 80 6% 5%;
+    --secondary: 60 14% 96%;
+    --secondary-foreground: 80 6% 5%;
+    --muted: 60 14% 96%;
+    --muted-foreground: 90 2% 43%;
+    --accent: 240 78% 96%;
+    --accent-foreground: 241 74% 58%;
+    --success: 162 61% 31%;
+    --warning: 39 63% 48%;
+    --destructive: 10 63% 46%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 60 11% 89%;
+    --input: 60 11% 89%;
+    --ring: 241 74% 58%;
+    --radius: 1rem;
   }
 
   .dark {
-    --background: 215 32% 9%;
-    --foreground: 0 0% 97%;
-    --card: 215 30% 11%;
-    --card-foreground: 0 0% 97%;
-    --popover: 215 30% 11%;
-    --popover-foreground: 0 0% 97%;
-    --primary: 215 88% 58%;
+    --background: 80 6% 5%;
+    --foreground: 0 0% 98%;
+    --card: 84 4% 9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 84 4% 9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 241 74% 65%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 215 28% 16%;
-    --secondary-foreground: 0 0% 97%;
-    --muted: 215 25% 18%;
-    --muted-foreground: 215 15% 62%;
-    --accent: 175 72% 52%;
-    --accent-foreground: 0 0% 100%;
-    --success: 145 65% 48%;
-    --warning: 35 90% 60%;
-    --destructive: 0 65% 45%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 215 25% 22%;
-    --input: 215 25% 22%;
-    --ring: 215 88% 58%;
+    --primary-dark: 241 58% 45%;
+    --primary-tint: 241 30% 20%;
+    --ink: 0 0% 98%;
+    --secondary: 84 4% 13%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 84 4% 13%;
+    --muted-foreground: 90 3% 62%;
+    --accent: 241 30% 20%;
+    --accent-foreground: 0 0% 98%;
+    --success: 162 50% 45%;
+    --warning: 39 63% 58%;
+    --destructive: 10 63% 55%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 84 4% 18%;
+    --input: 84 4% 18%;
+    --ring: 241 74% 65%;
   }
+
 }
 
 @layer base {
@@ -69,20 +77,24 @@ All colors MUST be HSL.
     -moz-osx-font-smoothing: grayscale;
   }
 
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Schibsted Grotesk', 'Inter', sans-serif;
+  }
+
   h1 {
     font-weight: 800;
-    letter-spacing: -0.04em;
-    line-height: 1.1;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
   }
 
   h2 {
     font-weight: 700;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.025em;
     line-height: 1.2;
   }
 
   h3, h4 {
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: -0.02em;
     line-height: 1.3;
   }
@@ -93,13 +105,27 @@ All colors MUST be HSL.
   }
 
   p {
-    line-height: 1.7;
+    line-height: 1.6;
   }
 
-  /* Micro-interactions subtiles */
-  button, a {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Chiffres alignés */
+  td, th, input[type="number"], .tabular {
+    font-variant-numeric: tabular-nums;
   }
+
+  /* Micro-interactions subtiles — 250ms max */
+  button, a {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
 
   @keyframes float {
     0%, 100% { transform: translateY(0px); }
@@ -107,8 +133,8 @@ All colors MUST be HSL.
   }
 
   @keyframes pulse-glow {
-    0%, 100% { box-shadow: 0 0 20px rgba(21, 94, 160, 0.2); }
-    50% { box-shadow: 0 0 40px rgba(21, 94, 160, 0.4); }
+    0%, 100% { box-shadow: 0 0 20px rgba(13,14,12,0.12); }
+    50% { box-shadow: 0 0 40px rgba(13,14,12,0.12); }
   }
 
   @keyframes slide-up {

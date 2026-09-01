@@ -48,7 +48,7 @@ const About = () => {
         <section className="px-6 mb-24 bg-secondary/30 py-24">
           <div className="container mx-auto max-w-6xl">
             <div className="text-center mb-16">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 text-accent font-bold text-sm mb-6">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 text-ink font-bold text-sm mb-6">
                 <Award className="w-4 h-4" />
                 Nos valeurs
               </div>
@@ -76,7 +76,7 @@ const About = () => {
         {/* CTA */}
         <section className="px-6">
           <div className="container mx-auto max-w-4xl">
-            <div className="bg-gradient-to-br from-primary to-accent rounded-3xl p-12 text-center text-primary-foreground">
+            <div className="bg-primary rounded-3xl p-12 text-center text-primary-foreground">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
                 Prêt à optimiser votre flotte ?
               </h2>

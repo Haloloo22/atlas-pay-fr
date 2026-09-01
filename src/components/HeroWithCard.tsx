@@ -8,7 +8,7 @@ const HeroWithCard = () => {
   return (
     <section className="relative pt-28 md:pt-36 pb-20 px-6 overflow-hidden">
       {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-accent/5 to-background -z-10"></div>
+      <div className="absolute inset-0 bg-background -z-10"></div>
       
       <div className="container mx-auto max-w-7xl">
         <div className="grid lg:grid-cols-2 gap-12 items-start">
@@ -33,7 +33,7 @@ const HeroWithCard = () => {
               <Link to="/demo">
                 <Button 
                   size="lg" 
-                  className="bg-primary hover:bg-primary/90 text-primary-foreground text-base px-8 py-6 font-semibold rounded-lg shadow-[0_4px_20px_rgba(21,94,160,0.25)] hover:shadow-[0_6px_30px_rgba(21,94,160,0.35)] transition-all hover:scale-105"
+                  className="bg-primary hover:bg-[hsl(var(--primary-dark))] text-primary-foreground text-base px-8 py-6 font-semibold rounded-full shadow-[0_4px_20px_rgba(13,14,12,0.12)] hover:shadow-[0_6px_30px_rgba(13,14,12,0.12)] transition-all hover:scale-105"
                 >
                   Voir la démo
                   <ArrowRight className="ml-2 h-5 w-5" />
@@ -75,7 +75,7 @@ const HeroWithCard = () => {
               </div>
               <div className="flex items-center gap-3 p-3 rounded-xl bg-accent/5 border border-accent/20 hover:border-accent/40 transition-colors">
                 <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center shrink-0">
-                  <CheckCircle className="w-5 h-5 text-accent" />
+                  <CheckCircle className="w-5 h-5 text-ink" />
                 </div>
                 <div>
                   <span className="text-sm font-bold text-foreground block">Sans engagement</span>
@@ -96,7 +96,7 @@ const HeroWithCard = () => {
                 alt="Chauffeur professionnel avec véhicule de flotte Flect" 
                 className="w-full h-auto object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 via-transparent to-transparent"></div>
+              <div className="absolute inset-0 "></div>
             </div>
 
             {/* Flect Card - Below photo */}
@@ -104,18 +104,18 @@ const HeroWithCard = () => {
               className="relative w-[320px] opacity-0 animate-[card-entrance_1s_cubic-bezier(0.34,1.56,0.64,1)_0.4s_forwards]"
             >
               <div 
-                className="relative transform hover:scale-105 transition-all duration-500 hover:rotate-1 hover:shadow-[0_30px_80px_rgba(21,94,160,0.7)]" 
+                className="relative transform hover:scale-105 transition-all duration-500 hover:rotate-1 hover:shadow-[0_30px_80px_rgba(13,14,12,0.12)]" 
                 style={{ aspectRatio: '1.586/1' }}
               >
-                <div className="w-full h-full bg-gradient-to-br from-[#155ea0] via-[#1a6bb8] to-[#0d4a7a] rounded-xl p-6 shadow-[0_20px_60px_rgba(21,94,160,0.6),inset_0_1px_0_rgba(255,255,255,0.1)] relative overflow-hidden">
+                <div className="w-full h-full bg-ink rounded-xl p-6 shadow-[0_20px_60px_rgba(13,14,12,0.12),inset_0_1px_0_rgba(255,255,255,0.1)] relative overflow-hidden">
                   {/* Animated shine effect */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-black/10"></div>
-                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
-                  <div className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-700 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12 translate-x-[-100%] hover:translate-x-[200%] transition-transform duration-1000"></div>
+                  <div className="absolute inset-0 "></div>
+                  <div className="absolute top-0 left-0 right-0 h-px "></div>
+                  <div className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-700  -skew-x-12 translate-x-[-100%] hover:translate-x-[200%] transition-transform duration-1000"></div>
                   
                   <div className="relative h-full flex flex-col justify-between">
                     <div className="flex items-start justify-between">
-                      <div className="w-10 h-8 bg-gradient-to-br from-amber-200 to-amber-400 rounded opacity-80 animate-pulse"></div>
+                      <div className="w-10 h-8 bg-warning/30 rounded opacity-80 animate-pulse"></div>
                       <div className="flex items-center gap-1.5 bg-white/10 px-2.5 py-1 rounded-full backdrop-blur-sm">
                         <Lock className="w-3 h-3 text-white/90" />
                         <span className="text-[10px] font-semibold text-white/90">Sécurisée</span>
@@ -123,7 +123,7 @@ const HeroWithCard = () => {
                     </div>
                     
                     <div className="space-y-1.5">
-                      <div className="w-8 h-6 bg-gradient-to-br from-amber-200/50 to-amber-400/50 rounded"></div>
+                      <div className="w-8 h-6 bg-warning/30 rounded"></div>
                       <p className="text-lg font-semibold text-white tracking-[0.15em] font-mono">
                         •••• •••• •••• 4582
                       </p>
@@ -143,8 +143,8 @@ const HeroWithCard = () => {
                     <div className="flex items-center justify-between pt-3 border-t border-white/10">
                       <div className="font-bold text-white text-base tracking-tight">Flect</div>
                       <div className="flex gap-1">
-                        <div className="w-6 h-6 rounded-full bg-red-500/80"></div>
-                        <div className="w-6 h-6 rounded-full bg-orange-400/80 -ml-2"></div>
+                        <div className="w-6 h-6 rounded-full bg-background/70"></div>
+                        <div className="w-6 h-6 rounded-full bg-background/40 -ml-2"></div>
                       </div>
                     </div>
                   </div>
@@ -152,8 +152,8 @@ const HeroWithCard = () => {
               </div>
 
               {/* Subtle stack effect with animation */}
-              <div className="absolute top-2 left-2 right-2 bottom-2 bg-gradient-to-br from-[#0d4a7a] to-[#155ea0] rounded-xl shadow-lg opacity-0 -z-10 animate-[fade-in_0.5s_ease-out_0.6s_forwards] [animation-fill-mode:forwards]" style={{ opacity: 0.3 }}></div>
-              <div className="absolute top-4 left-4 right-4 bottom-4 bg-gradient-to-br from-[#0a3d68] to-[#0d4a7a] rounded-xl shadow-md opacity-0 -z-20 animate-[fade-in_0.5s_ease-out_0.8s_forwards] [animation-fill-mode:forwards]" style={{ opacity: 0.15 }}></div>
+              <div className="absolute top-2 left-2 right-2 bottom-2 bg-secondary rounded-xl shadow-lg opacity-0 -z-10 animate-[fade-in_0.5s_ease-out_0.6s_forwards] [animation-fill-mode:forwards]" style={{ opacity: 0.3 }}></div>
+              <div className="absolute top-4 left-4 right-4 bottom-4 bg-secondary rounded-xl shadow-md opacity-0 -z-20 animate-[fade-in_0.5s_ease-out_0.8s_forwards] [animation-fill-mode:forwards]" style={{ opacity: 0.15 }}></div>
             </div>
           </div>
         </div>
@@ -166,7 +166,7 @@ const HeroWithCard = () => {
             <p className="text-sm text-muted-foreground">Économies potentielles</p>
           </div>
           <div className="text-center space-y-2 opacity-0 animate-[float-up_0.8s_ease-out_0.8s_forwards]">
-            <div className="text-5xl md:text-6xl font-extrabold text-accent">48h</div>
+            <div className="text-5xl md:text-6xl font-extrabold text-ink">48h</div>
             <p className="text-lg font-semibold text-foreground">Déploiement express</p>
             <p className="text-sm text-muted-foreground">Mise en service rapide</p>
           </div>

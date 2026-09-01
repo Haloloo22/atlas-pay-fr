@@ -1,16 +1,15 @@
 import { Link } from "react-router-dom";
+import { FlectMark } from "@/components/FlectLogo";
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-b from-secondary/60 to-secondary/80 py-20 px-6 border-t-2 border-border">
+    <footer className="bg-secondary py-20 px-6 border-t-2 border-border">
       <div className="container mx-auto max-w-7xl">
         <div className="grid md:grid-cols-4 gap-16 mb-16">
           <div className="space-y-6">
             <Link to="/" className="flex items-center space-x-3">
-              <div className="w-11 h-11 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center shadow-lg">
-                <span className="text-primary-foreground font-black text-xl">F</span>
-              </div>
-              <span className="text-2xl font-black text-primary">Flect</span>
+              <FlectMark className="w-9 h-9 text-primary" />
+              <span className="text-2xl font-display font-extrabold tracking-tight text-foreground">Flect</span>
             </Link>
             <p className="text-base text-muted-foreground leading-relaxed font-medium">
               La solution SaaS n°1 pour gérer vos dépenses de flotte au Maroc.
@@ -65,7 +64,7 @@ const Footer = () => {
               © 2025 Flect. Tous droits réservés.
             </p>
             <p className="text-sm text-muted-foreground">
-              Fait avec ❤️ à Casablanca, Maroc
+              Conçu à Casablanca, Maroc
             </p>
           </div>
         </div>

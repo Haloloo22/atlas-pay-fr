@@ -26,11 +26,11 @@ const testimonials = [
 
 const Testimonials = () => {
   return (
-    <section className="py-24 px-6 bg-gradient-to-b from-background to-secondary/30">
+    <section className="py-24 px-6 bg-secondary">
       <div className="container mx-auto max-w-7xl">
         <div className="text-center space-y-4 mb-16">
           <div className="inline-block">
-            <span className="text-sm font-semibold px-4 py-2 rounded-full bg-accent/10 text-accent">
+            <span className="text-sm font-semibold px-4 py-2 rounded-full bg-accent/10 text-ink">
               Témoignages
             </span>
           </div>
@@ -53,7 +53,7 @@ const Testimonials = () => {
                 "{testimonial.quote}"
               </p>
               <div className="flex items-center gap-4 pt-4 border-t border-border">
-                <div className="w-14 h-14 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-primary-foreground font-bold text-lg shadow-lg group-hover:scale-110 transition-transform">
+                <div className="w-14 h-14 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-bold text-lg shadow-lg group-hover:scale-110 transition-transform">
                   {testimonial.avatar}
                 </div>
                 <div>

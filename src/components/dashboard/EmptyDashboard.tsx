@@ -45,7 +45,7 @@ export function EmptyDashboard() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-[60vh] text-center px-4">
-      <div className="w-20 h-20 bg-gradient-to-br from-primary/20 to-accent/20 rounded-full flex items-center justify-center mb-6">
+      <div className="w-20 h-20 bg-primary rounded-full flex items-center justify-center mb-6">
         <TrendingUp className="w-10 h-10 text-primary" />
       </div>
       

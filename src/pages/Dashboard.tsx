@@ -61,7 +61,7 @@ const Dashboard = () => {
               </div>
 
               <div className="mt-8 pt-8 border-t border-border">
-                <div className="bg-gradient-to-br from-accent/10 to-accent/5 rounded-xl p-4">
+                <div className="bg-accent rounded-xl p-4">
                   <p className="text-sm font-bold mb-2">🎉 Support 24/7</p>
                   <p className="text-xs text-muted-foreground mb-3">Besoin d'aide ? Notre équipe est là.</p>
                   <Button variant="outline" size="sm" className="w-full">
@@ -95,7 +95,7 @@ const Dashboard = () => {
 
               {/* Stats Grid */}
               <div className="grid md:grid-cols-3 gap-6">
-                <div className="bg-gradient-to-br from-primary/10 to-primary/5 rounded-2xl p-8 border-2 border-primary/20 hover:shadow-xl transition-shadow">
+                <div className="bg-accent rounded-2xl p-8 border-2 border-primary/20 hover:shadow-xl transition-shadow">
                   <div className="flex items-start justify-between mb-4">
                     <div className="w-14 h-14 bg-primary/20 rounded-xl flex items-center justify-center">
                       <Fuel className="w-7 h-7 text-primary" />
@@ -112,12 +112,12 @@ const Dashboard = () => {
                   </div>
                 </div>
 
-                <div className="bg-gradient-to-br from-accent/10 to-accent/5 rounded-2xl p-8 border-2 border-accent/20 hover:shadow-xl transition-shadow">
+                <div className="bg-accent rounded-2xl p-8 border-2 border-accent/20 hover:shadow-xl transition-shadow">
                   <div className="flex items-start justify-between mb-4">
                     <div className="w-14 h-14 bg-accent/20 rounded-xl flex items-center justify-center">
-                      <TrendingUp className="w-7 h-7 text-accent" />
+                      <TrendingUp className="w-7 h-7 text-ink" />
                     </div>
-                    <div className="flex items-center gap-1 text-sm font-bold text-accent">
+                    <div className="flex items-center gap-1 text-sm font-bold text-ink">
                       <TrendingUp className="w-4 h-4" />
                       <span>+12%</span>
                     </div>
@@ -129,7 +129,7 @@ const Dashboard = () => {
                   </div>
                 </div>
 
-                <div className="bg-gradient-to-br from-secondary/80 to-secondary/40 rounded-2xl p-8 border-2 border-border hover:shadow-xl transition-shadow">
+                <div className="bg-secondary rounded-2xl p-8 border-2 border-border hover:shadow-xl transition-shadow">
                   <div className="flex items-start justify-between mb-4">
                     <div className="w-14 h-14 bg-background/50 rounded-xl flex items-center justify-center">
                       <CreditCard className="w-7 h-7 text-foreground" />
@@ -195,7 +195,7 @@ const Dashboard = () => {
                   </div>
                   <div className="bg-secondary/30 rounded-xl h-64 relative overflow-hidden">
                     {/* Simplified map illustration */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5"></div>
+                    <div className="absolute inset-0 bg-accent"></div>
                     {stationLocations.map((station, i) => (
                       <div
                         key={i}
@@ -268,7 +268,7 @@ const Dashboard = () => {
               </div>
 
               {/* Alerts */}
-              <div className="bg-gradient-to-br from-warning/5 to-warning/10 border-2 border-warning/20 rounded-2xl p-6">
+              <div className="bg-warning/10 border-2 border-warning/20 rounded-2xl p-6">
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 bg-warning/20 rounded-xl flex items-center justify-center flex-shrink-0">
                     <AlertCircle className="w-6 h-6 text-warning" />

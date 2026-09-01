@@ -41,10 +41,14 @@ export default {
         },
         success: {
           DEFAULT: "hsl(var(--success))",
+          foreground: "hsl(var(--primary-foreground))",
         },
         warning: {
           DEFAULT: "hsl(var(--warning))",
+          foreground: "hsl(var(--primary-foreground))",
         },
+        ink: "hsl(var(--ink))",
+        cream: "hsl(var(--secondary))",
         popover: {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",
@@ -56,7 +60,9 @@ export default {
       },
       fontFamily: {
         sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
+        display: ['Schibsted Grotesk', 'Inter', 'sans-serif'],
       },
+
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
