@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Play, Lock, Zap, Shield, CheckCircle } from "lucide-react";
+import { ArrowRight, Lock, Zap, Shield, CheckCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 import fleetDriverImage from "@/assets/fleet-driver.jpg";
 import StationLogos from "@/components/StationLogos";
