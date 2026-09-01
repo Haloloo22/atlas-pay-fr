@@ -281,7 +281,7 @@ const Contact = () => {
             </div>
 
             <div className="space-y-8">
-              <div className="bg-gradient-to-br from-primary/5 to-accent/5 rounded-3xl p-10 border-2 border-primary/10">
+              <div className="bg-accent rounded-3xl p-10 border-2 border-primary/10">
                 <h2 className="text-3xl font-bold mb-8">Nos coordonnées</h2>
                 
                 <div className="space-y-8">
@@ -301,7 +301,7 @@ const Contact = () => {
 
                   <div className="flex gap-5">
                     <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center flex-shrink-0">
-                      <Phone className="w-7 h-7 text-accent" />
+                      <Phone className="w-7 h-7 text-ink" />
                     </div>
                     <div>
                       <h3 className="font-bold text-lg mb-2">Téléphone</h3>
@@ -348,7 +348,7 @@ const Contact = () => {
                 </p>
                 <Button 
                   onClick={() => setRequestType("demo")}
-                  className="w-full bg-accent hover:bg-accent/90 text-accent-foreground text-lg py-6 rounded-xl font-bold"
+                  className="w-full bg-primary hover:bg-[hsl(var(--primary-dark))] text-primary-foreground text-lg py-6 rounded-full font-bold"
                 >
                   Réserver une démo
                 </Button>

@@ -1,3 +1,4 @@
+import { FlectMark } from "@/components/FlectLogo";
 import { LayoutDashboard, Car, Users, CreditCard, Receipt, Bell, Shield, Settings } from "lucide-react";
 import { NavLink } from "@/components/NavLink";
 import { Badge } from "@/components/ui/badge";
@@ -30,10 +31,8 @@ export function DemoSidebar() {
     <Sidebar>
       <SidebarHeader className="border-b border-border px-6 py-4">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center">
-            <CreditCard className="w-5 h-5 text-primary-foreground" />
-          </div>
-          <span className="text-xl font-bold">Flect</span>
+          <FlectMark className="w-8 h-8 text-primary" />
+          <span className="text-xl font-display font-extrabold tracking-tight">Flect</span>
         </div>
       </SidebarHeader>
 

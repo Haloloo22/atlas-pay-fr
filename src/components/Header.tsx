@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/sheet";
 import { useHeaderScroll } from "@/hooks/useScrollAnimation";
 import { cn } from "@/lib/utils";
+import { FlectMark } from "@/components/FlectLogo";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -36,21 +37,17 @@ const Header = () => {
         scrolled ? "py-3" : "py-5"
       )}>
         <div className="flex items-center justify-between">
-          <Link to="/" className="flex items-center space-x-3 group">
-            <div className={cn(
-              "bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center shadow-lg group-hover:scale-105 transition-all duration-300",
-              scrolled ? "w-9 h-9" : "w-11 h-11"
-            )}>
-              <span className={cn(
-                "text-primary-foreground font-black transition-all duration-300",
-                scrolled ? "text-lg" : "text-xl"
-              )}>F</span>
-            </div>
+          <Link to="/" className="flex items-center space-x-2 group">
+            <FlectMark className={cn(
+              "text-primary transition-all duration-200",
+              scrolled ? "w-8 h-8" : "w-9 h-9"
+            )} />
             <span className={cn(
-              "font-black bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent transition-all duration-300",
+              "font-display font-extrabold tracking-tight text-foreground transition-all duration-200",
               scrolled ? "text-xl" : "text-2xl"
             )}>Flect</span>
           </Link>
+
           
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-10">

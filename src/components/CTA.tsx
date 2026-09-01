@@ -13,7 +13,7 @@ const CTA = () => {
         <div 
           ref={ref}
           className={cn(
-            "relative bg-gradient-to-br from-primary via-primary to-accent rounded-3xl p-12 md:p-16 text-center overflow-hidden shadow-2xl transition-all duration-700",
+            "relative bg-primary rounded-3xl p-12 md:p-16 text-center overflow-hidden shadow-2xl transition-all duration-700",
             isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
           )}
         >

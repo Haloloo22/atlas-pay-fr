@@ -44,7 +44,7 @@ const Dashboard = () => {
           </p>
         </div>
 
-        <div className="bg-gradient-to-br from-secondary/50 to-background rounded-2xl border-2 border-border p-4 md:p-8 shadow-2xl">
+        <div className="bg-secondary rounded-2xl border-2 border-border p-4 md:p-8 shadow-2xl">
           <div className="bg-background rounded-xl p-4 md:p-6 space-y-5">
             {/* Header */}
             <div className="flex flex-col md:flex-row md:items-center justify-between pb-4 border-b border-border">
@@ -64,10 +64,10 @@ const Dashboard = () => {
 
             {/* Stats Grid */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-              <div className="bg-gradient-to-br from-primary/10 to-primary/5 rounded-xl p-4 border border-primary/20">
+              <div className="bg-accent rounded-xl p-4 border border-primary/20">
                 <div className="flex items-center justify-between mb-2">
                   <Fuel className="w-5 h-5 text-primary" />
-                  <div className="flex items-center gap-1 text-xs font-semibold text-accent">
+                  <div className="flex items-center gap-1 text-xs font-semibold text-ink">
                     <TrendingDown className="w-3 h-3" />
                     <span>-8%</span>
                   </div>
@@ -76,10 +76,10 @@ const Dashboard = () => {
                 <p className="text-xl font-bold text-foreground">48,900 MAD</p>
               </div>
 
-              <div className="bg-gradient-to-br from-accent/10 to-accent/5 rounded-xl p-4 border border-accent/20">
+              <div className="bg-accent rounded-xl p-4 border border-accent/20">
                 <div className="flex items-center justify-between mb-2">
-                  <TrendingUp className="w-5 h-5 text-accent" />
-                  <div className="flex items-center gap-1 text-xs font-semibold text-accent">
+                  <TrendingUp className="w-5 h-5 text-ink" />
+                  <div className="flex items-center gap-1 text-xs font-semibold text-ink">
                     <TrendingUp className="w-3 h-3" />
                     <span>+12%</span>
                   </div>
@@ -88,7 +88,7 @@ const Dashboard = () => {
                 <p className="text-xl font-bold text-foreground">12,450 MAD</p>
               </div>
 
-              <div className="bg-gradient-to-br from-secondary/80 to-secondary/40 rounded-xl p-4 border border-border">
+              <div className="bg-secondary rounded-xl p-4 border border-border">
                 <div className="flex items-center justify-between mb-2">
                   <CreditCard className="w-5 h-5 text-foreground" />
                   <span className="text-xs font-semibold text-muted-foreground">34/42</span>
@@ -97,7 +97,7 @@ const Dashboard = () => {
                 <p className="text-xl font-bold text-foreground">34</p>
               </div>
 
-              <div className="bg-gradient-to-br from-warning/10 to-warning/5 rounded-xl p-4 border border-warning/20">
+              <div className="bg-warning/10 rounded-xl p-4 border border-warning/20">
                 <div className="flex items-center justify-between mb-2">
                   <AlertCircle className="w-5 h-5 text-warning" />
                   <span className="text-xs font-semibold text-warning">2 nouvelles</span>
@@ -227,7 +227,7 @@ const Dashboard = () => {
             {/* Alerts */}
             <div className="bg-accent/5 border border-accent/20 rounded-xl p-3">
               <div className="flex items-start gap-3">
-                <AlertCircle className="w-4 h-4 text-accent flex-shrink-0 mt-0.5" />
+                <AlertCircle className="w-4 h-4 text-ink flex-shrink-0 mt-0.5" />
                 <div>
                   <p className="font-semibold text-xs mb-0.5">2 anomalies détectées</p>
                   <p className="text-[11px] text-muted-foreground">

@@ -85,13 +85,13 @@ const Pricing = () => {
                 key={index}
                 className={`relative rounded-3xl p-10 transition-all duration-300 ${
                   plan.popular
-                    ? 'bg-gradient-to-br from-primary/5 to-accent/5 border-2 border-primary shadow-[0_20px_80px_-20px_rgba(21,94,160,0.3)] scale-105'
+                    ? 'bg-accent border-2 border-primary shadow-[0_20px_80px_-20px_rgba(13,14,12,0.12)] scale-105'
                     : 'bg-card border-2 border-border hover:border-primary/30 hover:shadow-xl'
                 }`}
               >
                 {plan.popular && (
                   <div className="absolute -top-5 left-1/2 -translate-x-1/2">
-                    <span className="bg-gradient-to-r from-primary to-accent text-primary-foreground px-6 py-2 rounded-full text-sm font-bold uppercase tracking-wide shadow-lg">
+                    <span className="bg-primary text-primary-foreground px-6 py-2 rounded-full text-sm font-bold uppercase tracking-wide shadow-lg">
                       Le plus populaire
                     </span>
                   </div>

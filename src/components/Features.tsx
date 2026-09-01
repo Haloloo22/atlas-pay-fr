@@ -63,9 +63,9 @@ const FeatureCard = ({ feature, index }: { feature: typeof features[0]; index: n
       )}
       style={{ transitionDelay: `${index * 100}ms` }}
     >
-      <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10`}></div>
+      <div className={`absolute inset-0 bg-secondary ${feature.gradient} rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10`}></div>
       
-      <div className="w-12 h-12 bg-gradient-to-br from-primary/10 to-accent/10 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
+      <div className="w-12 h-12 bg-accent rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
         <feature.icon className="w-6 h-6 text-primary" />
       </div>
       
@@ -124,7 +124,7 @@ const Features = () => {
   const { ref: titleRef, isVisible: titleVisible } = useScrollAnimation({ threshold: 0.2 });
 
   return (
-    <section id="fonctionnalites" className="py-20 px-6 bg-gradient-to-b from-secondary/40 to-background">
+    <section id="fonctionnalites" className="py-20 px-6 bg-secondary">
       <div className="container mx-auto max-w-7xl">
         <div 
           ref={titleRef}

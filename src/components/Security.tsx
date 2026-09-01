@@ -48,7 +48,7 @@ const Security = () => {
               className="bg-background p-5 rounded-xl border border-border flex gap-4 hover:border-primary/30 hover:shadow-md transition-all"
             >
               <div className="flex-shrink-0">
-                <div className="w-10 h-10 bg-gradient-to-br from-primary/10 to-accent/10 rounded-lg flex items-center justify-center">
+                <div className="w-10 h-10 bg-accent rounded-lg flex items-center justify-center">
                   <item.icon className="w-5 h-5 text-primary" />
                 </div>
               </div>
@@ -63,15 +63,15 @@ const Security = () => {
         </div>
 
         <div className="mt-10 grid md:grid-cols-3 gap-4">
-          <div className="bg-gradient-to-br from-primary/5 to-accent/5 rounded-xl p-5 text-center border border-primary/10">
+          <div className="bg-accent rounded-xl p-5 text-center border border-primary/10">
             <div className="text-3xl font-bold text-primary mb-1">99.9%</div>
             <div className="text-xs font-semibold text-muted-foreground">Disponibilité garantie</div>
           </div>
-          <div className="bg-gradient-to-br from-accent/5 to-primary/5 rounded-xl p-5 text-center border border-accent/10">
-            <div className="text-3xl font-bold text-accent mb-1">24/7</div>
+          <div className="bg-accent rounded-xl p-5 text-center border border-accent/10">
+            <div className="text-3xl font-bold text-ink mb-1">24/7</div>
             <div className="text-xs font-semibold text-muted-foreground">Support technique</div>
           </div>
-          <div className="bg-gradient-to-br from-primary/5 to-accent/5 rounded-xl p-5 text-center border border-primary/10">
+          <div className="bg-accent rounded-xl p-5 text-center border border-primary/10">
             <div className="text-3xl font-bold text-primary mb-1">100%</div>
             <div className="text-xs font-semibold text-muted-foreground">Conforme Maroc</div>
           </div>
