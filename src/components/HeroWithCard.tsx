@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import fleetDriverImage from "@/assets/fleet-driver.jpg";
 import StationLogos from "@/components/StationLogos";
 import TransactionToast from "@/components/TransactionToast";
+import VideoDialog from "@/components/VideoDialog";
 import shellLogo from "@/assets/stations/shell.png.asset.json";
 import afriquiaLogo from "@/assets/stations/afriquia.png.asset.json";
 
@@ -42,6 +43,7 @@ const HeroWithCard = () => {
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
+              <VideoDialog />
             </div>
 
             {/* Trust Badges - Enhanced */}
