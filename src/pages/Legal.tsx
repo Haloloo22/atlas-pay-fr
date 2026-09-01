@@ -24,7 +24,7 @@ const Legal = () => {
                   <li><strong className="text-foreground">Capital social :</strong> 100 000 MAD</li>
                   <li><strong className="text-foreground">RC :</strong> 123456 - Casablanca</li>
                   <li><strong className="text-foreground">ICE :</strong> 001234567000089</li>
-                  <li><strong className="text-foreground">Email :</strong> contact@fleetpay.ma</li>
+                  <li><strong className="text-foreground">Email :</strong> contact@flect.ma</li>
                   <li><strong className="text-foreground">Téléphone :</strong> +212 5 22 12 34 56</li>
                 </ul>
               </div>
@@ -66,7 +66,7 @@ const Legal = () => {
                 Conformément à la loi n° 09-08 relative à la protection des personnes physiques à l'égard du traitement des données à caractère personnel, vous disposez d'un droit d'accès, de rectification et de suppression des données vous concernant.
               </p>
               <p className="text-muted-foreground mt-4">
-                Pour exercer ce droit, vous pouvez nous contacter à l'adresse : privacy@fleetpay.ma
+                Pour exercer ce droit, vous pouvez nous contacter à l'adresse : privacy@flect.ma
               </p>
               <p className="text-muted-foreground mt-4">
                 Pour plus d'informations, consultez notre <a href="/privacy" className="text-primary hover:underline">Politique de confidentialité</a>.

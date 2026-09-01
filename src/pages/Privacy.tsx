@@ -27,7 +27,7 @@ const Privacy = () => {
                 <ul className="space-y-2 text-muted-foreground mt-4">
                   <li><strong className="text-foreground">Flect SARL</strong></li>
                   <li>123 Boulevard Hassan II, Casablanca 20250, Maroc</li>
-                  <li>Email : privacy@fleetpay.ma</li>
+                  <li>Email : privacy@flect.ma</li>
                 </ul>
               </div>
             </section>
@@ -143,7 +143,7 @@ const Privacy = () => {
                   <li>✓ <strong className="text-foreground">Droit à la portabilité :</strong> récupérer vos données</li>
                 </ul>
                 <p className="text-muted-foreground mt-6">
-                  Pour exercer ces droits, contactez-nous à : <a href="mailto:privacy@fleetpay.ma" className="text-primary hover:underline">privacy@fleetpay.ma</a>
+                  Pour exercer ces droits, contactez-nous à : <a href="mailto:privacy@flect.ma" className="text-primary hover:underline">privacy@flect.ma</a>
                 </p>
               </div>
             </section>
@@ -177,7 +177,7 @@ const Privacy = () => {
               </p>
               <div className="bg-card rounded-2xl p-6 border-2 border-border mt-4">
                 <p className="text-muted-foreground">
-                  <strong className="text-foreground">Email :</strong> privacy@fleetpay.ma<br />
+                  <strong className="text-foreground">Email :</strong> privacy@flect.ma<br />
                   <strong className="text-foreground">Courrier :</strong> Flect SARL - DPO, 123 Boulevard Hassan II, Casablanca 20250, Maroc
                 </p>
               </div>

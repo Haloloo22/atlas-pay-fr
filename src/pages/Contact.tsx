@@ -319,8 +319,8 @@ const Contact = () => {
                     <div>
                       <h3 className="font-bold text-lg mb-2">Email</h3>
                       <p className="text-muted-foreground leading-relaxed">
-                        contact@fleetpay.ma<br />
-                        support@fleetpay.ma
+                        contact@flect.ma<br />
+                        support@flect.ma
                       </p>
                     </div>
                   </div>

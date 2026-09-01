@@ -131,7 +131,7 @@ const Terms = () => {
                 <strong>Dernière mise à jour :</strong> Décembre 2025
               </p>
               <p className="text-sm text-muted-foreground mt-2">
-                Pour toute question concernant ces conditions, contactez-nous à : legal@fleetpay.ma
+                Pour toute question concernant ces conditions, contactez-nous à : legal@flect.ma
               </p>
             </section>
           </div>
