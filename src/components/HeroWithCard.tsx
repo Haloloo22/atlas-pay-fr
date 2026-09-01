@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Play, Lock, Zap, Shield, CheckCircle } from "lucide-react";
+import { ArrowRight, Lock, Zap, Shield, CheckCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 import fleetDriverImage from "@/assets/fleet-driver.jpg";
 import StationLogos from "@/components/StationLogos";
@@ -37,16 +37,6 @@ const HeroWithCard = () => {
                 >
                   Voir la démo
                   <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-              </Link>
-              <Link to="/demo">
-                <Button 
-                  size="lg" 
-                  variant="outline" 
-                  className="text-base px-8 py-6 font-medium rounded-lg border-2 hover:bg-secondary/80 hover:scale-105 transition-all"
-                >
-                  <Play className="mr-2 h-5 w-5" />
-                  Voir la démo
                 </Button>
               </Link>
             </div>
