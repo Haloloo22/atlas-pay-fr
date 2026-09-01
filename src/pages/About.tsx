@@ -39,7 +39,7 @@ const About = () => {
               Notre mission : simplifier la gestion de flotte
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              FleetPay est né de la volonté de moderniser la gestion des dépenses de carburant au Maroc avec une solution SaaS intuitive et sécurisée.
+              Flect est né de la volonté de moderniser la gestion des dépenses de carburant au Maroc avec une solution SaaS intuitive et sécurisée.
             </p>
           </div>
         </section>
@@ -81,7 +81,7 @@ const About = () => {
                 Prêt à optimiser votre flotte ?
               </h2>
               <p className="text-xl opacity-90 mb-8 max-w-2xl mx-auto">
-                Découvrez comment FleetPay peut transformer la gestion de vos dépenses carburant.
+                Découvrez comment Flect peut transformer la gestion de vos dépenses carburant.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link to="/demo">

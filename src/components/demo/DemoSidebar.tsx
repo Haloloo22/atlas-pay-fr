@@ -33,7 +33,7 @@ export function DemoSidebar() {
           <div className="w-10 h-10 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center">
             <CreditCard className="w-5 h-5 text-primary-foreground" />
           </div>
-          <span className="text-xl font-bold">FleetPay</span>
+          <span className="text-xl font-bold">Flect</span>
         </div>
       </SidebarHeader>
 

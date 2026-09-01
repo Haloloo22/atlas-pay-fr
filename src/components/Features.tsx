@@ -42,7 +42,7 @@ const features = [
   {
     icon: MapPin,
     title: "Accepté dans toutes les stations",
-    description: "Total, Shell, Afriquia, Winxo et plus. Votre carte FleetPay fonctionne partout au Maroc.",
+    description: "Total, Shell, Afriquia, Winxo et plus. Votre carte Flect fonctionne partout au Maroc.",
     gradient: "from-accent/10 via-primary/5 to-transparent",
     miniDashboard: false,
     showStations: true

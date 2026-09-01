@@ -159,11 +159,11 @@ const Pricing = () => {
               {[
                 {
                   q: "🔒 Sécurité / Conformité Bank Al-Maghrib (BAM)",
-                  a: "FleetPay est 100% conforme aux réglementations de Bank Al-Maghrib. Vos transactions sont sécurisées, cryptées et protégées par des standards bancaires internationaux. Audits de sécurité réguliers et certification PCI-DSS."
+                  a: "Flect est 100% conforme aux réglementations de Bank Al-Maghrib. Vos transactions sont sécurisées, cryptées et protégées par des standards bancaires internationaux. Audits de sécurité réguliers et certification PCI-DSS."
                 },
                 {
                   q: "🚚 Livraison des cartes physiques",
-                  a: "Les cartes physiques FleetPay sont livrées sous 48h partout au Maroc. Livraison sécurisée avec suivi. Les cartes virtuelles sont disponibles instantanément dans votre dashboard dès activation de votre compte."
+                  a: "Les cartes physiques Flect sont livrées sous 48h partout au Maroc. Livraison sécurisée avec suivi. Les cartes virtuelles sont disponibles instantanément dans votre dashboard dès activation de votre compte."
                 },
                 {
                   q: "⛽ Contrôle des limites carburant par chauffeur",
@@ -179,7 +179,7 @@ const Pricing = () => {
                 },
                 {
                   q: "🎁 Offrez-vous une période d'essai ?",
-                  a: "Oui, nous offrons 14 jours d'essai gratuit sans engagement et sans carte bancaire requise. Accès complet à toutes les fonctionnalités pour tester FleetPay avec votre flotte."
+                  a: "Oui, nous offrons 14 jours d'essai gratuit sans engagement et sans carte bancaire requise. Accès complet à toutes les fonctionnalités pour tester Flect avec votre flotte."
                 }
               ].map((faq, i) => (
                 <div key={i} className="bg-card rounded-2xl p-8 border-2 border-border hover:border-primary/30 transition-all duration-300 hover:shadow-lg group">

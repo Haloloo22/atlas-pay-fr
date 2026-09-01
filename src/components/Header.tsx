@@ -49,7 +49,7 @@ const Header = () => {
             <span className={cn(
               "font-black bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent transition-all duration-300",
               scrolled ? "text-xl" : "text-2xl"
-            )}>FleetPay</span>
+            )}>Flect</span>
           </Link>
           
           {/* Desktop Navigation */}

@@ -12,7 +12,7 @@ const steps = [
   {
     number: "02",
     title: "Distribuez les cartes physiques ou virtuelles",
-    description: "Recevez vos cartes FleetPay sous 48h. Cartes virtuelles disponibles instantanément dans l'app. Activez-les depuis votre dashboard.",
+    description: "Recevez vos cartes Flect sous 48h. Cartes virtuelles disponibles instantanément dans l'app. Activez-les depuis votre dashboard.",
     icon: CreditCard
   },
   {

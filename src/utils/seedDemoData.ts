@@ -82,7 +82,7 @@ export async function seedDemoData(companyId: string) {
         company_id: companyId,
         first_name: randomElement(moroccanFirstNames),
         last_name: randomElement(moroccanLastNames),
-        email: `driver${i + 1}@fleetpay-demo.ma`,
+        email: `driver${i + 1}@flect-demo.ma`,
         phone: `+212 6${randomBetween(10000000, 99999999)}`,
         license_number: `P${randomBetween(100000, 999999)}`,
         is_active: Math.random() > 0.1,

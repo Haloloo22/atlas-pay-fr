@@ -70,7 +70,7 @@ export function CompanyOnboarding() {
           </div>
           <h1 className="text-2xl font-bold mb-2">Créez votre entreprise</h1>
           <p className="text-muted-foreground">
-            Configurez votre espace FleetPay pour commencer à gérer votre flotte.
+            Configurez votre espace Flect pour commencer à gérer votre flotte.
           </p>
         </div>
 

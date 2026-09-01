@@ -304,8 +304,8 @@ const Auth = () => {
                   </h1>
                   <p className="text-muted-foreground">
                     {mode === "login" 
-                      ? "Accédez à votre espace FleetPay" 
-                      : "Rejoignez FleetPay et optimisez votre flotte"}
+                      ? "Accédez à votre espace Flect" 
+                      : "Rejoignez Flect et optimisez votre flotte"}
                   </p>
                 </div>
 
