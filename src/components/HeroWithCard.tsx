@@ -39,16 +39,6 @@ const HeroWithCard = () => {
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
-              <Link to="/demo">
-                <Button 
-                  size="lg" 
-                  variant="outline" 
-                  className="text-base px-8 py-6 font-medium rounded-lg border-2 hover:bg-secondary/80 hover:scale-105 transition-all"
-                >
-                  <Play className="mr-2 h-5 w-5" />
-                  Voir la démo
-                </Button>
-              </Link>
             </div>
 
             {/* Trust Badges - Enhanced */}
