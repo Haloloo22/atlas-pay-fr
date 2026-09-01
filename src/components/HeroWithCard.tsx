@@ -3,6 +3,9 @@ import { ArrowRight, Lock, Zap, Shield, CheckCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 import fleetDriverImage from "@/assets/fleet-driver.jpg";
 import StationLogos from "@/components/StationLogos";
+import TransactionToast from "@/components/TransactionToast";
+import shellLogo from "@/assets/stations/shell.png.asset.json";
+import afriquiaLogo from "@/assets/stations/afriquia.png.asset.json";
 
 const HeroWithCard = () => {
   return (
@@ -89,14 +92,39 @@ const HeroWithCard = () => {
               <div className="absolute inset-0 "></div>
             </div>
 
-            {/* Flect Card - Below photo */}
+            {/* Flect Card - Below photo, with live transaction notifications */}
             <div 
-              className="relative w-[320px] opacity-0 animate-[card-entrance_1s_cubic-bezier(0.34,1.56,0.64,1)_0.4s_forwards]"
+              className="relative w-[320px] my-16 opacity-0 animate-[card-entrance_1s_cubic-bezier(0.34,1.56,0.64,1)_0.4s_forwards]"
             >
+              {/* Connector lines */}
+              <div className="absolute -top-12 right-10 w-3 h-14 rounded-t-full bg-primary/15 -z-10 hidden sm:block" aria-hidden />
+              <div className="absolute -bottom-12 left-10 w-3 h-14 rounded-b-full bg-primary/15 -z-10 hidden sm:block" aria-hidden />
+
+              {/* Accepted transaction */}
+              <TransactionToast
+                logo={shellLogo.url}
+                station="Shell"
+                amount={1520}
+                time="Aujourd'hui, 08:36"
+                status="accepted"
+                className="absolute -top-20 -left-6 sm:-left-24 z-20 opacity-0 animate-[fade-in_0.7s_ease-out_1.1s_forwards]"
+              />
+
+              {/* Declined transaction */}
+              <TransactionToast
+                logo={afriquiaLogo.url}
+                station="Afriquia"
+                amount={839.5}
+                time="Aujourd'hui, 21:49"
+                status="declined"
+                className="absolute -bottom-20 -right-6 sm:-right-28 z-20 opacity-0 animate-[fade-in_0.7s_ease-out_1.6s_forwards]"
+              />
+
               <div 
                 className="relative transform hover:scale-105 transition-all duration-500 hover:rotate-1 hover:shadow-[0_30px_80px_rgba(13,14,12,0.12)]" 
                 style={{ aspectRatio: '1.586/1' }}
               >
+
                 <div className="w-full h-full bg-ink rounded-xl p-6 shadow-[0_20px_60px_rgba(13,14,12,0.12),inset_0_1px_0_rgba(255,255,255,0.1)] relative overflow-hidden">
                   {/* Animated shine effect */}
                   <div className="absolute inset-0 "></div>
@@ -122,7 +150,7 @@ const HeroWithCard = () => {
                     <div className="flex items-end justify-between">
                       <div>
                         <p className="text-[8px] text-white/60 mb-0.5 uppercase tracking-wider">Titulaire</p>
-                        <p className="font-semibold text-white text-xs">AHMED BENJELLOUN</p>
+                        <p className="font-semibold text-white text-xs">AHMED BACHIR</p>
                       </div>
                       <div className="text-right">
                         <p className="text-[8px] text-white/60 mb-0.5 uppercase tracking-wider">Expire</p>
