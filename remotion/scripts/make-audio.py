@@ -11,12 +11,10 @@ t = np.arange(N) / SR
 def env(n, a, d, s, r, hold):
     """ADSR env in samples."""
     a, d, r, hold = int(a*SR), int(d*SR), int(r*SR), int(hold*SR)
-    e = np.zeros(n)
-    i = 0
-    e[i:i+a] = np.linspace(0, 1, a); i += a
-    e[i:i+d] = np.linspace(1, s, d); i += d
-    e[i:i+hold] = s; i += hold
-    e[i:i+r] = np.linspace(s, 0, r); i += r
+    segs = [np.linspace(0, 1, a), np.linspace(1, s, d), np.full(hold, s), np.linspace(s, 0, r)]
+    e = np.concatenate(segs) if sum(len(x) for x in segs) else np.zeros(0)
+    if len(e) < n:
+        e = np.concatenate([e, np.zeros(n - len(e))])
     return e[:n]
 
 def lowpass(x, fc, order=2):
@@ -123,7 +121,6 @@ def whoosh(dur=0.35, up=True):
 def chime(freqs, dur=0.9):
     out = np.zeros(int(dur*SR))
     for i, f in enumerate(freqs):
-        out += note(f, dur - i*0.05, "sine", a=0.003, d=0.3, s=0.3, r=0.4)[: len(out) - int(i*0.06*SR)].__mul__(0.6) if False else 0
         place(out, note(f, dur - i*0.06, "sine", a=0.003, d=0.3, s=0.3, r=0.4) * 0.6, i*0.06)
     return out
 
