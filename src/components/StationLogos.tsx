@@ -1,11 +1,14 @@
 import { cn } from '@/lib/utils';
+import shellLogo from '@/assets/stations/shell.png.asset.json';
+import totalLogo from '@/assets/stations/total.png.asset.json';
+import afriquiaLogo from '@/assets/stations/afriquia.png.asset.json';
+import winxoLogo from '@/assets/stations/winxo.png.asset.json';
 
-const stations = [
-  { name: 'TotalEnergies' },
-  { name: 'Shell' },
-  { name: 'Afriquia' },
-  { name: 'Winxo' },
-  { name: 'Petrom' },
+export const stations = [
+  { name: 'TotalEnergies', logo: totalLogo.url, wide: true },
+  { name: 'Shell', logo: shellLogo.url, wide: false },
+  { name: 'Afriquia', logo: afriquiaLogo.url, wide: false },
+  { name: 'Winxo', logo: winxoLogo.url, wide: false },
 ];
 
 interface StationLogosProps {
@@ -20,13 +23,21 @@ const StationLogos = ({ variant = 'marquee', className }: StationLogosProps) => 
         <div
           key={index}
           className={cn(
-            "flex-shrink-0 px-6 py-3 rounded-xl bg-background border border-border",
+            "flex-shrink-0 flex items-center gap-3 px-6 py-3 rounded-xl bg-background border border-border",
             "transition-transform duration-200 cursor-default"
           )}
         >
-          <span className="text-lg font-display font-bold tracking-tight text-ink">
-            {station.name}
-          </span>
+          <img
+            src={station.logo}
+            alt={`Logo ${station.name}`}
+            loading="lazy"
+            className={cn("h-8 w-auto object-contain", station.wide ? "max-w-[140px]" : "max-w-[40px]")}
+          />
+          {!station.wide && (
+            <span className="text-base font-display font-bold tracking-tight text-ink">
+              {station.name}
+            </span>
+          )}
         </div>
       ))}
     </>
@@ -42,11 +53,6 @@ const StationLogos = ({ variant = 'marquee', className }: StationLogosProps) => 
 
   return (
     <div className={cn("relative overflow-hidden", className)}>
-      {/* Gradient masks */}
-      <div className="absolute left-0 top-0 bottom-0 w-20  z-10 pointer-events-none" />
-      <div className="absolute right-0 top-0 bottom-0 w-20  z-10 pointer-events-none" />
-      
-      {/* Marquee container */}
       <div className="flex gap-8 animate-marquee">
         <div className="flex gap-8 shrink-0">
           <LogoItems />
