@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { LayoutDashboard, Car, Users, CreditCard, Receipt, Bell, LogOut, Shield, Settings } from "lucide-react";
+import { LayoutDashboard, Car, Users, CreditCard, Receipt, Bell, LogOut, Shield, Settings, FlaskConical } from "lucide-react";
 import { NavLink } from "@/components/NavLink";
 import { useAuth } from "@/contexts/AuthContext";
 import { useAlerts } from "@/hooks/useAlerts";
@@ -28,6 +28,7 @@ const menuItems = [
   { title: "Transactions", url: "/app/transactions", icon: Receipt },
   { title: "Alertes", url: "/app/alerts", icon: Bell },
   { title: "Paramètres", url: "/app/settings", icon: Settings },
+  { title: "Règles de gestion (test)", url: "/app/rules-engine", icon: FlaskConical },
 ];
 
 export function AppSidebar() {
