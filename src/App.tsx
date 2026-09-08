@@ -43,6 +43,7 @@ import PolicyDetailPage from "./pages/app/PolicyDetailPage";
 import TransactionsPage from "./pages/app/TransactionsPage";
 import AlertsPage from "./pages/app/AlertsPage";
 import SettingsPage from "./pages/app/SettingsPage";
+import RulesEnginePage from "./pages/app/RulesEnginePage";
 
 const queryClient = new QueryClient();
 
@@ -100,6 +101,7 @@ const App = () => (
                 <Route path="transactions" element={<TransactionsPage />} />
                 <Route path="alerts" element={<AlertsPage />} />
                 <Route path="settings" element={<SettingsPage />} />
+                <Route path="rules-engine" element={<RulesEnginePage />} />
               </Route>
 
               {/* Catch-all */}

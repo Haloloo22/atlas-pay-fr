@@ -664,6 +664,401 @@ export type Database = {
         }
         Relationships: []
       }
+      rule_engine_alert_settings: {
+        Row: {
+          alert_type: string
+          channels: string[]
+          company_id: string
+          created_at: string
+          id: string
+          is_enabled: boolean
+          recipients: string[]
+          updated_at: string
+        }
+        Insert: {
+          alert_type: string
+          channels?: string[]
+          company_id: string
+          created_at?: string
+          id?: string
+          is_enabled?: boolean
+          recipients?: string[]
+          updated_at?: string
+        }
+        Update: {
+          alert_type?: string
+          channels?: string[]
+          company_id?: string
+          created_at?: string
+          id?: string
+          is_enabled?: boolean
+          recipients?: string[]
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "rule_engine_alert_settings_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "rule_engine_alert_settings_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "company_summaries"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      rule_engine_audit_log: {
+        Row: {
+          action: string
+          actor: string | null
+          company_id: string
+          created_at: string
+          data_after: Json | null
+          data_before: Json | null
+          entity: string
+          entity_id: string | null
+          id: string
+        }
+        Insert: {
+          action: string
+          actor?: string | null
+          company_id: string
+          created_at?: string
+          data_after?: Json | null
+          data_before?: Json | null
+          entity: string
+          entity_id?: string | null
+          id?: string
+        }
+        Update: {
+          action?: string
+          actor?: string | null
+          company_id?: string
+          created_at?: string
+          data_after?: Json | null
+          data_before?: Json | null
+          entity?: string
+          entity_id?: string | null
+          id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "rule_engine_audit_log_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "rule_engine_audit_log_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "company_summaries"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      rule_engine_erp_exports: {
+        Row: {
+          attempts: number
+          company_id: string
+          created_at: string
+          error_message: string | null
+          exported_at: string
+          id: string
+          odoo_analytic_line_reference: string | null
+          odoo_move_reference: string | null
+          payload: Json
+          status: string
+          transaction_id: string
+        }
+        Insert: {
+          attempts?: number
+          company_id: string
+          created_at?: string
+          error_message?: string | null
+          exported_at?: string
+          id?: string
+          odoo_analytic_line_reference?: string | null
+          odoo_move_reference?: string | null
+          payload?: Json
+          status: string
+          transaction_id: string
+        }
+        Update: {
+          attempts?: number
+          company_id?: string
+          created_at?: string
+          error_message?: string | null
+          exported_at?: string
+          id?: string
+          odoo_analytic_line_reference?: string | null
+          odoo_move_reference?: string | null
+          payload?: Json
+          status?: string
+          transaction_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "rule_engine_erp_exports_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "rule_engine_erp_exports_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "company_summaries"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "rule_engine_erp_exports_transaction_id_fkey"
+            columns: ["transaction_id"]
+            isOneToOne: false
+            referencedRelation: "rule_engine_transactions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      rule_engine_geo: {
+        Row: {
+          center_lat: number | null
+          center_lng: number | null
+          company_id: string
+          created_at: string
+          expires_at: string | null
+          geo_reference: string | null
+          id: string
+          is_active: boolean
+          is_exception: boolean
+          merchant_whitelist: string[]
+          missing_location_policy: string
+          radius_km: number | null
+          scope_id: string
+          scope_type: string
+          sync_status: string
+          updated_at: string
+          zone_type: string
+        }
+        Insert: {
+          center_lat?: number | null
+          center_lng?: number | null
+          company_id: string
+          created_at?: string
+          expires_at?: string | null
+          geo_reference?: string | null
+          id?: string
+          is_active?: boolean
+          is_exception?: boolean
+          merchant_whitelist?: string[]
+          missing_location_policy?: string
+          radius_km?: number | null
+          scope_id: string
+          scope_type?: string
+          sync_status?: string
+          updated_at?: string
+          zone_type?: string
+        }
+        Update: {
+          center_lat?: number | null
+          center_lng?: number | null
+          company_id?: string
+          created_at?: string
+          expires_at?: string | null
+          geo_reference?: string | null
+          id?: string
+          is_active?: boolean
+          is_exception?: boolean
+          merchant_whitelist?: string[]
+          missing_location_policy?: string
+          radius_km?: number | null
+          scope_id?: string
+          scope_type?: string
+          sync_status?: string
+          updated_at?: string
+          zone_type?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "rule_engine_geo_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "rule_engine_geo_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "company_summaries"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      rule_engine_limits: {
+        Row: {
+          alert_threshold_pct: number
+          amount: number
+          company_id: string
+          created_at: string
+          id: string
+          is_active: boolean
+          mcc_filter: string[]
+          multi_card_mode: string
+          on_exceed: string
+          period: string
+          scope_id: string
+          scope_type: string
+          sync_status: string
+          updated_at: string
+        }
+        Insert: {
+          alert_threshold_pct?: number
+          amount: number
+          company_id: string
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          mcc_filter?: string[]
+          multi_card_mode?: string
+          on_exceed?: string
+          period?: string
+          scope_id: string
+          scope_type?: string
+          sync_status?: string
+          updated_at?: string
+        }
+        Update: {
+          alert_threshold_pct?: number
+          amount?: number
+          company_id?: string
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          mcc_filter?: string[]
+          multi_card_mode?: string
+          on_exceed?: string
+          period?: string
+          scope_id?: string
+          scope_type?: string
+          sync_status?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "rule_engine_limits_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "rule_engine_limits_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "company_summaries"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      rule_engine_transactions: {
+        Row: {
+          amount: number
+          captured_amount: number | null
+          captured_at: string | null
+          card_id: string
+          company_id: string
+          created_at: string
+          decline_reason: string | null
+          evaluated_rules: Json
+          id: string
+          is_captured: boolean
+          issuer_transaction_id: string
+          lat: number | null
+          lng: number | null
+          location_city: string | null
+          location_region: string | null
+          mcc: string
+          merchant_id: string | null
+          merchant_name: string | null
+          occurred_at: string
+          status: string
+        }
+        Insert: {
+          amount: number
+          captured_amount?: number | null
+          captured_at?: string | null
+          card_id: string
+          company_id: string
+          created_at?: string
+          decline_reason?: string | null
+          evaluated_rules?: Json
+          id?: string
+          is_captured?: boolean
+          issuer_transaction_id: string
+          lat?: number | null
+          lng?: number | null
+          location_city?: string | null
+          location_region?: string | null
+          mcc?: string
+          merchant_id?: string | null
+          merchant_name?: string | null
+          occurred_at?: string
+          status: string
+        }
+        Update: {
+          amount?: number
+          captured_amount?: number | null
+          captured_at?: string | null
+          card_id?: string
+          company_id?: string
+          created_at?: string
+          decline_reason?: string | null
+          evaluated_rules?: Json
+          id?: string
+          is_captured?: boolean
+          issuer_transaction_id?: string
+          lat?: number | null
+          lng?: number | null
+          location_city?: string | null
+          location_region?: string | null
+          mcc?: string
+          merchant_id?: string | null
+          merchant_name?: string | null
+          occurred_at?: string
+          status?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "rule_engine_transactions_card_id_fkey"
+            columns: ["card_id"]
+            isOneToOne: false
+            referencedRelation: "cards"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "rule_engine_transactions_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "rule_engine_transactions_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "company_summaries"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       transactions: {
         Row: {
           amount: number

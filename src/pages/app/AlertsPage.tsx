@@ -26,9 +26,29 @@ const alertTypeConfig: Record<
   { label: string; icon: React.ElementType; color: string }
 > = {
   limit_exceeded: {
-    label: "Limite dépassée",
+    label: "Dépassement de plafond",
     icon: TrendingUp,
     color: "bg-destructive/10 text-destructive border-destructive/20",
+  },
+  threshold_approach: {
+    label: "Approche de plafond",
+    icon: TrendingUp,
+    color: "bg-orange-500/10 text-orange-600 border-orange-500/20",
+  },
+  out_of_zone: {
+    label: "Tentative hors zone",
+    icon: AlertTriangle,
+    color: "bg-destructive/10 text-destructive border-destructive/20",
+  },
+  unusual_transaction: {
+    label: "Transaction inhabituelle",
+    icon: AlertTriangle,
+    color: "bg-yellow-500/10 text-yellow-600 border-yellow-500/20",
+  },
+  sync_failure: {
+    label: "Échec de synchronisation",
+    icon: Bell,
+    color: "bg-muted text-muted-foreground border-border",
   },
   suspicious_activity: {
     label: "Activité suspecte",
