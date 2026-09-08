@@ -72,8 +72,9 @@ export const usePolicies = () => {
       queryClient.invalidateQueries({ queryKey: ["policies"] });
       toast.success("Politique créée avec succès");
     },
-    onError: (error) => {
-      toast.error("Erreur lors de la création de la politique");
+    onError: (error: unknown) => {
+      const message = error instanceof Error ? error.message : "";
+      toast.error(`Erreur lors de la création de la politique${message ? ` : ${message}` : ""}`);
       console.error(error);
     },
   });
