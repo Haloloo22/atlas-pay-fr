@@ -56,7 +56,7 @@ const HeroWithCard = () => {
                 </div>
                 <div>
                   <span className="text-sm font-bold text-foreground block">100% Sécurisé</span>
-                  <p className="text-xs text-muted-foreground">Conforme Bank Al-Maghrib</p>
+                  <p className="text-xs text-muted-foreground">Cartes Visa sécurisées</p>
                 </div>
               </div>
               <div className="flex items-center gap-3 p-3 rounded-xl bg-warning/5 border border-warning/20 hover:border-warning/40 transition-colors">
@@ -181,7 +181,7 @@ const HeroWithCard = () => {
         {/* Value Propositions - Reduced spacing */}
         <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
           <div className="text-center space-y-2 opacity-0 animate-[float-up_0.8s_ease-out_0.6s_forwards]">
-            <div className="text-5xl md:text-6xl font-extrabold text-primary">-15%</div>
+            <div className="text-5xl md:text-6xl font-extrabold text-primary">Jusqu'à -15%</div>
             <p className="text-lg font-semibold text-foreground">Sur vos coûts carburant</p>
             <p className="text-sm text-muted-foreground">Économies potentielles</p>
           </div>
