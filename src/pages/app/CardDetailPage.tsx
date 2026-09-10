@@ -19,6 +19,10 @@ import { CardGeneralTab } from "@/components/cards/CardGeneralTab";
 import { CardAlertsTab } from "@/components/cards/CardAlertsTab";
 import { CardGeofencingTab } from "@/components/cards/CardGeofencingTab";
 import { CardGeofencingZonesTab } from "@/components/cards/CardGeofencingZonesTab";
+import { CardLimitsTab } from "@/components/cards/CardLimitsTab";
+import { CardRestrictionsTab } from "@/components/cards/CardRestrictionsTab";
+import { CardScheduleTab } from "@/components/cards/CardScheduleTab";
+import { CardVehicleRulesTab } from "@/components/cards/CardVehicleRulesTab";
 import type { GeoZone } from "@/components/cards/GeofencingZonesMap";
 import { toast } from "sonner";
 
@@ -216,10 +220,14 @@ export default function CardDetailPage() {
 
       {/* Tabs */}
       <Tabs defaultValue="general" className="space-y-6">
-        <TabsList className="grid w-full grid-cols-4 lg:w-auto lg:inline-grid">
+        <TabsList className="grid w-full grid-cols-4 lg:w-auto lg:grid-cols-8">
           <TabsTrigger value="general">Général</TabsTrigger>
+          <TabsTrigger value="limits">Limites</TabsTrigger>
+          <TabsTrigger value="restrictions">Restrictions</TabsTrigger>
+          <TabsTrigger value="schedule">Horaires</TabsTrigger>
           <TabsTrigger value="geofencing">Régions</TabsTrigger>
           <TabsTrigger value="zones">Zones</TabsTrigger>
+          <TabsTrigger value="vehicle">Véhicule</TabsTrigger>
           <TabsTrigger value="alerts">Alertes</TabsTrigger>
         </TabsList>
 
@@ -243,6 +251,49 @@ export default function CardDetailPage() {
           />
         </TabsContent>
 
+        <TabsContent value="limits">
+          <CardLimitsTab
+            card={{
+              per_transaction_limit: card.per_transaction_limit,
+              per_transaction_min: card.per_transaction_min,
+              daily_limit: card.daily_limit,
+              weekly_limit: card.weekly_limit,
+              monthly_limit: card.monthly_limit,
+              limit_type: card.limit_type,
+            }}
+            onSave={(limits) => updateCard.mutate(limits)}
+            isPending={updateCard.isPending}
+          />
+        </TabsContent>
+
+        <TabsContent value="restrictions">
+          <CardRestrictionsTab
+            card={{
+              allowed_fuel_types: card.allowed_fuel_types ?? [],
+              allow_shop_purchases: card.allow_shop_purchases ?? false,
+              shop_max_amount: card.shop_max_amount ?? 50,
+              block_non_fuel_mcc: card.block_non_fuel_mcc ?? true,
+            }}
+            onSaveFuelTypes={(fuelTypes) =>
+              updateCard.mutate({ allowed_fuel_types: fuelTypes })
+            }
+            onSaveShopRules={(rules) => updateCard.mutate(rules)}
+            isPending={updateCard.isPending}
+          />
+        </TabsContent>
+
+        <TabsContent value="schedule">
+          <CardScheduleTab
+            card={{
+              allowed_hours_start: card.allowed_hours_start ?? "06:00",
+              allowed_hours_end: card.allowed_hours_end ?? "22:00",
+              allowed_days: card.allowed_days ?? [1, 2, 3, 4, 5, 6, 7],
+            }}
+            onSave={(schedule) => updateCard.mutate(schedule)}
+            isPending={updateCard.isPending}
+          />
+        </TabsContent>
+
         <TabsContent value="geofencing">
           <CardGeofencingTab
             card={{
@@ -262,6 +313,18 @@ export default function CardDetailPage() {
               geofencing_zones: (card.geofencing_zones as unknown as GeoZone[]) ?? [],
             }}
             onSave={(data) => updateCard.mutate(data)}
+            isPending={updateCard.isPending}
+          />
+        </TabsContent>
+
+        <TabsContent value="vehicle">
+          <CardVehicleRulesTab
+            card={{
+              max_fills_per_day: card.max_fills_per_day ?? 2,
+              max_tank_capacity_mad: card.max_tank_capacity_mad ?? 800,
+              enforce_vehicle_fuel_type: card.enforce_vehicle_fuel_type ?? true,
+            }}
+            onSave={(rules) => updateCard.mutate(rules)}
             isPending={updateCard.isPending}
           />
         </TabsContent>
