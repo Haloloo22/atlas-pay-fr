@@ -19,6 +19,10 @@ import { CardGeneralTab } from "@/components/cards/CardGeneralTab";
 import { CardAlertsTab } from "@/components/cards/CardAlertsTab";
 import { CardGeofencingTab } from "@/components/cards/CardGeofencingTab";
 import { CardGeofencingZonesTab } from "@/components/cards/CardGeofencingZonesTab";
+import { CardLimitsTab } from "@/components/cards/CardLimitsTab";
+import { CardRestrictionsTab } from "@/components/cards/CardRestrictionsTab";
+import { CardScheduleTab } from "@/components/cards/CardScheduleTab";
+import { CardVehicleRulesTab } from "@/components/cards/CardVehicleRulesTab";
 import type { GeoZone } from "@/components/cards/GeofencingZonesMap";
 import { toast } from "sonner";
 
