@@ -4,4 +4,4 @@
 - [x] Add rule disclaimers and experimental badge.
 - [x] Verify copy coverage and desktop/mobile presentation.
 
-Verification: hero checked at desktop/mobile sizes; authenticated experimental rules page checked; build OK. Card-tab browser verification unavailable: requesting account has no cards, and demo card map raises an existing react-leaflet rendering error. No logic or dependency changes made.
+Verification: rechecked hero at desktop/mobile sizes (equal 112px stat headers, no mobile overflow); authenticated experimental rules page and alert copy checked with no runtime errors. Required card-tab disclaimers confirmed in source; card-detail browser verification unavailable because the requesting account has no cards. No logic or dependency changes made.
