@@ -181,28 +181,26 @@ const HeroWithCard = () => {
         {/* Value Propositions - Reduced spacing */}
         <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
           <div className="text-center space-y-2 opacity-0 animate-[float-up_0.8s_ease-out_0.6s_forwards]">
-            <div className="h-32 grid grid-rows-[1.25rem_1fr]">
+            <div className="h-28 flex flex-col justify-end gap-1">
               <span className="text-sm text-muted-foreground">Jusqu'à</span>
-              <div className="text-5xl md:text-6xl font-extrabold text-primary flex items-end justify-center">-15%</div>
+              <div className="text-5xl md:text-6xl leading-none font-extrabold text-primary">-15%</div>
             </div>
-            <p className="text-lg font-semibold text-foreground min-h-14 flex items-start justify-center">Sur vos coûts carburant</p>
-            <p className="text-sm text-muted-foreground">Économies potentielles</p>
+            <p className="text-lg font-semibold text-foreground min-h-7">Sur vos coûts carburant</p>
+            <p className="text-sm text-muted-foreground min-h-10">Économies potentielles</p>
           </div>
           <div className="text-center space-y-2 opacity-0 animate-[float-up_0.8s_ease-out_0.8s_forwards]">
-            <div className="h-32 grid grid-rows-[1.25rem_1fr]">
-              <span aria-hidden="true" />
-              <div className="text-5xl md:text-6xl font-extrabold text-ink flex items-end justify-center">24/7</div>
+            <div className="h-28 flex flex-col justify-end gap-1">
+              <div className="text-5xl md:text-6xl leading-none font-extrabold text-ink">24/7</div>
             </div>
-            <p className="text-lg font-semibold text-foreground min-h-14 flex items-start justify-center">Suivi des transactions</p>
-            <p className="text-sm text-muted-foreground">Tableau de bord accessible à tout moment</p>
+            <p className="text-lg font-semibold text-foreground min-h-7">Suivi des transactions</p>
+            <p className="text-sm text-muted-foreground min-h-10">Tableau de bord accessible à tout moment</p>
           </div>
           <div className="text-center space-y-2 opacity-0 animate-[float-up_0.8s_ease-out_1s_forwards]">
-            <div className="h-32 grid grid-rows-[1.25rem_1fr]">
-              <span aria-hidden="true" />
-              <div className="text-3xl md:text-4xl font-extrabold text-success flex items-end justify-center">Traçabilité complète</div>
+            <div className="h-28 flex flex-col justify-end gap-1">
+              <div className="text-3xl md:text-4xl leading-none font-extrabold text-success">Traçabilité complète</div>
             </div>
-            <div className="min-h-14" aria-hidden="true" />
-            <p className="text-sm text-muted-foreground">Chaque transaction est tracée</p>
+            <div className="min-h-7" aria-hidden="true" />
+            <p className="text-sm text-muted-foreground min-h-10">Chaque transaction est tracée</p>
           </div>
         </div>
 
