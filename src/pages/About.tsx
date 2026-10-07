@@ -23,8 +23,8 @@ const About = () => {
     },
     {
       icon: Heart,
-      title: "Engagement",
-      description: "Nous nous engageons à la réussite de nos partenaires.",
+      title: "Accompagnement",
+      description: "Nous soutenons la réussite de nos partenaires.",
     },
   ];
 

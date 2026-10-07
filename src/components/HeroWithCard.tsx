@@ -55,7 +55,7 @@ const HeroWithCard = () => {
                   <Shield className="w-5 h-5 text-success" />
                 </div>
                 <div>
-                  <span className="text-sm font-bold text-foreground block">100% Sécurisé</span>
+                  <span className="text-sm font-bold text-foreground block">Sécurité maximale</span>
                   <p className="text-xs text-muted-foreground">Cartes Visa sécurisées</p>
                 </div>
               </div>
@@ -197,10 +197,10 @@ const HeroWithCard = () => {
           </div>
           <div className="text-center space-y-2 opacity-0 animate-[float-up_0.8s_ease-out_1s_forwards]">
             <div className="h-28 flex flex-col justify-end gap-1">
-              <div className="text-3xl md:text-4xl leading-none font-extrabold text-success">Traçabilité complète</div>
+              <div className="text-3xl md:text-4xl leading-none font-extrabold text-success">Suivi des dépenses</div>
             </div>
             <div className="min-h-7" aria-hidden="true" />
-            <p className="text-sm text-muted-foreground min-h-10">Chaque transaction est tracée</p>
+            <p className="text-sm text-muted-foreground min-h-10">Suivi en temps différé des transactions</p>
           </div>
         </div>
 

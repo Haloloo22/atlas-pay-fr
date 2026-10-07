@@ -4,7 +4,7 @@ const benefits = [
   {
     icon: TrendingDown,
     title: "Réduisez vos coûts",
-    subtitle: "Jusqu'à 15% d'économies",
+    subtitle: "Réduction des coûts carburant",
     description: "Notre IA détecte les anomalies, signale les opérations suspectes et optimise vos dépenses carburant. Résultats mesurables dès le premier mois.",
     color: "from-accent via-accent/80 to-accent/60",
     stat: "-15%"
@@ -12,14 +12,14 @@ const benefits = [
   {
     icon: Clock,
     title: "Gagnez du temps",
-    subtitle: "80% de temps administratif en moins",
+    subtitle: "Simplification administrative",
     description: "Fini les tickets papier et les notes de frais. Tout est digitalisé, centralisé et automatiquement réconcilié avec votre comptabilité.",
     color: "from-primary via-primary/80 to-primary/60",
     stat: "80%"
   },
   {
     icon: Eye,
-    title: "Visibilité totale",
+    title: "Visibilité accrue",
     subtitle: "Suivi des dépenses et alertes",
     description: "Un seul dashboard pour toute votre flotte. Alertes de dépassement, rapports automatiques et insights actionnables 24/7.",
     color: "from-success via-success/80 to-success/60",
