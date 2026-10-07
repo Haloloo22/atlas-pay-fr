@@ -13,18 +13,18 @@ interface CardAlertsTabProps {
 const ALERT_TYPES = [
   {
     key: "alert_on_declined",
-    label: "Transaction refusée",
-    description: "Alerte lorsqu'une transaction est refusée",
+    label: "Paiement non abouti",
+    description: "Alerte lorsqu'un paiement n'aboutit pas chez l'émetteur",
   },
   {
     key: "alert_on_out_of_hours",
-    label: "Hors horaires autorisés",
-    description: "Alerte lors d'une tentative hors des plages horaires",
+    label: "Hors horaires de référence",
+    description: "Alerte lorsqu'une transaction est détectée hors des plages horaires",
   },
   {
     key: "alert_on_out_of_zone",
     label: "Hors zone géographique",
-    description: "Alerte lors d'une tentative hors des zones autorisées",
+    description: "Alerte lorsqu'une transaction est détectée hors des zones de référence",
   },
   {
     key: "alert_on_limit_exceeded",

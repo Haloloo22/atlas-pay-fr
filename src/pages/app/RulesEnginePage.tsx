@@ -11,14 +11,15 @@ import { AuditLogTab } from "@/components/rules-engine/AuditLogTab";
 export default function RulesEnginePage() {
   return (
     <div className="space-y-6">
+      <p className="text-sm text-muted-foreground">Ces règles déclenchent des alertes en cas de non-respect. Le blocage du paiement dépend de l'offre de l'émetteur.</p>
       <div className="flex items-start gap-3">
         <div className="p-2 rounded-xl bg-primary/10 text-primary"><FlaskConical className="w-6 h-6" /></div>
         <div>
           <h1 className="text-2xl font-bold flex items-center gap-2">
-            Règles de gestion <Badge variant="outline">test</Badge>
+            Règles de gestion <Badge variant="outline">Expérimental</Badge>
           </h1>
           <p className="text-muted-foreground">
-            Moteur de règles opposable au moment de l'autorisation : plafonds, zones géographiques, alertes temps réel et export ERP.
+            Suivi des dépenses et alertes après paiement : plafonds, zones géographiques et export ERP.
             Intégrations émetteur (type Chari.ma / S2M) et Odoo simulées.
           </p>
         </div>

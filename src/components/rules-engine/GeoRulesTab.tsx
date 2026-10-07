@@ -65,9 +65,9 @@ export function GeoRulesTab() {
     <div className="space-y-4">
       <div className="flex items-start justify-between gap-4">
         <div>
-          <h2 className="text-lg font-semibold">Restrictions géographiques</h2>
+          <h2 className="text-lg font-semibold">Alertes géographiques</h2>
           <p className="text-sm text-muted-foreground">
-            La localisation provient des données de l'émetteur à l'autorisation (RG-G1). Une exception temporaire doit porter une date d'expiration (RG-G3).
+            Les transactions hors zone sont signalées après paiement à partir des données de localisation de l'émetteur (RG-G1). Une exception temporaire doit porter une date d'expiration (RG-G3).
           </p>
         </div>
         <Dialog open={open} onOpenChange={setOpen}>
@@ -75,7 +75,7 @@ export function GeoRulesTab() {
             <Button><Plus className="w-4 h-4 mr-2" />Nouvelle zone</Button>
           </DialogTrigger>
           <DialogContent className="max-w-lg">
-            <DialogHeader><DialogTitle>Définir une zone autorisée</DialogTitle></DialogHeader>
+            <DialogHeader><DialogTitle>Définir une zone de référence</DialogTitle></DialogHeader>
             <div className="space-y-4">
               <ScopeSelect scopeType={scopeType} scopeId={scopeId} onChange={(t, id) => { setScopeType(t); setScopeId(id); }} />
               <div className="space-y-1.5">
@@ -118,15 +118,15 @@ export function GeoRulesTab() {
                 <Select value={missingPolicy} onValueChange={setMissingPolicy}>
                   <SelectTrigger><SelectValue /></SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="block">Bloquer par prudence</SelectItem>
-                    <SelectItem value="allow">Autoriser par défaut</SelectItem>
+                    <SelectItem value="block">Signaler la localisation absente</SelectItem>
+                    <SelectItem value="allow">Ne pas signaler par défaut</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
               <div className="flex items-center justify-between rounded-xl border border-border p-3">
                 <div>
                   <p className="text-sm font-medium">Exception temporaire</p>
-                  <p className="text-xs text-muted-foreground">Autorisation ponctuelle hors zone, expiration obligatoire</p>
+                  <p className="text-xs text-muted-foreground">Exception ponctuelle aux alertes hors zone, expiration obligatoire</p>
                 </div>
                 <Switch checked={isException} onCheckedChange={setIsException} />
               </div>
@@ -151,8 +151,8 @@ export function GeoRulesTab() {
         ) : rules.length === 0 ? (
           <div className="p-12 text-center">
             <MapPin className="w-10 h-10 mx-auto text-muted-foreground mb-3" />
-            <p className="font-medium">Aucune restriction géographique</p>
-            <p className="text-sm text-muted-foreground">Ex. : restreindre la carte du chauffeur X à la région Casablanca-Settat.</p>
+            <p className="font-medium">Aucune alerte géographique configurée</p>
+            <p className="text-sm text-muted-foreground">Ex. : signaler les transactions du chauffeur X hors de la région Casablanca-Settat.</p>
           </div>
         ) : (
           <Table>
@@ -182,7 +182,7 @@ export function GeoRulesTab() {
                       {r.is_exception && <Badge variant="outline" className="ml-2 text-xs">Exception</Badge>}
                     </TableCell>
                     <TableCell className="text-sm">{describe(r)}</TableCell>
-                    <TableCell className="text-xs">{r.missing_location_policy === "block" ? "Bloquer" : "Autoriser"}</TableCell>
+                    <TableCell className="text-xs">{r.missing_location_policy === "block" ? "Signaler" : "Ne pas signaler"}</TableCell>
                     <TableCell className="text-xs">{r.expires_at ? new Date(r.expires_at).toLocaleString("fr-MA") + (expired ? " (expirée)" : "") : "—"}</TableCell>
                     <TableCell><Badge variant="outline" className={SyncBadgeClass(r.sync_status)}>{SYNC_LABELS[r.sync_status]}</Badge></TableCell>
                     <TableCell><Switch checked={r.is_active} onCheckedChange={() => toggle.mutate(r)} /></TableCell>

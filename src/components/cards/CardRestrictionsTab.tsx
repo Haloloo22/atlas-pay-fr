@@ -85,10 +85,10 @@ export function CardRestrictionsTab({
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Fuel className="h-5 w-5" />
-            Types de carburant autorisés
+            Types de carburant de référence
           </CardTitle>
           <CardDescription>
-            Sélectionnez les types de carburant que cette carte peut acheter
+            Sélectionnez les types de carburant de référence pour détecter les achats non conformes
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
@@ -135,9 +135,9 @@ export function CardRestrictionsTab({
             <div className="flex items-center gap-3">
               <Ban className="h-5 w-5 text-destructive" />
               <div className="space-y-0.5">
-                <Label className="text-base font-medium">Bloquer les MCC non-carburant</Label>
+                <Label className="text-base font-medium">Restreindre les catégories non-carburant</Label>
                 <p className="text-sm text-muted-foreground">
-                  Refuse toutes les transactions hors stations-service (MCC 5541/5542)
+                  Restreint les paiements aux catégories stations-service (MCC 5541/5542)
                 </p>
               </div>
             </div>
@@ -154,9 +154,9 @@ export function CardRestrictionsTab({
             <div className="flex items-center gap-3">
               <ShoppingBag className="h-5 w-5 text-muted-foreground" />
               <div className="space-y-0.5">
-                <Label className="text-base font-medium">Autoriser les achats boutique</Label>
+                <Label className="text-base font-medium">Inclure les achats boutique dans le suivi</Label>
                 <p className="text-sm text-muted-foreground">
-                  Permet les achats en boutique (snacks, eau, café) dans les stations
+                  Suit les achats en boutique (snacks, eau, café) dans les stations
                 </p>
               </div>
             </div>
@@ -184,7 +184,7 @@ export function CardRestrictionsTab({
                 <span className="text-muted-foreground">MAD</span>
               </div>
               <p className="text-sm text-muted-foreground">
-                Limite maximale pour les achats boutique par transaction
+                Seuil d'alerte pour les achats boutique par transaction
               </p>
             </div>
           )}
@@ -202,10 +202,10 @@ export function CardRestrictionsTab({
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Store className="h-5 w-5" />
-            Stations-service autorisées
+            Stations-service de référence
           </CardTitle>
           <CardDescription>
-            Gérez la liste des stations où cette carte peut être utilisée
+            Gérez les stations de référence pour signaler les transactions hors liste
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
@@ -261,7 +261,7 @@ export function CardRestrictionsTab({
                       <span className="font-medium">{station.brand}</span>
                     </div>
                     <Badge variant={isWhitelisted ? "default" : "secondary"}>
-                      {isWhitelisted ? "Autorisé" : "Bloqué"}
+                      {isWhitelisted ? "Référencée" : "Hors liste"}
                     </Badge>
                   </div>
                 );

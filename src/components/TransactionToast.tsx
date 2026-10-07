@@ -32,7 +32,7 @@ const TransactionToast = ({ logo, station, amount, time, status, className, styl
               declined ? "bg-destructive/10 text-destructive" : "bg-success/10 text-success"
             )}
           >
-            {declined ? "Transaction refusée" : "Acceptée"}
+            {declined ? "Alerte détectée" : "Enregistrée"}
           </span>
         </div>
         <p className="text-sm text-muted-foreground tabular-nums whitespace-nowrap">

@@ -3,18 +3,18 @@ import { Shield, Lock, FileCheck, UserCheck } from "lucide-react";
 const trustItems = [
   {
     icon: Shield,
-    title: "Sécurité bancaire",
-    description: "Chiffrement de bout en bout et protection des données conformes aux standards bancaires internationaux."
+    title: "Accès sécurisé",
+    description: "Connexion à votre compte pour accéder aux données de votre entreprise."
   },
   {
     icon: Lock,
-    title: "Conformité Bank Al-Maghrib",
-    description: "100% conforme aux réglementations de Bank Al-Maghrib et aux normes de sécurité marocaines."
+    title: "Données de votre entreprise",
+    description: "L'accès aux données est limité aux membres de votre entreprise selon leurs droits."
   },
   {
     icon: FileCheck,
-    title: "Audits et certifications",
-    description: "Audits de sécurité réguliers par des experts indépendants. Conformité PCI DSS niveau 1."
+    title: "Suivi des opérations",
+    description: "Retrouvez les transactions et les alertes dans votre tableau de bord."
   },
   {
     icon: UserCheck,
@@ -30,14 +30,14 @@ const Security = () => {
         <div className="text-center space-y-3 mb-12">
           <div className="inline-block">
             <span className="text-sm font-semibold px-4 py-2 rounded-full bg-primary/10 text-primary">
-              Sécurité & Conformité
+              Sécurité & Accès
             </span>
           </div>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground">
             Vos données sont protégées
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Infrastructure sécurisée de niveau bancaire
+            Des accès adaptés aux responsabilités de votre équipe
           </p>
         </div>
 
@@ -64,16 +64,16 @@ const Security = () => {
 
         <div className="mt-10 grid md:grid-cols-3 gap-4">
           <div className="bg-accent rounded-xl p-5 text-center border border-primary/10">
-            <div className="text-3xl font-bold text-primary mb-1">99.9%</div>
-            <div className="text-xs font-semibold text-muted-foreground">Disponibilité garantie</div>
+            <div className="text-3xl font-bold text-primary mb-1">Suivi</div>
+            <div className="text-xs font-semibold text-muted-foreground">Transactions et alertes</div>
           </div>
           <div className="bg-accent rounded-xl p-5 text-center border border-accent/10">
             <div className="text-3xl font-bold text-ink mb-1">24/7</div>
-            <div className="text-xs font-semibold text-muted-foreground">Support technique</div>
+            <div className="text-xs font-semibold text-muted-foreground">Accès au tableau de bord</div>
           </div>
           <div className="bg-accent rounded-xl p-5 text-center border border-primary/10">
-            <div className="text-3xl font-bold text-primary mb-1">100%</div>
-            <div className="text-xs font-semibold text-muted-foreground">Conforme Maroc</div>
+            <div className="text-3xl font-bold text-primary mb-1">Rôles</div>
+            <div className="text-xs font-semibold text-muted-foreground">Accès selon les responsabilités</div>
           </div>
         </div>
       </div>

@@ -27,7 +27,7 @@ const HeroWithCard = () => {
               
               <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-xl">
                 <span className="font-semibold text-foreground">Économisez du temps et réduisez vos coûts de flotte</span>. 
-                Cartes Visa Fleet prépayées, contrôle en temps réel, alertes automatiques.
+                Cartes Visa Fleet prépayées, suivi des dépenses et alertes automatiques.
               </p>
             </div>
 
@@ -64,8 +64,8 @@ const HeroWithCard = () => {
                   <Zap className="w-5 h-5 text-warning" />
                 </div>
                 <div>
-                  <span className="text-sm font-bold text-foreground block">Déploiement 48h</span>
-                  <p className="text-xs text-muted-foreground">Mise en place express</p>
+                  <span className="text-sm font-bold text-foreground block">Mise en place accompagnée</span>
+                  <p className="text-xs text-muted-foreground">Accompagnement au démarrage</p>
                 </div>
               </div>
               <div className="flex items-center gap-3 p-3 rounded-xl bg-accent/5 border border-accent/20 hover:border-accent/40 transition-colors">
@@ -73,8 +73,8 @@ const HeroWithCard = () => {
                   <CheckCircle className="w-5 h-5 text-ink" />
                 </div>
                 <div>
-                  <span className="text-sm font-bold text-foreground block">Sans engagement</span>
-                  <p className="text-xs text-muted-foreground">Résiliable à tout moment</p>
+                  <span className="text-sm font-bold text-foreground block">Démo gratuite</span>
+                  <p className="text-xs text-muted-foreground">Explorez la plateforme sans inscription</p>
                 </div>
               </div>
             </div>
@@ -181,19 +181,26 @@ const HeroWithCard = () => {
         {/* Value Propositions - Reduced spacing */}
         <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
           <div className="text-center space-y-2 opacity-0 animate-[float-up_0.8s_ease-out_0.6s_forwards]">
-            <div className="text-5xl md:text-6xl font-extrabold text-primary">Jusqu'à -15%</div>
-            <p className="text-lg font-semibold text-foreground">Sur vos coûts carburant</p>
-            <p className="text-sm text-muted-foreground">Économies potentielles</p>
+            <div className="h-28 flex flex-col justify-end gap-1">
+              <span className="text-sm text-muted-foreground">Jusqu'à</span>
+              <div className="text-5xl md:text-6xl leading-none font-extrabold text-primary">-15%</div>
+            </div>
+            <p className="text-lg font-semibold text-foreground min-h-7">Sur vos coûts carburant</p>
+            <p className="text-sm text-muted-foreground min-h-10">Économies potentielles</p>
           </div>
           <div className="text-center space-y-2 opacity-0 animate-[float-up_0.8s_ease-out_0.8s_forwards]">
-            <div className="text-5xl md:text-6xl font-extrabold text-ink">48h</div>
-            <p className="text-lg font-semibold text-foreground">Déploiement express</p>
-            <p className="text-sm text-muted-foreground">Mise en service rapide</p>
+            <div className="h-28 flex flex-col justify-end gap-1">
+              <div className="text-5xl md:text-6xl leading-none font-extrabold text-ink">24/7</div>
+            </div>
+            <p className="text-lg font-semibold text-foreground min-h-7">Suivi des transactions</p>
+            <p className="text-sm text-muted-foreground min-h-10">Tableau de bord accessible à tout moment</p>
           </div>
           <div className="text-center space-y-2 opacity-0 animate-[float-up_0.8s_ease-out_1s_forwards]">
-            <div className="text-5xl md:text-6xl font-extrabold text-success">100%</div>
-            <p className="text-lg font-semibold text-foreground">Traçabilité garantie</p>
-            <p className="text-sm text-muted-foreground">Chaque transaction suivie</p>
+            <div className="h-28 flex flex-col justify-end gap-1">
+              <div className="text-3xl md:text-4xl leading-none font-extrabold text-success">Traçabilité complète</div>
+            </div>
+            <div className="min-h-7" aria-hidden="true" />
+            <p className="text-sm text-muted-foreground min-h-10">Chaque transaction est tracée</p>
           </div>
         </div>
 

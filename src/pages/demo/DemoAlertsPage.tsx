@@ -14,7 +14,7 @@ const alertTypeConfig: Record<string, { label: string; icon: React.ElementType; 
   suspicious: { label: "Activité suspecte", icon: AlertTriangle, color: "bg-yellow-500/10 text-yellow-600 border-yellow-500/20" },
   suspicious_activity: { label: "Activité suspecte", icon: AlertTriangle, color: "bg-yellow-500/10 text-yellow-600 border-yellow-500/20" },
   out_of_hours: { label: "Hors horaires", icon: Clock, color: "bg-orange-500/10 text-orange-600 border-orange-500/20" },
-  declined: { label: "Refusée", icon: CreditCard, color: "bg-destructive/10 text-destructive border-destructive/20" },
+  declined: { label: "Paiement non abouti", icon: CreditCard, color: "bg-destructive/10 text-destructive border-destructive/20" },
 };
 
 export default function DemoAlertsPage() {
@@ -50,7 +50,7 @@ export default function DemoAlertsPage() {
                 <SelectItem value="all">Tous les types</SelectItem>
                 <SelectItem value="suspicious">Activité suspecte</SelectItem>
                 <SelectItem value="out_of_hours">Hors horaires</SelectItem>
-                <SelectItem value="declined">Refusée</SelectItem>
+                <SelectItem value="declined">Paiement non abouti</SelectItem>
                 <SelectItem value="limit_exceeded">Limite dépassée</SelectItem>
               </SelectContent>
             </Select>

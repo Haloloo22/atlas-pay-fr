@@ -54,12 +54,13 @@ export function CardGeofencingTab({ card, onSave, isPending }: CardGeofencingTab
   return (
     <Card>
       <CardHeader>
+          <p className="text-sm text-muted-foreground">Ces règles déclenchent des alertes en cas de non-respect. Le blocage du paiement dépend de l'offre de l'émetteur.</p>
         <CardTitle className="flex items-center gap-2">
           <MapPin className="h-5 w-5" />
           Géofencing
         </CardTitle>
         <CardDescription>
-          Restreignez l'utilisation de la carte à des régions spécifiques du Maroc
+          Définissez les régions de référence au Maroc pour détecter les transactions hors zone
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-6">
@@ -70,7 +71,7 @@ export function CardGeofencingTab({ card, onSave, isPending }: CardGeofencingTab
               Activer le géofencing
             </Label>
             <p className="text-sm text-muted-foreground">
-              Lorsqu'activé, la carte ne fonctionnera que dans les régions sélectionnées
+              Lorsqu'activé, une alerte signale les transactions hors des régions sélectionnées
             </p>
           </div>
           <Switch
