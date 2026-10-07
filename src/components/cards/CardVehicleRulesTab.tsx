@@ -48,12 +48,13 @@ export function CardVehicleRulesTab({ card, onSave, isPending }: CardVehicleRule
   return (
     <Card>
       <CardHeader>
+          <p className="text-sm text-muted-foreground">Ces règles déclenchent des alertes en cas de non-respect. Le blocage du paiement dépend de l'offre de l'émetteur.</p>
         <CardTitle className="flex items-center gap-2">
           <Car className="h-5 w-5" />
           Règles liées au véhicule
         </CardTitle>
         <CardDescription>
-          Configurez les restrictions basées sur les caractéristiques du véhicule
+          Configurez les alertes basées sur les caractéristiques du véhicule
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-8">
@@ -91,7 +92,7 @@ export function CardVehicleRulesTab({ card, onSave, isPending }: CardVehicleRule
             </div>
           </div>
           <p className="text-sm text-muted-foreground">
-            Limite le nombre de transactions de type "plein" autorisées par période de 24h
+            Signale les pleins dépassant le nombre défini par période de 24h
           </p>
         </div>
 
@@ -128,16 +129,16 @@ export function CardVehicleRulesTab({ card, onSave, isPending }: CardVehicleRule
             </div>
           </div>
           <p className="text-sm text-muted-foreground">
-            Bloque les transactions dépassant la capacité estimée du réservoir du véhicule
+            Signale les transactions dépassant la capacité estimée du réservoir du véhicule
           </p>
         </div>
 
         {/* Enforce vehicle fuel type */}
         <div className="flex items-center justify-between rounded-lg border p-4">
           <div className="space-y-1">
-            <Label className="text-base font-medium">Forcer le type de carburant compatible</Label>
+            <Label className="text-base font-medium">Signaler un carburant incompatible</Label>
             <p className="text-sm text-muted-foreground">
-              Autorise uniquement le carburant correspondant au véhicule assigné (diesel/essence)
+              Détecte les achats de carburant incompatibles avec le véhicule assigné (diesel/essence)
             </p>
           </div>
           <Switch

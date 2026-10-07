@@ -12,13 +12,13 @@ const steps = [
   {
     number: "02",
     title: "Distribuez les cartes physiques ou virtuelles",
-    description: "Recevez vos cartes Flect sous 48h. Cartes virtuelles disponibles instantanément dans l'app. Activez-les depuis votre dashboard.",
+    description: "Mise en place accompagnée. Retrouvez vos cartes physiques et virtuelles dans l'app et activez-les depuis votre dashboard.",
     icon: CreditCard
   },
   {
     number: "03",
-    title: "Suivez les dépenses et transactions en temps réel",
-    description: "Chaque paiement apparaît instantanément dans votre tableau de bord. Notifications push pour toutes les transactions.",
+    title: "Suivez les dépenses et les alertes",
+    description: "Retrouvez les paiements dans votre tableau de bord et les alertes liées aux transactions.",
     icon: LineChart
   },
   {

@@ -14,14 +14,14 @@ const features = [
   {
     icon: CreditCard,
     title: "Cartes Visa Fleet prépayées",
-    description: "Cartes physiques et virtuelles. Limites par conducteur, catégories contrôlées : carburant, maintenance, péages.",
+    description: "Cartes physiques et virtuelles. Alertes de dépassement par conducteur, restrictions par catégorie : carburant, maintenance, péages.",
     gradient: "from-accent/10 via-accent/5 to-transparent",
     miniDashboard: false
   },
   {
     icon: Bell,
-    title: "Contrôle dépenses en temps réel",
-    description: "Chaque transaction apparaît instantanément. Notifications push pour chaque paiement, dépassement de limite détecté.",
+    title: "Suivi des dépenses et alertes",
+    description: "Suivez les transactions dans votre tableau de bord. Une alerte est déclenchée en cas de dépassement de limite.",
     gradient: "from-success/10 via-success/5 to-transparent",
     miniDashboard: false
   },

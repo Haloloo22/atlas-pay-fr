@@ -60,12 +60,13 @@ export function CardScheduleTab({ card, onSave, isPending }: CardScheduleTabProp
       {/* Heures d'utilisation */}
       <Card>
         <CardHeader>
+          <p className="text-sm text-muted-foreground">Ces règles déclenchent des alertes en cas de non-respect. Le blocage du paiement dépend de l'offre de l'émetteur.</p>
           <CardTitle className="flex items-center gap-2">
             <Clock className="h-5 w-5" />
-            Plage horaire autorisée
+            Plage horaire de référence
           </CardTitle>
           <CardDescription>
-            Définissez les heures pendant lesquelles la carte peut être utilisée
+            Définissez les heures de référence pour détecter les transactions hors plage
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
@@ -102,7 +103,7 @@ export function CardScheduleTab({ card, onSave, isPending }: CardScheduleTabProp
             </div>
           </div>
           <p className="text-sm text-muted-foreground">
-            Les transactions en dehors de cette plage horaire seront refusées.
+            Une alerte est déclenchée pour les transactions en dehors de cette plage horaire.
           </p>
         </CardContent>
       </Card>
@@ -115,7 +116,7 @@ export function CardScheduleTab({ card, onSave, isPending }: CardScheduleTabProp
             Jours d'utilisation
           </CardTitle>
           <CardDescription>
-            Sélectionnez les jours où la carte peut être utilisée
+            Sélectionnez les jours de référence pour détecter les transactions hors calendrier
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">

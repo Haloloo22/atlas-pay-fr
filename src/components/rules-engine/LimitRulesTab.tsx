@@ -49,7 +49,7 @@ export function LimitRulesTab() {
         <div>
           <h2 className="text-lg font-semibold">Plafonds de paiement</h2>
           <p className="text-sm text-muted-foreground">
-            Évalués à chaque tentative avant autorisation. Une transaction est refusée si au moins un plafond actif est dépassé (RG-P1).
+            Les dépassements sont détectés après paiement. Une alerte est déclenchée si un plafond actif est dépassé (RG-P1).
             Remise à zéro au fuseau Afrique/Casablanca (RG-P3).
           </p>
         </div>
@@ -88,8 +88,8 @@ export function LimitRulesTab() {
                   <Select value={onExceed} onValueChange={setOnExceed}>
                     <SelectTrigger><SelectValue /></SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="decline">Refus (decline)</SelectItem>
-                      <SelectItem value="soft_warning">Autorisé + alerte</SelectItem>
+                      <SelectItem value="decline">Alerte de dépassement</SelectItem>
+                      <SelectItem value="soft_warning">Avertissement</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -148,7 +148,7 @@ export function LimitRulesTab() {
                   <TableCell className="text-right font-mono">{Number(r.amount).toLocaleString("fr-MA")} MAD</TableCell>
                   <TableCell className="text-xs">{r.mcc_filter.length ? r.mcc_filter.join(", ") : "Carburant (tous)"}</TableCell>
                   <TableCell>{r.alert_threshold_pct} %</TableCell>
-                  <TableCell className="text-xs">{r.on_exceed === "decline" ? "Refus" : "Autorisé + alerte"}</TableCell>
+                  <TableCell className="text-xs">{r.on_exceed === "decline" ? "Alerte de dépassement" : "Avertissement"}</TableCell>
                   <TableCell>
                     <div className="flex items-center gap-1">
                       <Badge variant="outline" className={SyncBadgeClass(r.sync_status)}>{SYNC_LABELS[r.sync_status]}</Badge>

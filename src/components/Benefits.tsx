@@ -5,7 +5,7 @@ const benefits = [
     icon: TrendingDown,
     title: "Réduisez vos coûts",
     subtitle: "Jusqu'à 15% d'économies",
-    description: "Notre IA détecte les anomalies, prévient la fraude et optimise vos dépenses carburant. Résultats mesurables dès le premier mois.",
+    description: "Notre IA détecte les anomalies, signale les opérations suspectes et optimise vos dépenses carburant. Résultats mesurables dès le premier mois.",
     color: "from-accent via-accent/80 to-accent/60",
     stat: "-15%"
   },
@@ -20,8 +20,8 @@ const benefits = [
   {
     icon: Eye,
     title: "Visibilité totale",
-    subtitle: "Données en temps réel",
-    description: "Un seul dashboard pour toute votre flotte. Alertes instantanées, rapports automatiques et insights actionnables 24/7.",
+    subtitle: "Suivi des dépenses et alertes",
+    description: "Un seul dashboard pour toute votre flotte. Alertes de dépassement, rapports automatiques et insights actionnables 24/7.",
     color: "from-success via-success/80 to-success/60",
     stat: "24/7"
   }

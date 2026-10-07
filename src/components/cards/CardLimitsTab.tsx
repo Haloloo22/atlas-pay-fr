@@ -65,6 +65,7 @@ export function CardLimitsTab({ card, onSave, isPending }: CardLimitsTabProps) {
     <div className="space-y-6">
       <Card>
         <CardHeader>
+          <p className="text-sm text-muted-foreground">Ces règles déclenchent des alertes en cas de non-respect. Le blocage du paiement dépend de l'offre de l'émetteur.</p>
           <CardTitle className="flex items-center gap-2">
             <Wallet className="h-5 w-5" />
             Limites de dépenses
@@ -86,14 +87,14 @@ export function CardLimitsTab({ card, onSave, isPending }: CardLimitsTabProps) {
                 <Label className="text-base font-medium">Type de limite</Label>
                 <p className="text-sm text-muted-foreground">
                   {limits.limit_type === "hard"
-                    ? "Hard limit : Bloque la transaction si dépassée"
-                    : "Soft limit : Alerte uniquement, transaction autorisée"}
+                    ? "Une alerte est déclenchée en cas de dépassement"
+                    : "Un avertissement signale le dépassement"}
                 </p>
               </div>
             </div>
             <div className="flex items-center gap-2">
               <Badge variant={limits.limit_type === "hard" ? "destructive" : "secondary"}>
-                {limits.limit_type === "hard" ? "Blocage" : "Alerte"}
+                {limits.limit_type === "hard" ? "Alerte" : "Avertissement"}
               </Badge>
               <Switch
                 checked={limits.limit_type === "hard"}

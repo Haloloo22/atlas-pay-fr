@@ -47,7 +47,7 @@ const CTA = () => {
               </Link>
             </div>
             <p className="text-sm text-primary-foreground/70 mt-6">
-              Déploiement en 48h • Sans engagement • Support inclus
+              Mise en place accompagnée • Démo gratuite • Explorez la plateforme sans inscription
             </p>
           </div>
         </div>

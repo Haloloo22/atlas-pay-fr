@@ -58,13 +58,14 @@ export function CardGeofencingZonesTab({
   return (
     <Card>
       <CardHeader>
+          <p className="text-sm text-muted-foreground">Ces règles déclenchent des alertes en cas de non-respect. Le blocage du paiement dépend de l'offre de l'émetteur.</p>
         <CardTitle className="flex items-center gap-2">
           <Shapes className="h-5 w-5" />
           Zones de géofencing personnalisées
         </CardTitle>
         <CardDescription>
           Dessinez des polygones ou des cercles directement sur la carte pour
-          définir les zones d'utilisation autorisées
+          définir les zones de référence pour les alertes
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-6">
@@ -75,7 +76,7 @@ export function CardGeofencingZonesTab({
               Activer les zones personnalisées
             </Label>
             <p className="text-sm text-muted-foreground">
-              Les transactions hors de ces zones seront bloquées ou alertées
+              Une alerte est déclenchée pour les transactions hors de ces zones
             </p>
           </div>
           <Switch

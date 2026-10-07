@@ -123,13 +123,14 @@ export default function DemoCardDetailPage() {
         <TabsContent value="regions">
           <Card>
             <CardHeader>
+              <p className="text-sm text-muted-foreground">Ces règles déclenchent des alertes en cas de non-respect. Le blocage du paiement dépend de l'offre de l'émetteur.</p>
               <CardTitle className="flex items-center gap-2">
                 <MapPin className="h-5 w-5" />
                 Géofencing par région
               </CardTitle>
               <CardDescription>
-                Restreignez l'utilisation de la carte à des régions spécifiques
-                du Maroc
+                Définissez les régions de référence au Maroc pour détecter
+                les transactions hors zone
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
@@ -139,7 +140,7 @@ export default function DemoCardDetailPage() {
                     Activer le géofencing
                   </Label>
                   <p className="text-sm text-muted-foreground">
-                    La carte ne fonctionnera que dans les régions sélectionnées
+                    Une alerte signale les transactions hors des régions sélectionnées
                   </p>
                 </div>
                 <Switch
@@ -214,13 +215,14 @@ export default function DemoCardDetailPage() {
         <TabsContent value="zones">
           <Card>
             <CardHeader>
+              <p className="text-sm text-muted-foreground">Ces règles déclenchent des alertes en cas de non-respect. Le blocage du paiement dépend de l'offre de l'émetteur.</p>
               <CardTitle className="flex items-center gap-2">
                 <Shapes className="h-5 w-5" />
                 Zones personnalisées
               </CardTitle>
               <CardDescription>
                 Dessinez des polygones ou des cercles directement sur la carte
-                pour définir les zones autorisées
+                pour définir les zones de référence
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
@@ -230,8 +232,8 @@ export default function DemoCardDetailPage() {
                     Activer les zones personnalisées
                   </Label>
                   <p className="text-sm text-muted-foreground">
-                    Les transactions hors de ces zones seront bloquées ou
-                    alertées
+                    Une alerte est déclenchée pour les transactions hors
+                    de ces zones
                   </p>
                 </div>
                 <Switch
