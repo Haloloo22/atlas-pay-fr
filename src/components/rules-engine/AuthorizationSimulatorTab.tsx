@@ -58,7 +58,7 @@ export function AuthorizationSimulatorTab() {
         <div className="lg:col-span-2 bg-card border border-border rounded-2xl p-5 space-y-4">
           <div>
             <h2 className="text-lg font-semibold">Simulateur d'autorisation</h2>
-            <p className="text-sm text-muted-foreground">Reproduit l'appel <code className="text-xs">POST /webhooks/authorization</code> de l'émetteur (MOCK).</p>
+            <p className="text-sm text-muted-foreground">Simulation expérimentale de l'appel <code className="text-xs">POST /webhooks/authorization</code> (MOCK). Les décisions simulées ne représentent pas un blocage disponible en production : seules les restrictions par catégorie MCC sont natives, les autres règles signalent les écarts après paiement.</p>
           </div>
           <div className="space-y-1.5">
             <Label>Carte</Label>
@@ -110,7 +110,7 @@ export function AuthorizationSimulatorTab() {
         </div>
 
         <div className="lg:col-span-3 bg-card border border-border rounded-2xl p-5">
-          <h3 className="font-semibold mb-3">Réponse Flect → émetteur</h3>
+          <h3 className="font-semibold mb-3">Réponse simulée Flect → émetteur</h3>
           {!result ? (
             <p className="text-sm text-muted-foreground">Aucune demande soumise.</p>
           ) : (
@@ -146,7 +146,7 @@ export function AuthorizationSimulatorTab() {
       </div>
 
       <div className="bg-card border border-border rounded-2xl overflow-hidden">
-        <div className="px-5 py-4 border-b border-border"><h3 className="font-semibold">Journal des autorisations</h3></div>
+        <div className="px-5 py-4 border-b border-border"><h3 className="font-semibold">Journal des autorisations simulées</h3></div>
         {transactions.length === 0 ? (
           <div className="p-8 text-center text-sm text-muted-foreground">Aucune transaction.</div>
         ) : (

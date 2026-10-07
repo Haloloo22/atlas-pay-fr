@@ -9,7 +9,7 @@ const testimonials = [
     avatar: "MA"
   },
   {
-    quote: "Plus de tickets papier, plus de fraude. Tout est tracé en temps réel. Un gain de temps énorme pour notre comptabilité.",
+    quote: "Plus de tickets papier. Les opérations suspectes sont signalées et chaque transaction est tracée. Un gain de temps énorme pour notre comptabilité.",
     author: "Fatima Benkirane",
     role: "DAF",
     company: "BTP Solutions",

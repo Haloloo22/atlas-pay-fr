@@ -37,7 +37,7 @@ const Terms = () => {
                 </p>
                 <ul className="space-y-2 text-muted-foreground list-disc pl-6">
                   <li>Gestion centralisée des cartes carburant</li>
-                  <li>Suivi en temps réel des transactions</li>
+                  <li>Suivi des transactions et alertes</li>
                   <li>Définition de limites de dépenses par conducteur</li>
                   <li>Alertes et détection de fraude</li>
                   <li>Tableau de bord analytique</li>

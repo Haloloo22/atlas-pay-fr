@@ -40,7 +40,7 @@ export function ErpExportTab() {
         <div className="flex-1">
           <h2 className="text-lg font-semibold">Synchronisation ERP (type Odoo)</h2>
           <p className="text-sm text-muted-foreground">
-            Batch quotidien par défaut, ici lancé à la demande. Chaque transaction capturée génère une écriture <code className="text-xs">account.move</code> et une ligne <code className="text-xs">account.analytic.line</code> ventilée par véhicule (RG-E1). Les transactions refusées ne sont jamais exportées. Appel Odoo simulé (MOCK).
+            Batch quotidien par défaut, ici lancé à la demande. Chaque transaction capturée génère une écriture <code className="text-xs">account.move</code> et une ligne <code className="text-xs">account.analytic.line</code> ventilée par véhicule (RG-E1). Seules les transactions acceptées et capturées dans la simulation sont exportées. Appel Odoo simulé (MOCK).
           </p>
         </div>
         <div className="space-y-1.5 w-full md:w-52">
