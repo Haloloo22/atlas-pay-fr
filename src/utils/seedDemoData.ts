@@ -208,9 +208,9 @@ export async function seedDemoData(companyId: string) {
     // 6. Create sample alerts
     const alertTypes = [
       { type: "limit_exceeded", message: "Limite de transaction dépassée" },
-      { type: "out_of_hours", message: "Transaction hors horaires autorisés" },
+      { type: "out_of_hours", message: "Transaction détectée hors horaires de référence" },
       { type: "suspicious", message: "Activité suspecte détectée" },
-      { type: "declined", message: "Transaction refusée" },
+      { type: "declined", message: "Paiement non abouti chez l'émetteur" },
     ];
 
     const alertsToCreate = [];
